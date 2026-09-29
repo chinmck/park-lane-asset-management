@@ -86,6 +86,8 @@ const VIEW = {
 
 const COMPACT_QUERY = window.matchMedia("(max-width: 640px)");
 const TABLET_QUERY = window.matchMedia("(max-width: 1024px)");
+// Only wide screens have the room for the largest model
+const WIDE_QUERY = window.matchMedia("(min-width: 1360px)");
 const pad = (n) => String(n).padStart(2, "0");
 
 /* ---------------------------------------------------------------- building */
@@ -230,15 +232,15 @@ export function mount(root) {
       return Math.min(0.62, (width - 36) / row);
     }
     // Side-by-side desktop gets the larger model; full-width tablet a gentler one
-    const divisor = TABLET_QUERY.matches ? 790 : 690;
-    return Math.max(0.5, Math.min(1.45, width / divisor));
+    const divisor = TABLET_QUERY.matches ? 790 : WIDE_QUERY.matches ? 640 : 700;
+    return Math.max(0.5, Math.min(1.6, width / divisor));
   }
 
   function render() {
     const compact = COMPACT_QUERY.matches;
     const { place, view, lintel: l, datum: dm } = layout(selected, compact);
     // A wide assembly eases back, like stepping away from the model
-    const fit = l ? Math.min(1, (compact ? 760 : 700) / l.w) : 1;
+    const fit = l ? Math.min(1, (compact ? 760 : 750) / l.w) : 1;
     const s = scaleFor(compact) * fit;
 
     scene.style.transform = `scale(${s}) rotateX(${view.rx}deg) rotateY(${view.ry}deg)`;
