@@ -489,15 +489,77 @@
   pointer-events: none;
 }
 
-/* Final artwork: fills the front face; the procedural texture steps aside,
-   light, grain and arrises stay so the photograph sits in the scene. */
-.sv-slab.has-image .sv-face--front {
-  --tex: none;
-  background: var(--img) center / cover no-repeat, var(--mat);
+/* Final artwork -------------------------------------------------------------
+   Each asset is a pre-rendered dimensional slab on transparency, shown as a
+   sprite standing on the slab's footprint and turned toward the viewer. The
+   material box below it is the placeholder until the art has decoded. */
+
+.sv-sprite {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  transform-origin: 50% 100%;
+  transition: transform 1800ms var(--sv-ease);
+  pointer-events: none;
 }
 
-.m-glass.has-image .sv-face--front {
-  border-color: rgba(169, 138, 82, 0.2);
+.sv-sprite__img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: 50% 100%;
+  opacity: 0;
+  user-select: none;
+  /* One filter chain for every state so transitions interpolate smoothly:
+     brightness / saturation for recession, drop-shadows for the green edge light */
+  --sv-dim: 1;
+  --sv-sat: 1;
+  --sv-edge: rgba(47, 122, 64, 0);
+  --sv-glow: rgba(6, 74, 18, 0);
+  filter:
+    brightness(var(--sv-dim))
+    saturate(var(--sv-sat))
+    drop-shadow(0 0 0.75px var(--sv-edge))
+    drop-shadow(0 14px 22px var(--sv-glow));
+  transition:
+    opacity 700ms var(--ease),
+    filter var(--sv-dur) var(--sv-ease);
+}
+
+.sv-slab.is-loaded .sv-sprite__img {
+  opacity: 1;
+}
+
+/* Fade the placeholder box out beneath the artwork */
+.sv-slab .sv-face {
+  transition: opacity 700ms var(--ease);
+}
+
+.sv-slab.is-loaded > .sv-face {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.sv-slab.is-receded .sv-sprite__img {
+  --sv-dim: 0.42;
+  --sv-sat: 0.75;
+}
+
+.sv-slab.is-active .sv-sprite__img {
+  --sv-edge: rgba(47, 122, 64, 0.95);
+  --sv-glow: rgba(6, 74, 18, 0.32);
+}
+
+/* Specimen tag sits just beneath the object, on the plinth line */
+.sv-sprite .sv-tag {
+  left: 2px;
+  bottom: auto;
+  top: calc(100% + 12px);
+  color: rgba(242, 239, 229, 0.5);
+  transform: none;
 }
 
 /* Limestone — warm, clouded, with sparse fossil specks and an etched plan */

@@ -8,22 +8,27 @@
  * [data-component="strategy-visualizer"] element. Controls are real buttons in
  * the page markup ([data-asset]); the model is rendered into [data-sv-stage].
  *
- * Structure, layout and interaction are frozen. Final artwork is supplied per
- * asset via `image` (front face only). Spec + file names: assets/img/visualizer/README.md
- *   image: "assets/img/visualizer/property.jpg"
- *   image: { src: "…/property.jpg", src2x: "…/property@2x.jpg" }
- * The image fills the front face (cover); scene lighting, grain and edges are
- * still applied over it, and the placeholder material shows until it loads.
+ * Structure, layout and interaction are frozen. Final artwork: each asset's
+ * `image` is a pre-rendered, dimensional slab object on transparency. It is
+ * shown as a sprite standing at the slab's position and turned toward the
+ * viewer (BILLBOARD), so the art keeps its own perspective and protrusion
+ * while the slab still moves, recedes and assembles exactly as before. The
+ * CSS material box stays underneath as the loading/error fallback.
+ * Slab `size` w:h matches each image's trimmed aspect. See assets/img/visualizer/README.md
  */
+
+// How far each sprite turns back toward the viewer (1 = fully camera-facing).
+// A little less than 1 lets the composition still read its gentle rotation.
+const BILLBOARD = 0.82;
 
 const ASSETS = [
   {
     id: "property",
     label: "Property",
     material: "limestone",
-    image: null, // assets/img/visualizer/property.jpg
-    size: { w: 228, h: 392, d: 44 },
-    idle: { x: -262, z: 28, ry: -5 },
+    image: { src: "assets/img/visualizer/property.webp", src2x: "assets/img/visualizer/property@2x.webp" },
+    size: { w: 253, h: 400, d: 44 },
+    idle: { x: -296, z: 30, ry: -5 },
     view: -20,
     title: "Property, held with a purpose.",
     text: "Acquisition, repositioning and long-term management. Every building is given a defined role, then financed and maintained to serve the wider portfolio.",
@@ -33,9 +38,9 @@ const ASSETS = [
     id: "art",
     label: "Art & Collectibles",
     material: "bronze",
-    image: null, // assets/img/visualizer/art.jpg
-    size: { w: 118, h: 286, d: 66 },
-    idle: { x: -92, z: -128, ry: 7 },
+    image: { src: "assets/img/visualizer/art.webp", src2x: "assets/img/visualizer/art@2x.webp" },
+    size: { w: 150, h: 330, d: 40 },
+    idle: { x: -167, z: -80, ry: 7 },
     view: -25,
     title: "Collections, stewarded like capital.",
     text: "Provenance, insurance, storage and considered disposal. Significant works are held under the same governance as every other asset.",
@@ -45,9 +50,9 @@ const ASSETS = [
     id: "equities",
     label: "Equities & Investments",
     material: "glass",
-    image: null, // assets/img/visualizer/equities.jpg
-    size: { w: 146, h: 508, d: 14 },
-    idle: { x: 62, z: 96, ry: -2 },
+    image: { src: "assets/img/visualizer/equities.webp", src2x: "assets/img/visualizer/equities@2x.webp" },
+    size: { w: 186, h: 470, d: 20 },
+    idle: { x: 100, z: 80, ry: -2 },
     view: -31,
     title: "Liquidity, with discipline.",
     text: "Listed and private holdings structured around risk, income and time horizon: the liquid layer that lets the rest of the portfolio hold its course.",
@@ -57,9 +62,9 @@ const ASSETS = [
     id: "business",
     label: "Business Interests",
     material: "marble",
-    image: null, // assets/img/visualizer/business.jpg
-    size: { w: 206, h: 326, d: 50 },
-    idle: { x: 240, z: -34, ry: 8 },
+    image: { src: "assets/img/visualizer/business.webp", src2x: "assets/img/visualizer/business@2x.webp" },
+    size: { w: 210, h: 360, d: 44 },
+    idle: { x: 236, z: -40, ry: 8 },
     view: -37,
     title: "Enterprise, aligned with the family.",
     text: "Operating companies and shareholdings, considered alongside succession, value extraction and the wider balance sheet.",
@@ -103,19 +108,28 @@ function buildBox(className, { w, h, d }) {
 function buildSlab(asset, index) {
   const slab = buildBox(`sv-slab m-${asset.material}`, asset.size);
   slab.dataset.asset = asset.id;
+  el("div", "sv-shadow", slab);
+  let tagHost = slab.querySelector(".sv-face--front");
+
   if (asset.image) {
     const { src, src2x } = typeof asset.image === "string" ? { src: asset.image } : asset.image;
-    // Resolve against the page: a relative url() inside a custom property would
-    // otherwise resolve against the stylesheet's folder.
-    const abs = (path) => new URL(path, document.baseURI).href;
-    slab.classList.add("has-image");
-    slab.style.setProperty(
-      "--img",
-      src2x ? `image-set(url("${abs(src)}") 1x, url("${abs(src2x)}") 2x)` : `url("${abs(src)}")`
-    );
+    const sprite = el("div", "sv-sprite", slab);
+    const img = el("img", "sv-sprite__img", sprite);
+    img.alt = "";
+    img.decoding = "async";
+    img.draggable = false;
+    if (src2x) img.srcset = `${src} 1x, ${src2x} 2x`;
+    // Swap from material box to artwork only once decoded, so nothing pops.
+    img.addEventListener("load", () => {
+      (img.decode ? img.decode() : Promise.resolve())
+        .catch(() => {})
+        .then(() => slab.classList.add("is-loaded"));
+    });
+    img.src = src;
+    tagHost = sprite;
   }
-  el("div", "sv-shadow", slab);
-  const tag = el("span", "sv-tag", slab.querySelector(".sv-face--front"));
+
+  const tag = el("span", "sv-tag", tagHost);
   tag.innerHTML = `<b>${pad(index + 1)}</b> ${asset.label}`;
   return slab;
 }
@@ -131,7 +145,7 @@ function layout(selected, compact) {
   // Resting positions: a staggered model on desktop, a shallow row on phones.
   const rest = {};
   if (compact) {
-    const gap = 34;
+    const gap = 16;
     const total = ASSETS.reduce((s, a) => s + a.size.w, 0) + gap * (ASSETS.length - 1);
     let cursor = -total / 2;
     ASSETS.forEach((a, i) => {
@@ -155,7 +169,7 @@ function layout(selected, compact) {
       place[a.id] =
         a === only
           ? { x: r.x * 0.45, y: 0, z: compact ? 150 : 190, ry: 0, receded: false, active: true }
-          : { x: r.x * 1.06, y: 0, z: r.z - 110, ry: r.ry, receded: true, active: false };
+          : { x: r.x * (compact ? 0.94 : 1.06), y: 0, z: r.z - 110, ry: r.ry, receded: true, active: false };
     });
     view = compact ? VIEW.compact : { rx: -7, ry: only.view };
     const p = place[only.id];
@@ -163,7 +177,7 @@ function layout(selected, compact) {
   } else {
     // Assemble the chosen slabs into one massing: alternate planes step back a
     // tier and overlap their neighbours; the outer planes turn in slightly.
-    const overlap = 18;
+    const overlap = 4;
     const front = 70;
     const total = chosen.reduce((s, a) => s + a.size.w, 0) - overlap * (n - 1);
     const minH = Math.min(...chosen.map((a) => a.size.h));
@@ -181,8 +195,8 @@ function layout(selected, compact) {
       place[a.id] = { x: r.x * 1.3, y: 0, z: -330, ry: r.ry, receded: true, active: false };
     });
     view = compact ? VIEW.compact : VIEW.multi;
-    // Brass tie threaded between the two tiers; its ends show past the outer planes
-    lintel = { w: total + 64, d: 3, y: -Math.round(minH * 0.58), z: front - maxD - 8 };
+    // Brass tie threaded low between the two tiers; its ends show past the outer planes
+    lintel = { w: total + 64, d: 3, y: -Math.round(minH * 0.08), z: front - maxD - 8 };
     datum = { x: -total / 2, z: front + 40, w: total };
   }
 
@@ -211,10 +225,10 @@ export function mount(root) {
   function scaleFor(compact) {
     const width = stage.clientWidth;
     if (compact) {
-      const row = ASSETS.reduce((s, a) => s + a.size.w, 0) + 34 * 3;
-      return Math.min(0.62, (width - 72) / row);
+      const row = ASSETS.reduce((s, a) => s + a.size.w, 0) + 16 * 3;
+      return Math.min(0.62, (width - 36) / row);
     }
-    return Math.max(0.5, Math.min(1.25, width / 740));
+    return Math.max(0.5, Math.min(1.25, width / 790));
   }
 
   function render() {
@@ -232,6 +246,10 @@ export function mount(root) {
       const p = place[a.id];
       const slab = slabs.get(a.id);
       slab.style.transform = `translate3d(${p.x}px, ${p.y}px, ${p.z}px) rotateY(${p.ry}deg)`;
+      const sprite = slab.querySelector(".sv-sprite");
+      if (sprite) {
+        sprite.style.transform = `rotateY(${-(p.ry + view.ry) * BILLBOARD}deg) rotateX(${-view.rx}deg)`;
+      }
       slab.classList.toggle("is-active", p.active);
       slab.classList.toggle("is-receded", p.receded);
     });
