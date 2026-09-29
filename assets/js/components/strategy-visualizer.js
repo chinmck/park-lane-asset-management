@@ -8,9 +8,12 @@
  * [data-component="strategy-visualizer"] element. Controls are real buttons in
  * the page markup ([data-asset]); the model is rendered into [data-sv-stage].
  *
- * To swap in final assets: set `image` on an entry below (laid over the slab's
- * front face), or replace buildSlab() with a renderer of your choice — layout()
- * only needs each slab's size and returns positions.
+ * Structure, layout and interaction are frozen. Final artwork is supplied per
+ * asset via `image` (front face only). Spec + file names: assets/img/visualizer/README.md
+ *   image: "assets/img/visualizer/property.jpg"
+ *   image: { src: "…/property.jpg", src2x: "…/property@2x.jpg" }
+ * The image fills the front face (cover); scene lighting, grain and edges are
+ * still applied over it, and the placeholder material shows until it loads.
  */
 
 const ASSETS = [
@@ -18,7 +21,7 @@ const ASSETS = [
     id: "property",
     label: "Property",
     material: "limestone",
-    image: null,
+    image: null, // assets/img/visualizer/property.jpg
     size: { w: 228, h: 392, d: 44 },
     idle: { x: -262, z: 28, ry: -5 },
     view: -20,
@@ -30,7 +33,7 @@ const ASSETS = [
     id: "art",
     label: "Art & Collectibles",
     material: "bronze",
-    image: null,
+    image: null, // assets/img/visualizer/art.jpg
     size: { w: 118, h: 286, d: 66 },
     idle: { x: -92, z: -128, ry: 7 },
     view: -25,
@@ -42,7 +45,7 @@ const ASSETS = [
     id: "equities",
     label: "Equities & Investments",
     material: "glass",
-    image: null,
+    image: null, // assets/img/visualizer/equities.jpg
     size: { w: 146, h: 508, d: 14 },
     idle: { x: 62, z: 96, ry: -2 },
     view: -31,
@@ -54,7 +57,7 @@ const ASSETS = [
     id: "business",
     label: "Business Interests",
     material: "marble",
-    image: null,
+    image: null, // assets/img/visualizer/business.jpg
     size: { w: 206, h: 326, d: 50 },
     idle: { x: 240, z: -34, ry: 8 },
     view: -37,
@@ -101,8 +104,15 @@ function buildSlab(asset, index) {
   const slab = buildBox(`sv-slab m-${asset.material}`, asset.size);
   slab.dataset.asset = asset.id;
   if (asset.image) {
+    const { src, src2x } = typeof asset.image === "string" ? { src: asset.image } : asset.image;
+    // Resolve against the page: a relative url() inside a custom property would
+    // otherwise resolve against the stylesheet's folder.
+    const abs = (path) => new URL(path, document.baseURI).href;
     slab.classList.add("has-image");
-    slab.style.setProperty("--img", `url("${asset.image}")`);
+    slab.style.setProperty(
+      "--img",
+      src2x ? `image-set(url("${abs(src)}") 1x, url("${abs(src2x)}") 2x)` : `url("${abs(src)}")`
+    );
   }
   el("div", "sv-shadow", slab);
   const tag = el("span", "sv-tag", slab.querySelector(".sv-face--front"));

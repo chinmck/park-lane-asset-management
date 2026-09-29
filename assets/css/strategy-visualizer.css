@@ -489,8 +489,15 @@
   pointer-events: none;
 }
 
+/* Final artwork: fills the front face; the procedural texture steps aside,
+   light, grain and arrises stay so the photograph sits in the scene. */
 .sv-slab.has-image .sv-face--front {
+  --tex: none;
   background: var(--img) center / cover no-repeat, var(--mat);
+}
+
+.m-glass.has-image .sv-face--front {
+  border-color: rgba(169, 138, 82, 0.2);
 }
 
 /* Limestone — warm, clouded, with sparse fossil specks and an etched plan */
