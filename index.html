@@ -26,6 +26,7 @@
   <link rel="stylesheet" href="assets/css/base.css">
   <link rel="stylesheet" href="assets/css/components.css">
   <link rel="stylesheet" href="assets/css/sections.css">
+  <link rel="stylesheet" href="assets/css/strategy-visualizer.css">
 
   <script>document.documentElement.classList.add("js");</script>
   <script type="module" src="assets/js/main.js"></script>
@@ -129,21 +130,48 @@
       </ul>
     </section>
 
-    <!-- ===================== 2. STRATEGY VISUALIZER (placeholder) =====================
-         Interactive component mounts into .visualizer__stage via
-         assets/js/components/strategy-visualizer.js -->
-    <section class="section section--green visualizer" id="services" aria-labelledby="visualizer-title">
-      <div class="container">
-        <div class="visualizer__head">
+    <!-- ===================== 2. STRATEGY VISUALIZER =====================
+         Component: assets/js/components/strategy-visualizer.js + assets/css/strategy-visualizer.css
+         Controls are real buttons in the markup; the 3D model is rendered into [data-sv-stage]. -->
+    <section class="section section--vault sv" id="services" aria-labelledby="sv-title">
+      <div class="container sv__layout" data-component="strategy-visualizer">
+        <div class="sv__panel">
           <div class="section-head" data-reveal>
-            <p class="eyebrow">Strategy Visualizer</p>
-            <h2 class="heading-section" id="visualizer-title">Explore how your assets work together.</h2>
+            <p class="eyebrow">The Strategy Visualizer</p>
+            <h2 class="heading-section" id="sv-title">Explore how your assets work together.</h2>
+            <p class="lead">Select an asset class to see how we structure, manage and grow value across your portfolio.</p>
           </div>
-          <p class="lead" data-reveal style="--reveal-delay: 120ms">Select an asset class to see how we structure, manage and grow value across your portfolio.</p>
+
+          <div class="sv__controls" role="group" aria-label="Asset classes — select one or more" data-reveal style="--reveal-delay: 120ms">
+            <button class="sv-control" type="button" data-asset="property" aria-pressed="false" aria-controls="sv-detail">
+              <span class="sv-control__num">01</span>
+              <span class="sv-control__label">Property</span>
+              <span class="sv-control__mark" aria-hidden="true"></span>
+            </button>
+            <button class="sv-control" type="button" data-asset="art" aria-pressed="false" aria-controls="sv-detail">
+              <span class="sv-control__num">02</span>
+              <span class="sv-control__label">Art &amp; Collectibles</span>
+              <span class="sv-control__mark" aria-hidden="true"></span>
+            </button>
+            <button class="sv-control" type="button" data-asset="equities" aria-pressed="false" aria-controls="sv-detail">
+              <span class="sv-control__num">03</span>
+              <span class="sv-control__label">Equities &amp; Investments</span>
+              <span class="sv-control__mark" aria-hidden="true"></span>
+            </button>
+            <button class="sv-control" type="button" data-asset="business" aria-pressed="false" aria-controls="sv-detail">
+              <span class="sv-control__num">04</span>
+              <span class="sv-control__label">Business Interests</span>
+              <span class="sv-control__mark" aria-hidden="true"></span>
+            </button>
+          </div>
+
+          <div class="sv__detail" id="sv-detail" aria-live="polite" data-sv-detail>
+            <p class="sv__hint">Select one or more to see how they are structured together.</p>
+          </div>
         </div>
 
-        <div class="visualizer__stage" id="strategy-visualizer" data-component="strategy-visualizer">
-          <p class="visualizer__placeholder">Interactive visualizer</p>
+        <div class="sv__stage" data-sv-stage aria-hidden="true">
+          <p class="sv__placeholder">Portfolio model</p>
         </div>
       </div>
     </section>

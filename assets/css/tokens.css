@@ -15,6 +15,8 @@
 
   /* Derived tones */
   --c-green-deep: #053A0E;
+  --c-vault: #08120D;          /* green-black: visualizer ground, connects to Obsidian */
+  --c-green-edge: #2F7A40;     /* lit edge of Parklane Green, for thin lines on dark */
   --c-ivory-muted: rgba(242, 239, 229, 0.72);
   --c-ivory-faint: rgba(242, 239, 229, 0.48);
   --c-hairline-dark: rgba(242, 239, 229, 0.14);

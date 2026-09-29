@@ -28,10 +28,24 @@ The hero image is static. Framing is set per viewport with `--hero-pos` in `sect
 
 ## Strategy Visualizer
 
-`#strategy-visualizer` is a placeholder stage. `main.js` lazy-imports
-`assets/js/components/strategy-visualizer.js` when it nears the viewport and calls
-`mount(stage)`. Build the component there and set `stage.dataset.mounted = ""` to
-hide the placeholder.
+`assets/js/components/strategy-visualizer.js` + `assets/css/strategy-visualizer.css`.
+
+An architectural model built with CSS 3D. Each asset class is a slab on a stone plinth:
+Property is limestone with an etched plan, Art & Collectibles is patinated bronze,
+Equities & Investments is smoked glass, and Business Interests is dark green marble.
+
+- **One selected:** that slab comes forward with a green edge, the others recede, the view rebalances,
+  and a brass datum line marks it.
+- **Several selected:** the chosen slabs assemble into one massing under a brass lintel
+  ("Different assets. One strategy.").
+- **Phones:** a shallow frontal row with a 2×2 grid of tap targets, using the same materials and states.
+
+The controls are real `<button aria-pressed>` elements in `index.html`. The model is decorative (`aria-hidden`),
+and the copy updates in an `aria-live` region.
+
+**Swapping in final assets:** set `image` on an entry in `ASSETS` to lay a photograph over that slab's front face.
+You can also replace `buildSlab()`. `layout()` is pure and only needs each slab's `size`.
+Edit copy, sizes and resting positions in the same `ASSETS` config.
 
 ## Local preview
 

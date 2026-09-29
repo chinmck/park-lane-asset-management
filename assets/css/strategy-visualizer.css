@@ -1,0 +1,591 @@
+/* ==========================================================================
+   Parklane — Strategy Visualizer
+   An architectural model: four material slabs on a stone plinth.
+   Layout/positions are computed in strategy-visualizer.js and written as
+   inline transforms; this file owns materials, lighting and motion.
+   ========================================================================== */
+
+.sv {
+  --sv-ease: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --sv-dur: 1600ms;
+  overflow-x: clip;
+  /* A faint, low light pooling behind the model — not a gradient field */
+  background:
+    radial-gradient(60% 55% at 68% 62%, rgba(6, 74, 18, 0.16), rgba(6, 74, 18, 0) 70%),
+    var(--c-vault);
+}
+
+.sv__layout {
+  display: grid;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+  gap: clamp(2rem, 1rem + 3vw, 5rem);
+  align-items: center;
+}
+
+.sv__panel {
+  position: relative;
+  z-index: 2;
+  max-width: 27rem;
+}
+
+.sv__panel .lead {
+  font-size: 1.0625rem;
+}
+
+/* Controls ------------------------------------------------------------------ */
+
+.sv__controls {
+  margin-top: var(--s-7);
+  border-top: 1px solid var(--c-hairline-dark);
+}
+
+.sv-control {
+  position: relative;
+  display: grid;
+  grid-template-columns: 2.5rem 1fr auto;
+  align-items: center;
+  width: 100%;
+  min-height: 60px;
+  padding: var(--s-4) 0;
+  border-bottom: 1px solid var(--c-hairline-dark);
+  text-align: left;
+  color: var(--c-ivory-muted);
+  transition: color var(--dur) var(--ease);
+}
+
+/* Soft green line expands along the bottom rule when active */
+.sv-control::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 100%;
+  height: 1px;
+  background: var(--c-green-edge);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 900ms var(--ease);
+}
+
+.sv-control__num {
+  font-family: var(--font-serif);
+  font-size: 0.9375rem;
+  color: var(--c-brass);
+}
+
+.sv-control__label {
+  font-size: 0.9375rem;
+  letter-spacing: 0.02em;
+}
+
+/* Square marker, like a specimen tag */
+.sv-control__mark {
+  position: relative;
+  width: 12px;
+  height: 12px;
+  border: 1px solid rgba(242, 239, 229, 0.3);
+  transition:
+    border-color var(--dur) var(--ease),
+    background-color var(--dur) var(--ease);
+}
+
+.sv-control:hover,
+.sv-control:focus-visible {
+  color: var(--c-ivory);
+}
+
+.sv-control:hover .sv-control__mark {
+  border-color: var(--c-brass);
+}
+
+.sv-control:focus-visible {
+  outline-color: var(--c-green-edge);
+  outline-offset: 2px;
+}
+
+.sv-control[aria-pressed="true"] {
+  color: var(--c-ivory);
+}
+
+.sv-control[aria-pressed="true"]::after {
+  transform: scaleX(1);
+}
+
+.sv-control[aria-pressed="true"] .sv-control__mark {
+  border-color: var(--c-green-edge);
+  background: var(--c-green);
+  box-shadow: inset 0 0 0 2px var(--c-vault);
+}
+
+/* Detail copy --------------------------------------------------------------- */
+
+.sv__detail {
+  margin-top: var(--s-6);
+  min-height: 9.5rem;
+}
+
+.sv__hint {
+  font-size: var(--fs-small);
+  color: var(--c-ivory-faint);
+}
+
+.sv-detail {
+  animation: sv-copy-in 900ms var(--ease) both;
+}
+
+.sv-detail__kicker {
+  font-size: var(--fs-label);
+  font-weight: 500;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--c-brass);
+}
+
+.sv-detail__title {
+  margin-top: var(--s-3);
+  font-family: var(--font-serif);
+  font-size: var(--fs-h3);
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.sv-detail__text {
+  margin-top: var(--s-3);
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: var(--c-ivory-muted);
+}
+
+.sv-detail__roles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-2) var(--s-4);
+  margin-top: var(--s-4);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  color: var(--c-limestone);
+}
+
+.sv-detail__roles li {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
+}
+
+.sv-detail__roles li::before {
+  content: "";
+  width: 14px;
+  height: 1px;
+  background: var(--c-brass);
+}
+
+@keyframes sv-copy-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* Stage & scene ------------------------------------------------------------- */
+
+.sv__stage {
+  position: relative;
+  height: clamp(540px, 46vw, 760px);
+  perspective: 2400px;
+  perspective-origin: 50% 30%;
+  cursor: default;
+}
+
+.sv__placeholder {
+  position: absolute;
+  inset: auto 0 0;
+  text-align: center;
+  font-size: var(--fs-label);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--c-ivory-faint);
+}
+
+.sv__stage.is-mounted .sv__placeholder {
+  display: none;
+}
+
+/* The scene origin is a single point on the plinth; everything is placed from it. */
+.sv-scene {
+  position: absolute;
+  left: 50%;
+  top: 80%;
+  width: 0;
+  height: 0;
+  transform-style: preserve-3d;
+  transition: transform 2000ms var(--sv-ease);
+}
+
+.sv-scene * {
+  transform-style: preserve-3d;
+}
+
+/* Plinth — dark stone with a drafted plan grid */
+.sv-plinth {
+  position: absolute;
+  width: var(--pw);
+  height: var(--pd);
+  margin-left: calc(var(--pw) / -2);
+  margin-top: calc(var(--pd) / -2);
+  transform: rotateX(90deg);
+  background:
+    linear-gradient(rgba(242, 239, 229, 0.05) 1px, transparent 1px) 0 0 / 40px 40px,
+    linear-gradient(90deg, rgba(242, 239, 229, 0.05) 1px, transparent 1px) 0 0 / 40px 40px,
+    radial-gradient(closest-side, #1a211c, #0e1511);
+  border: 1px solid rgba(242, 239, 229, 0.08);
+  -webkit-mask-image: radial-gradient(closest-side, #000 62%, transparent 100%);
+  mask-image: radial-gradient(closest-side, #000 62%, transparent 100%);
+}
+
+/* Slab: a W × H × D box built from five faces */
+.sv-slab {
+  position: absolute;
+  width: calc(var(--w) * 1px);
+  height: calc(var(--h) * 1px);
+  margin-left: calc(var(--w) * -0.5px);
+  margin-top: calc(var(--h) * -1px);
+  transition: transform var(--sv-dur) var(--sv-ease);
+  cursor: pointer;
+}
+
+.sv-face {
+  position: absolute;
+  left: 0;
+  top: 0;
+  backface-visibility: hidden;
+}
+
+.sv-face::after {
+  /* Lighting + recession: a shade layer rather than filter/opacity,
+     which would flatten the 3D context */
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #050907;
+  opacity: calc(var(--face-shade, 0) + var(--recede, 0));
+  transition: opacity var(--sv-dur) var(--sv-ease);
+  pointer-events: none;
+}
+
+.sv-face--front,
+.sv-face--back {
+  width: 100%;
+  height: 100%;
+}
+
+.sv-face--front { transform: translateZ(calc(var(--d) * 0.5px)); }
+.sv-face--back  { transform: rotateY(180deg) translateZ(calc(var(--d) * 0.5px)); --face-shade: 0.6; }
+
+.sv-face--left,
+.sv-face--right {
+  width: calc(var(--d) * 1px);
+  height: 100%;
+  left: calc((var(--w) - var(--d)) * 0.5px);
+}
+
+.sv-face--right { transform: rotateY(90deg) translateZ(calc(var(--w) * 0.5px)); --face-shade: 0.42; }
+.sv-face--left  { transform: rotateY(-90deg) translateZ(calc(var(--w) * 0.5px)); --face-shade: 0.18; }
+
+.sv-face--top {
+  width: 100%;
+  height: calc(var(--d) * 1px);
+  top: calc((var(--h) - var(--d)) * 0.5px);
+  transform: rotateX(90deg) translateZ(calc(var(--h) * 0.5px));
+  --face-shade: -0.08;
+}
+
+.sv-slab.is-receded { --recede: 0.52; }
+
+/* Selected: restrained green edge + low glow on the front face */
+.sv-slab .sv-face--front {
+  transition: box-shadow var(--sv-dur) var(--sv-ease);
+}
+
+.sv-slab.is-active .sv-face--front {
+  box-shadow:
+    inset 0 0 0 1px rgba(47, 122, 64, 0.9),
+    0 30px 80px -30px rgba(6, 74, 18, 0.9);
+}
+
+.sv-slab.is-active .sv-face--left,
+.sv-slab.is-active .sv-face--right {
+  box-shadow: inset 0 0 0 1px rgba(47, 122, 64, 0.5);
+}
+
+/* Specimen tag on the front face */
+.sv-tag {
+  position: absolute;
+  left: 14px;
+  bottom: 14px;
+  z-index: 1;
+  display: grid;
+  gap: 2px;
+  font-family: var(--font-sans);
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  line-height: 1.3;
+  color: var(--tag, rgba(242, 239, 229, 0.72));
+  transform: translateZ(1px);
+}
+
+.sv-slab.is-receded .sv-tag {
+  opacity: 0.35;
+}
+
+.sv-tag {
+  transition: opacity var(--sv-dur) var(--sv-ease);
+}
+
+.sv-tag b {
+  font-family: var(--font-serif);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0;
+  color: var(--c-brass);
+}
+
+/* Brass: lintel that binds the assembled composition, and a floor datum line */
+.sv-lintel {
+  transition:
+    transform var(--sv-dur) var(--sv-ease),
+    opacity var(--sv-dur) var(--sv-ease);
+}
+
+.sv-datum {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  background: var(--c-brass);
+  transform-origin: 0 0;
+  transition: transform var(--sv-dur) var(--sv-ease);
+}
+
+.sv-datum::before,
+.sv-datum::after {
+  /* dimension-line end ticks */
+  content: "";
+  position: absolute;
+  top: -5px;
+  width: 1px;
+  height: 11px;
+  background: inherit;
+}
+
+.sv-datum::before { left: 0; }
+.sv-datum::after  { right: 0; }
+
+/* Caption under the model */
+.sv__caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--s-4);
+  padding-top: var(--s-3);
+  border-top: 1px solid var(--c-hairline-dark);
+  font-size: var(--fs-label);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--c-ivory-faint);
+}
+
+.sv__caption strong {
+  font-weight: 500;
+  color: var(--c-brass);
+}
+
+/* Materials ------------------------------------------------------------------
+   Neutral placeholders. Each asset can instead supply an `image` in the JS
+   config, which is laid over its front face.                                 */
+
+.sv-slab {
+  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .32 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.sv-face {
+  background: var(--mat);
+}
+
+/* Grain sits on its own layer so material gradients keep their full size */
+.sv-face::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--grain) 0 0 / 180px 180px;
+  pointer-events: none;
+}
+
+.sv-slab.has-image .sv-face--front {
+  background: var(--img) center / cover no-repeat, var(--mat);
+}
+
+/* Limestone, with a drafted plan etched into it */
+.m-limestone {
+  --mat: linear-gradient(172deg, #d9d2c3 0%, #c8c1b3 55%, #b5ad9d 100%);
+  --tag: rgba(11, 13, 12, 0.66);
+}
+
+.m-limestone .sv-face--front {
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 160' fill='none' stroke='%230B0D0C' stroke-opacity='.22' stroke-width='.6'%3E%3Crect x='10' y='14' width='100' height='120'/%3E%3Cpath d='M10 60h58v74M68 88h42M40 60v-46M86 14v40h24M68 110h-20'/%3E%3Cpath d='M48 110a14 14 0 0 1 14-14' stroke-dasharray='1.5 1.5'/%3E%3Cpath d='M10 146h100M10 143v6M110 143v6' stroke='%2366533B' stroke-opacity='.5'/%3E%3C/svg%3E") 50% 38% / 78% auto no-repeat,
+    var(--mat);
+}
+
+/* Patinated bronze — matte, not polished */
+.m-bronze {
+  --mat:
+    linear-gradient(90deg, rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 0) 75%, rgba(0, 0, 0, 0.22)),
+    linear-gradient(168deg, #7d6647 0%, #5f4c35 40%, #43362a 100%);
+  --tag: rgba(242, 239, 229, 0.72);
+}
+
+/* Smoked glass — tinted and framed, no blur */
+.m-glass {
+  --mat:
+    linear-gradient(90deg, transparent calc(50% - 0.5px), rgba(242, 239, 229, 0.12) 50%, transparent calc(50% + 0.5px)),
+    linear-gradient(180deg, rgba(242, 239, 229, 0.07), rgba(242, 239, 229, 0) 45%),
+    rgba(20, 28, 24, 0.72);
+  --grain: none;
+}
+
+.m-glass .sv-face::before {
+  display: none;
+}
+
+.m-glass .sv-face {
+  border: 1px solid rgba(169, 138, 82, 0.35);
+}
+
+.m-glass .sv-face--front {
+  background:
+    repeating-linear-gradient(180deg, transparent 0 71px, rgba(242, 239, 229, 0.1) 71px 72px),
+    var(--mat);
+}
+
+/* Dark green marble with veining */
+.m-marble {
+  --mat:
+    linear-gradient(118deg, transparent 38%, rgba(200, 193, 179, 0.16) 39%, transparent 40.5%),
+    linear-gradient(104deg, transparent 58%, rgba(200, 193, 179, 0.1) 58.6%, transparent 60%),
+    linear-gradient(132deg, transparent 18%, rgba(200, 193, 179, 0.08) 18.5%, transparent 20%),
+    linear-gradient(160deg, #10301d 0%, #0a2215 50%, #06160d 100%);
+}
+
+/* Brass lintel */
+.m-brass {
+  --mat: linear-gradient(180deg, #b39462, #8e7244);
+}
+
+/* Responsive -------------------------------------------------------------- */
+
+@media (max-width: 1024px) {
+  .sv__layout {
+    grid-template-columns: 1fr;
+  }
+
+  /* Flatten the panel so the model sits between the heading and the controls:
+     each tap is answered in view. */
+  .sv__layout {
+    gap: var(--s-6);
+  }
+
+  .sv__panel {
+    display: contents;
+  }
+
+  .sv__panel .section-head { order: 1; }
+  .sv__stage               { order: 2; }
+  .sv__controls            { order: 3; margin-top: 0; }
+  .sv__detail              { order: 4; margin-top: 0; }
+
+  .sv__controls,
+  .sv__detail {
+    max-width: var(--measure);
+  }
+
+  .sv__stage {
+    height: clamp(460px, 84vw, 680px);
+  }
+}
+
+@media (max-width: 640px) {
+  .sv__controls {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 var(--s-4);
+    margin-top: var(--s-6);
+  }
+
+  .sv-control {
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto;
+    align-items: start;
+    min-height: 72px;
+    row-gap: 2px;
+  }
+
+  .sv-control__num {
+    grid-column: 1;
+    font-size: 0.8125rem;
+  }
+
+  .sv-control__label {
+    grid-column: 1;
+    font-size: 0.875rem;
+    line-height: 1.3;
+  }
+
+  .sv-control__mark {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .sv__detail {
+    min-height: 0;
+  }
+
+  .sv__stage {
+    height: 340px;
+    perspective: 1600px;
+    margin-inline: calc(var(--gutter) * -1);
+  }
+
+  .sv__caption {
+    left: var(--gutter);
+    right: var(--gutter);
+  }
+
+  .sv-scene {
+    top: 76%;
+  }
+
+  .sv-tag {
+    display: none;
+  }
+
+  .sv__fig {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sv {
+    --sv-dur: 1ms;
+  }
+
+  .sv-scene {
+    transition-duration: 1ms;
+  }
+
+  .sv-detail {
+    animation: none;
+  }
+}

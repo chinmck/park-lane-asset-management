@@ -9,7 +9,7 @@
 
 .section--obsidian { background: var(--c-obsidian); color: var(--c-ivory); }
 .section--charcoal { background: var(--c-charcoal); color: var(--c-ivory); }
-.section--green    { background: var(--c-green-deep); color: var(--c-ivory); }
+.section--vault    { background: var(--c-vault); color: var(--c-ivory); }
 .section--ivory    { background: var(--c-ivory); color: var(--c-obsidian); }
 
 .section--ivory .lead { color: rgba(11, 13, 12, 0.7); }
@@ -211,51 +211,7 @@
   .hero__values { display: none; }
 }
 
-/* 2. STRATEGY VISUALIZER (placeholder) ===================================== */
-
-.visualizer__head {
-  display: grid;
-  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
-  gap: var(--s-7);
-  align-items: end;
-}
-
-.visualizer__head .lead {
-  max-width: 26rem;
-  justify-self: end;
-}
-
-.visualizer__stage {
-  position: relative;
-  margin-top: var(--s-8);
-  min-height: clamp(420px, 52vw, 640px);
-  border: 1px solid rgba(242, 239, 229, 0.16);
-  display: grid;
-  place-items: center;
-}
-
-/* Rendered only while the interactive component has not mounted */
-.visualizer__placeholder {
-  display: grid;
-  justify-items: center;
-  gap: var(--s-3);
-  text-align: center;
-  font-size: var(--fs-label);
-  letter-spacing: var(--tracking-label);
-  text-transform: uppercase;
-  color: var(--c-ivory-faint);
-}
-
-.visualizer__placeholder::before {
-  content: "";
-  width: 1px;
-  height: 3rem;
-  background: var(--c-brass-line);
-}
-
-.visualizer__stage[data-mounted] .visualizer__placeholder {
-  display: none;
-}
+/* 2. STRATEGY VISUALIZER — see strategy-visualizer.css */
 
 /* 3. PROCESS ================================================================ */
 
@@ -510,14 +466,9 @@
 /* Responsive collapse ------------------------------------------------------ */
 
 @media (max-width: 1024px) {
-  .visualizer__head,
   .process__layout,
   .philosophy__layout {
     grid-template-columns: 1fr;
-  }
-
-  .visualizer__head .lead {
-    justify-self: start;
   }
 
   .process__head {
@@ -542,11 +493,6 @@
 }
 
 @media (max-width: 640px) {
-  .visualizer__stage {
-    margin-top: var(--s-7);
-    min-height: 480px;
-  }
-
   .step {
     grid-template-columns: 3rem minmax(0, 1fr);
     gap: var(--s-3);
