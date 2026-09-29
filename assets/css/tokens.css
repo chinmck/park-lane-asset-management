@@ -12,6 +12,8 @@
   --c-limestone: #C8C1B3;
   --c-brass: #A98A52;          /* Antique Brass — metalwork, not jewellery */
   --c-bronze: #66533B;         /* Deep Bronze */
+  --c-ink: #171816;            /* text on ivory */
+  --c-ink-muted: #4A4740;      /* warm charcoal, secondary text on ivory */
 
   /* Derived tones */
   --c-green-deep: #053A0E;

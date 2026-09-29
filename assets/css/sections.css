@@ -213,59 +213,7 @@
 
 /* 2. STRATEGY VISUALIZER — see strategy-visualizer.css */
 
-/* 3. PROCESS ================================================================ */
-
-.process__layout {
-  display: grid;
-  grid-template-columns: minmax(0, 4fr) minmax(0, 7fr);
-  gap: clamp(3rem, 2rem + 5vw, 8rem);
-}
-
-.process__head {
-  align-self: start;
-  position: sticky;
-  top: calc(var(--header-h) + var(--s-7));
-}
-
-.process__steps {
-  counter-reset: step;
-  border-top: 1px solid var(--c-hairline-light);
-}
-
-.step {
-  display: grid;
-  grid-template-columns: 4.5rem minmax(0, 1fr);
-  gap: var(--s-5);
-  padding-block: var(--s-6);
-  border-bottom: 1px solid var(--c-hairline-light);
-}
-
-.step__num {
-  font-family: var(--font-serif);
-  font-size: 1.125rem;
-  color: var(--c-bronze);
-}
-
-.step__title {
-  font-family: var(--font-serif);
-  font-size: var(--fs-h3);
-  font-weight: 500;
-  line-height: 1.2;
-}
-
-.step__text {
-  margin-top: var(--s-2);
-  max-width: 30rem;
-  color: rgba(11, 13, 12, 0.68);
-}
-
-.process__close {
-  margin-top: var(--s-7);
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-size: var(--fs-h3);
-  color: var(--c-bronze);
-}
+/* 3. PROCESS — see process.css */
 
 /* 4. PHILOSOPHY ============================================================= */
 
@@ -466,13 +414,8 @@
 /* Responsive collapse ------------------------------------------------------ */
 
 @media (max-width: 1024px) {
-  .process__layout,
   .philosophy__layout {
     grid-template-columns: 1fr;
-  }
-
-  .process__head {
-    position: static;
   }
 
   .insights__grid {
@@ -493,11 +436,6 @@
 }
 
 @media (max-width: 640px) {
-  .step {
-    grid-template-columns: 3rem minmax(0, 1fr);
-    gap: var(--s-3);
-  }
-
   .insights__grid {
     grid-template-columns: 1fr;
     margin-top: var(--s-7);

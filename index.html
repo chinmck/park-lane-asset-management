@@ -27,6 +27,7 @@
   <link rel="stylesheet" href="assets/css/components.css">
   <link rel="stylesheet" href="assets/css/sections.css">
   <link rel="stylesheet" href="assets/css/strategy-visualizer.css">
+  <link rel="stylesheet" href="assets/css/process.css">
 
   <script>document.documentElement.classList.add("js");</script>
   <script type="module" src="assets/js/main.js"></script>
@@ -176,54 +177,100 @@
       </div>
     </section>
 
-    <!-- ===================== 3. FIVE-STEP PROCESS ===================== -->
-    <section class="section section--ivory process" id="approach" aria-labelledby="process-title">
-      <div class="container process__layout">
-        <div class="process__head section-head" data-reveal>
-          <p class="eyebrow">Our Approach</p>
-          <h2 class="heading-section" id="process-title">Understand first. Act second.</h2>
-          <p class="lead">Every engagement begins with the asset, the objectives of its owner and the wider portfolio. From there, we set the strategy and the actions required to deliver it.</p>
-        </div>
+    <!-- ===================== 3. FIVE-STEP PROCESS =====================
+         Styles: assets/css/process.css. Stage visuals are line-drawn placeholders;
+         replace each <svg> with <img loading="lazy" decoding="async" alt=""> when final imagery lands. -->
+    <section class="section process" id="approach" aria-labelledby="process-title">
+      <div class="container">
+        <header class="process__head">
+          <div class="section-head" data-reveal>
+            <p class="eyebrow">A Structured Approach</p>
+            <h2 class="heading-section" id="process-title"><span>A process designed</span> <span>for lasting value.</span></h2>
+          </div>
+          <p class="process__intro" data-reveal style="--reveal-delay: 120ms">Every engagement follows the same discipline: understand first, then act.</p>
+        </header>
 
-        <div>
-          <ol class="process__steps">
-            <li class="step" data-reveal>
-              <span class="step__num">01</span>
-              <div>
-                <h3 class="step__title">Assess</h3>
-                <p class="step__text">Understand the asset, its financial position, performance, condition and potential.</p>
-              </div>
+        <div class="process__track" role="region" aria-labelledby="process-title" tabindex="0">
+          <ol class="process__stages" data-reveal>
+            <li class="stage" data-reveal style="--reveal-delay: 0ms">
+              <span class="stage__num" aria-hidden="true">01</span>
+              <figure class="stage__visual stage__visual--assess" aria-hidden="true">
+                <svg viewBox="0 0 240 300" preserveAspectRatio="xMidYMid slice" fill="none" stroke="currentColor" stroke-width=".75" stroke-linecap="square" focusable="false">
+                  <path d="M24 256h44v-28h40v-28h40v-28h40v-28h28"/>
+                  <path d="M24 256v20h192V144"/>
+                  <path d="M24 266h192M68 256v20M108 228v48M148 200v76M188 172v104" opacity=".45"/>
+                  <g opacity=".5" stroke-dasharray="2 3"><path d="M40 36h72v56H40zM76 36v56M40 64h36"/></g>
+                  <g stroke="#A98A52"><path d="M24 118h192M24 112v12M216 112v12"/><path d="M230 144v112M224 144h12M224 256h12"/></g>
+                </svg>
+              </figure>
+              <h3 class="stage__title"><span class="visually-hidden">01 — </span>Assess</h3>
+              <p class="stage__text">Understand the asset, its position, objectives and potential.</p>
             </li>
-            <li class="step" data-reveal>
-              <span class="step__num">02</span>
-              <div>
-                <h3 class="step__title">Strategise</h3>
-                <p class="step__text">Establish a clear direction based on your objectives and the role of the asset within the wider portfolio.</p>
-              </div>
+            <li class="stage" data-reveal style="--reveal-delay: 140ms">
+              <span class="stage__num" aria-hidden="true">02</span>
+              <figure class="stage__visual stage__visual--strategise" aria-hidden="true">
+                <svg viewBox="0 0 240 300" preserveAspectRatio="xMidYMid slice" fill="none" stroke="currentColor" stroke-width=".75" stroke-linecap="square" focusable="false">
+                  <path d="M40 62l148-10 12 188-148 10z" opacity=".45"/>
+                  <path d="M58 72h150v190H58z"/>
+                  <path d="M74 90h118v150H74zM74 150h64v90M138 190h54M110 90v60M160 90v44h32"/>
+                  <path d="M138 190a24 24 0 0 1 24-24" stroke-dasharray="1.5 2"/>
+                  <g stroke="#A98A52"><circle cx="186" cy="58" r="16"/><path d="M186 36v44M164 58h44"/><path d="M74 252h118M74 248v8M192 248v8"/></g>
+                </svg>
+              </figure>
+              <h3 class="stage__title"><span class="visually-hidden">02 — </span>Strategise</h3>
+              <p class="stage__text">Define the role of the asset and establish the direction.</p>
             </li>
-            <li class="step" data-reveal>
-              <span class="step__num">03</span>
-              <div>
-                <h3 class="step__title">Execute</h3>
-                <p class="step__text">Coordinate the actions required to implement the strategy.</p>
-              </div>
+            <li class="stage" data-reveal style="--reveal-delay: 280ms">
+              <span class="stage__num" aria-hidden="true">03</span>
+              <figure class="stage__visual stage__visual--execute" aria-hidden="true">
+                <svg viewBox="0 0 240 300" preserveAspectRatio="xMidYMid slice" fill="none" stroke="currentColor" stroke-width=".75" stroke-linecap="square" focusable="false">
+                  <path d="M16 262h208"/>
+                  <path d="M36 262v-14h168v14"/>
+                  <path d="M52 248V128M64 248V128M86 248V128M98 248V128M120 248V128M132 248V128M154 248V128M166 248V128M188 248V128M200 248V128" opacity=".8"/>
+                  <path d="M40 112h160v16H40z"/>
+                  <path d="M36 112l84-48 84 48"/>
+                  <path d="M100 100h40" opacity=".5"/>
+                  <g stroke="#A98A52"><path d="M120 64V46"/><path d="M16 276h208" stroke-dasharray="3 3"/></g>
+                </svg>
+              </figure>
+              <h3 class="stage__title"><span class="visually-hidden">03 — </span>Execute</h3>
+              <p class="stage__text">Coordinate the actions required to deliver the strategy.</p>
             </li>
-            <li class="step" data-reveal>
-              <span class="step__num">04</span>
-              <div>
-                <h3 class="step__title">Manage</h3>
-                <p class="step__text">Maintain oversight of the asset, its operations and its performance.</p>
-              </div>
+            <li class="stage" data-reveal style="--reveal-delay: 420ms">
+              <span class="stage__num" aria-hidden="true">04</span>
+              <figure class="stage__visual stage__visual--manage" aria-hidden="true">
+                <svg viewBox="0 0 240 300" preserveAspectRatio="xMidYMid slice" fill="none" stroke="currentColor" stroke-width=".75" stroke-linecap="square" focusable="false">
+                  <path d="M12 238h216"/>
+                  <path d="M12 250h216M12 260h216" opacity=".4"/>
+                  <path d="M124 238v-54h84v54M124 184l42-22 42 22"/>
+                  <path d="M140 204h14v18h-14zM178 204h14v18h-14z" opacity=".7"/>
+                  <path d="M60 238v-58"/>
+                  <circle cx="60" cy="154" r="32"/><circle cx="40" cy="172" r="21"/><circle cx="82" cy="174" r="23"/>
+                  <path d="M104 238v-40"/><circle cx="104" cy="184" r="17"/>
+                  <path d="M150 238c6-9 14-9 20 0s14-9 20 0 14-9 20 0" opacity=".7"/>
+                  <path d="M12 276h216" stroke="#A98A52"/>
+                </svg>
+              </figure>
+              <h3 class="stage__title"><span class="visually-hidden">04 — </span>Manage</h3>
+              <p class="stage__text">Maintain active oversight of performance, operations and value.</p>
             </li>
-            <li class="step" data-reveal>
-              <span class="step__num">05</span>
-              <div>
-                <h3 class="step__title">Review</h3>
-                <p class="step__text">Continually assess whether the strategy remains right, and identify the next stage of the asset’s lifecycle.</p>
-              </div>
+            <li class="stage" data-reveal style="--reveal-delay: 560ms">
+              <span class="stage__num" aria-hidden="true">05</span>
+              <figure class="stage__visual stage__visual--review" aria-hidden="true">
+                <svg viewBox="0 0 240 300" preserveAspectRatio="xMidYMid slice" fill="none" stroke="currentColor" stroke-width=".75" stroke-linecap="square" focusable="false">
+                  <path d="M16 270h208"/>
+                  <path d="M60 270V130a60 60 0 0 1 120 0v140"/>
+                  <path d="M72 270V132a48 48 0 0 1 96 0v138" opacity=".6"/>
+                  <path d="M72 204h96"/>
+                  <path d="M120 204L86 270M120 204l34 66M120 204v66" opacity=".4"/>
+                  <path d="M16 270v-40h26v40M198 270v-36h14v-26h12" opacity=".7"/>
+                  <path d="M104 204a16 16 0 0 1 32 0" stroke="#A98A52"/>
+                </svg>
+              </figure>
+              <h3 class="stage__title"><span class="visually-hidden">05 — </span>Review</h3>
+              <p class="stage__text">Adapt the strategy as circumstances, opportunities and objectives evolve.</p>
             </li>
           </ol>
-          <p class="process__close" data-reveal>Strategy provides direction. Execution creates outcomes.</p>
         </div>
       </div>
     </section>
