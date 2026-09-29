@@ -29,6 +29,7 @@
   <link rel="stylesheet" href="assets/css/strategy-visualizer.css">
   <link rel="stylesheet" href="assets/css/process.css">
   <link rel="stylesheet" href="assets/css/generational.css">
+  <link rel="stylesheet" href="assets/css/insights.css">
 
   <script>document.documentElement.classList.add("js");</script>
   <script type="module" src="assets/js/main.js"></script>
@@ -316,33 +317,78 @@
       </div>
     </section>
 
-    <!-- ===================== 5. INSIGHTS ===================== -->
-    <section class="section section--ivory insights" id="insights" aria-labelledby="insights-title">
+    <!-- ===================== 5. INSIGHTS =====================
+         Styles: assets/css/insights.css. Story images are tonal placeholders drawn in SVG;
+         replace each <svg> with <img loading="lazy" decoding="async" alt=""> (4:5) when final imagery lands.
+         Links point to #insights until articles exist. -->
+    <section class="section insights" id="insights" aria-labelledby="insights-title">
       <div class="container">
-        <div class="insights__head">
+        <header class="insights__head">
           <div class="section-head" data-reveal>
             <p class="eyebrow">Insights</p>
             <h2 class="heading-section" id="insights-title">Perspective, considered.</h2>
           </div>
-          <a class="link-line" href="#insights" data-reveal>View all insights</a>
-        </div>
+          <a class="insights__all" href="#insights" data-reveal style="--reveal-delay: 120ms">View all insights<svg class="btn__arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </header>
 
-        <!-- Placeholder articles. Imagery must use loading="lazy" decoding="async" when added. -->
+        <div class="insights__rule" data-reveal aria-hidden="true"></div>
+
         <div class="insights__grid">
-          <article class="insight" data-reveal>
-            <div class="insight__media" aria-hidden="true"></div>
-            <p class="insight__meta">Portfolio Strategy</p>
-            <h3 class="insight__title"><a href="#insights">Balance today. Position for tomorrow.</a></h3>
+          <article class="story" data-reveal style="--reveal-delay: 0ms">
+            <figure class="story__media story__media--colonnade" aria-hidden="true">
+              <svg viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice" focusable="false"><defs>
+<linearGradient id="ins-a-col" x1="0" x2="1"><stop offset="0" stop-color="#e4ddcf"/><stop offset=".45" stop-color="#d0c7b5"/><stop offset="1" stop-color="#958b79"/></linearGradient>
+<linearGradient id="ins-a-wall" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7d7466"/><stop offset="1" stop-color="#5f584d"/></linearGradient>
+<linearGradient id="ins-a-floor" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d5ccba"/><stop offset="1" stop-color="#c3b9a5"/></linearGradient>
+<filter id="ins-a-g" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" stitchTiles="stitch"/><feColorMatrix values="0 0 0 0 .2 0 0 0 0 .17 0 0 0 0 .13 0 0 0 0.28 0"/></filter><filter id="ins-a-m" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".012 .03" numOctaves="4" seed="3" stitchTiles="stitch"/><feColorMatrix values="0 0 0 0 .3 0 0 0 0 .26 0 0 0 0 .2 0 0 0 .55 -.3"/></filter></defs>
+<rect width="400" height="500" fill="url(#ins-a-wall)"/><polygon points="76,96 108,96 168,388 136,388" fill="#fff8eb" fill-opacity=".08"/><polygon points="166,96 198,96 258,388 226,388" fill="#fff8eb" fill-opacity=".08"/><polygon points="256,96 288,96 348,388 316,388" fill="#fff8eb" fill-opacity=".08"/><polygon points="346,96 378,96 438,388 406,388" fill="#fff8eb" fill-opacity=".08"/>
+<rect y="400" width="400" height="100" fill="url(#ins-a-floor)"/><polygon points="18,400 76,400 168,500 110,500" fill="#3c342a" fill-opacity=".34"/><polygon points="108,400 166,400 258,500 200,500" fill="#3c342a" fill-opacity=".34"/><polygon points="198,400 256,400 348,500 290,500" fill="#3c342a" fill-opacity=".34"/><polygon points="288,400 346,400 438,500 380,500" fill="#3c342a" fill-opacity=".34"/><polygon points="378,400 436,400 528,500 470,500" fill="#3c342a" fill-opacity=".34"/>
+<rect width="400" height="72" fill="#dcd5c6"/><rect y="72" width="400" height="12" fill="#a39a88"/>
+<rect x="12" y="84" width="70" height="12" fill="#d6cebe"/><rect x="18" y="96" width="58" height="292" fill="url(#ins-a-col)"/><rect x="12" y="386" width="70" height="14" fill="#cfc6b4"/><rect x="102" y="84" width="70" height="12" fill="#d6cebe"/><rect x="108" y="96" width="58" height="292" fill="url(#ins-a-col)"/><rect x="102" y="386" width="70" height="14" fill="#cfc6b4"/><rect x="192" y="84" width="70" height="12" fill="#d6cebe"/><rect x="198" y="96" width="58" height="292" fill="url(#ins-a-col)"/><rect x="192" y="386" width="70" height="14" fill="#cfc6b4"/><rect x="282" y="84" width="70" height="12" fill="#d6cebe"/><rect x="288" y="96" width="58" height="292" fill="url(#ins-a-col)"/><rect x="282" y="386" width="70" height="14" fill="#cfc6b4"/><rect x="372" y="84" width="70" height="12" fill="#d6cebe"/><rect x="378" y="96" width="58" height="292" fill="url(#ins-a-col)"/><rect x="372" y="386" width="70" height="14" fill="#cfc6b4"/><rect width="400" height="500" filter="url(#ins-a-m)"/><rect width="400" height="500" filter="url(#ins-a-g)"/></svg>
+            </figure>
+            <p class="story__meta"><span class="story__num">01</span> <span class="story__cat">Portfolio Strategy</span></p>
+            <h3 class="story__title">
+              <a href="#insights" class="story__link">Balance today. Position for <span class="story__end">tomorrow.<svg class="story__arrow" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
+            </h3>
           </article>
-          <article class="insight" data-reveal style="--reveal-delay: 120ms">
-            <div class="insight__media" aria-hidden="true"></div>
-            <p class="insight__meta">Asset Management</p>
-            <h3 class="insight__title"><a href="#insights">Assets don’t create value. Decisions do.</a></h3>
+          <article class="story" data-reveal style="--reveal-delay: 140ms">
+            <figure class="story__media story__media--stone" aria-hidden="true">
+              <svg viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice" focusable="false"><defs>
+<linearGradient id="ins-b-rake" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fffaf0" stop-opacity=".22"/><stop offset=".55" stop-color="#fffaf0" stop-opacity="0"/><stop offset="1" stop-color="#2a241c" stop-opacity=".38"/></linearGradient>
+<linearGradient id="ins-b-bz" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#806a4b"/><stop offset=".6" stop-color="#5b4a35"/><stop offset="1" stop-color="#43372a"/></linearGradient>
+<filter id="ins-b-g" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" stitchTiles="stitch"/><feColorMatrix values="0 0 0 0 .2 0 0 0 0 .17 0 0 0 0 .13 0 0 0 0.32 0"/></filter><filter id="ins-b-m" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".012 .03" numOctaves="4" seed="3" stitchTiles="stitch"/><feColorMatrix values="0 0 0 0 .3 0 0 0 0 .26 0 0 0 0 .2 0 0 0 .55 -.3"/></filter></defs>
+<rect width="400" height="500" fill="#7f776a"/><rect x="-8" y="2" width="135" height="68" fill="#d7d0c1"/><rect x="-8" y="2" width="135" height="1.4" fill="#fffaf0" fill-opacity=".45"/><rect x="-8" y="68" width="135" height="2" fill="#5c5448" fill-opacity=".35"/><rect x="131" y="2" width="122" height="68" fill="#d3cbba"/><rect x="131" y="2" width="122" height="1.4" fill="#fffaf0" fill-opacity=".45"/><rect x="131" y="68" width="122" height="2" fill="#5c5448" fill-opacity=".35"/><rect x="257" y="2" width="184" height="68" fill="#d3cbba"/><rect x="257" y="2" width="184" height="1.4" fill="#fffaf0" fill-opacity=".45"/><rect x="257" y="68" width="184" height="2" fill="#5c5448" fill-opacity=".35"/><rect x="-64" y="74" width="123" height="68" fill="#c4bba8"/><rect x="-64" y="74" width="123" height="1.4" fill="#fffaf0" fill-opacity=".45"/><rect x="-64" y="140" width="123" height="2" fill="#5c5448" fill-opacity=".35"/><rect x="63" y="74" width="143" height="68" fill="#d3cbba"/><rect x="63" y="74" width="143" height="1.4" fill="#fffaf0" fill-opacity=".45"/><rect x="63" y="140" width="143" height="2" fill="#5c5448" fill-opacity=".35"/><rect x="210" y="74" width="127" height="68" fill="#d7d0c1"/><rect x="210" y="74" width="127" height="1.4" fill="#fffaf0" fill-opacity=".45"/><rect x="210" y="140" width="127" height="2" fill="#5c5448" fill-opacity=".35"/><rect x="341" y="74" width="169" height="68" fill="#d3cbba"/><rect x="341" y="74" width="169" height="1.4" fill="#fffaf0" fill-opacity=".45"/><rect x="341" y="140" width="169" height="2" fill="#5c5448" fill-opacity=".35"/><rect x="-5" y="146" width="127" height="68" fill="#c4bba8"/><rect x="-5" y="146" width="127" height="1.4" fill="#fffaf0" fill-opacity=".45"/><rect x="-5" y="212" width="127" height="2" fill="#5c5448" fill-opacity=".35"/><rect x="126" y="146" width="170" height="68" fill="#d3cbba"/><rect x="126" y="146" width="170" height="1.4" fill="#fffaf0" fill-opacity=".45"/><rect x="126" y="212" width="170" height="2" fill="#5c5448" fill-opacity=".35"/><rect x="300" y="146" width="131" height="68" fill="#cdc4b2"/><rect x="300" y="146" width="131" height="1.4" fill="#fffaf0" fill-opacity=".45"/><rect x="300" y="212" width="131" height="2" fill="#5c5448" fill-opacity=".35"/><rect x="-25" y="218" width="166" height="68" fill="#d3cbba"/><rect x="-25" y="218" width="166" height="1.4" fill="#fffaf0" fill-opacity=".45"/><rect x="-25" y="284" width="166" height="2" fill="#5c5448" fill-opacity=".35"/><rect x="145" y="218" width="144" height="68" fill="#d3cbba"/><rect x="145" y="218" width="144" height="1.4" fill="#fffaf0" fill-opacity=".45"/><rect x="145" y="284" width="144" height="2" fill="#5c5448" fill-opacity=".35"/><rect x="293" y="218" width="133" height="68" fill="#c8bfac"/><rect x="293" y="218" width="133" height="1.4" fill="#fffaf0" fill-opacity=".45"/><rect x="293" y="284" width="133" height="2" fill="#5c5448" fill-opacity=".35"/><rect x="-11" y="290" width="134" height="68" fill="#c4bba8"/><rect x="-11" y="290" width="134" height="1.4" fill="#fffaf0" fill-opacity=".45"/><rect x="-11" y="356" width="134" height="2" fill="#5c5448" fill-opacity=".35"/><rect x="127" y="290" width="131" height="68" fill="#c4bba8"/><rect x="127" y="290" width="131" height="1.4" fill="#fffaf0" fill-opacity=".45"/><rect x="127" y="356" width="131" height="2" fill="#5c5448" fill-opacity=".35"/><rect x="262" y="290" width="155" height="68" fill="#c4bba8"/><rect x="262" y="290" width="155" height="1.4" fill="#fffaf0" fill-opacity=".45"/><rect x="262" y="356" width="155" height="2" fill="#5c5448" fill-opacity=".35"/><rect x="-41" y="362" width="129" height="68" fill="#c4bba8"/><rect x="-41" y="362" width="129" height="1.4" fill="#fffaf0" fill-opacity=".45"/><rect x="-41" y="428" width="129" height="2" fill="#5c5448" fill-opacity=".35"/><rect x="92" y="362" width="140" height="68" fill="#c8bfac"/><rect x="92" y="362" width="140" height="1.4" fill="#fffaf0" fill-opacity=".45"/><rect x="92" y="428" width="140" height="2" fill="#5c5448" fill-opacity=".35"/><rect x="236" y="362" width="128" height="68" fill="#c4bba8"/><rect x="236" y="362" width="128" height="1.4" fill="#fffaf0" fill-opacity=".45"/><rect x="236" y="428" width="128" height="2" fill="#5c5448" fill-opacity=".35"/><rect x="368" y="362" width="124" height="68" fill="#c4bba8"/><rect x="368" y="362" width="124" height="1.4" fill="#fffaf0" fill-opacity=".45"/><rect x="368" y="428" width="124" height="2" fill="#5c5448" fill-opacity=".35"/><rect x="1" y="434" width="142" height="68" fill="#d7d0c1"/><rect x="1" y="434" width="142" height="1.4" fill="#fffaf0" fill-opacity=".45"/><rect x="1" y="500" width="142" height="2" fill="#5c5448" fill-opacity=".35"/><rect x="147" y="434" width="184" height="68" fill="#d7d0c1"/><rect x="147" y="434" width="184" height="1.4" fill="#fffaf0" fill-opacity=".45"/><rect x="147" y="500" width="184" height="2" fill="#5c5448" fill-opacity=".35"/><rect x="335" y="434" width="156" height="68" fill="#d7d0c1"/><rect x="335" y="434" width="156" height="1.4" fill="#fffaf0" fill-opacity=".45"/><rect x="335" y="500" width="156" height="2" fill="#5c5448" fill-opacity=".35"/>
+<rect x="230" y="212" width="114" height="68" fill="#2c261e" fill-opacity=".35" transform="translate(3 4)"/>
+<rect x="230" y="212" width="114" height="68" fill="url(#ins-b-bz)"/>
+<rect x="236.5" y="218.5" width="101" height="55" fill="none" stroke="#a98a52" stroke-opacity=".55" stroke-width=".8"/>
+<path d="M254 240h66M254 250h44" stroke="#2e261c" stroke-opacity=".55" stroke-width="1.2"/><circle cx="244" cy="226" r="2.2" fill="#3a2f22"/><circle cx="243.4" cy="225.4" r=".8" fill="#b49a6a" fill-opacity=".7"/><circle cx="330" cy="226" r="2.2" fill="#3a2f22"/><circle cx="329.4" cy="225.4" r=".8" fill="#b49a6a" fill-opacity=".7"/><circle cx="244" cy="266" r="2.2" fill="#3a2f22"/><circle cx="243.4" cy="265.4" r=".8" fill="#b49a6a" fill-opacity=".7"/><circle cx="330" cy="266" r="2.2" fill="#3a2f22"/><circle cx="329.4" cy="265.4" r=".8" fill="#b49a6a" fill-opacity=".7"/>
+<rect width="400" height="500" fill="url(#ins-b-rake)"/><rect width="400" height="500" filter="url(#ins-b-m)"/><rect width="400" height="500" filter="url(#ins-b-g)"/></svg>
+            </figure>
+            <p class="story__meta"><span class="story__num">02</span> <span class="story__cat">Asset Management</span></p>
+            <h3 class="story__title">
+              <a href="#insights" class="story__link">Assets don’t create value. Decisions <span class="story__end">do.<svg class="story__arrow" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
+            </h3>
           </article>
-          <article class="insight" data-reveal style="--reveal-delay: 240ms">
-            <div class="insight__media" aria-hidden="true"></div>
-            <p class="insight__meta">Investment</p>
-            <h3 class="insight__title"><a href="#insights">Value is often hidden in what others overlook.</a></h3>
+          <article class="story" data-reveal style="--reveal-delay: 280ms">
+            <figure class="story__media story__media--light" aria-hidden="true">
+              <svg viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice" focusable="false"><defs>
+<linearGradient id="ins-c-bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#23241f"/><stop offset="1" stop-color="#121310"/></linearGradient>
+<linearGradient id="ins-c-beam" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f1e7d3" stop-opacity=".7"/><stop offset=".7" stop-color="#e2cfa8" stop-opacity=".22"/><stop offset="1" stop-color="#e2cfa8" stop-opacity="0"/></linearGradient>
+<linearGradient id="ins-c-slit" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f6eedd"/><stop offset="1" stop-color="#d9c7a2"/></linearGradient>
+<clipPath id="ins-c-treads"><rect x="150" y="460" width="250" height="10"/><rect x="186" y="420" width="214" height="10"/><rect x="222" y="380" width="178" height="10"/><rect x="258" y="340" width="142" height="10"/><rect x="294" y="300" width="106" height="10"/><rect x="330" y="260" width="70" height="10"/><rect x="366" y="220" width="34" height="10"/><rect x="0" y="470" width="400" height="30"/></clipPath>
+<filter id="ins-c-g" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" stitchTiles="stitch"/><feColorMatrix values="0 0 0 0 .2 0 0 0 0 .17 0 0 0 0 .13 0 0 0 0.35 0"/></filter><filter id="ins-c-m" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".012 .03" numOctaves="4" seed="3" stitchTiles="stitch"/><feColorMatrix values="0 0 0 0 .3 0 0 0 0 .26 0 0 0 0 .2 0 0 0 1 -.42"/></filter></defs>
+<rect width="400" height="500" fill="url(#ins-c-bg)"/>
+<rect x="0" y="470" width="400" height="30" fill="#262621"/><rect x="150" y="460" width="250" height="10" fill="#2d2d27"/><rect x="150" y="470" width="250" height="30" fill="#1b1c18"/><rect x="186" y="420" width="214" height="10" fill="#2d2d27"/><rect x="186" y="430" width="214" height="30" fill="#1b1c18"/><rect x="222" y="380" width="178" height="10" fill="#2d2d27"/><rect x="222" y="390" width="178" height="30" fill="#1b1c18"/><rect x="258" y="340" width="142" height="10" fill="#2d2d27"/><rect x="258" y="350" width="142" height="30" fill="#1b1c18"/><rect x="294" y="300" width="106" height="10" fill="#2d2d27"/><rect x="294" y="310" width="106" height="30" fill="#1b1c18"/><rect x="330" y="260" width="70" height="10" fill="#2d2d27"/><rect x="330" y="270" width="70" height="30" fill="#1b1c18"/><rect x="366" y="220" width="34" height="10" fill="#2d2d27"/><rect x="366" y="230" width="34" height="30" fill="#1b1c18"/>
+<rect x="64" y="60" width="8" height="300" fill="url(#ins-c-slit)"/>
+<polygon points="72,60 72,360 400,500 400,250" fill="url(#ins-c-beam)" clip-path="url(#ins-c-treads)"/>
+<polygon points="72,60 72,360 400,500 400,250" fill="url(#ins-c-beam)" fill-opacity=".28"/>
+<rect x="60" y="56" width="16" height="308" fill="none" stroke="#a98a52" stroke-opacity=".35" stroke-width=".8"/>
+<rect width="400" height="500" filter="url(#ins-c-g)"/></svg>
+            </figure>
+            <p class="story__meta"><span class="story__num">03</span> <span class="story__cat">Investment</span></p>
+            <h3 class="story__title">
+              <a href="#insights" class="story__link">Value is often hidden where others <span class="story__end">overlook.<svg class="story__arrow" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
+            </h3>
           </article>
         </div>
       </div>

@@ -1,0 +1,223 @@
+/* ==========================================================================
+   Parklane — Insights
+   An editorial spread rather than a blog grid: three stories, one strong
+   image each, no cards. Warm ivory ground; brass only in fine details.
+   ========================================================================== */
+
+.insights {
+  background: var(--c-ivory);
+  color: var(--c-ink);
+}
+
+.insights .eyebrow {
+  color: var(--c-bronze);
+}
+
+/* Header ------------------------------------------------------------------- */
+
+.insights__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: var(--s-6);
+  flex-wrap: wrap;
+}
+
+.insights__all {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-3);
+  padding-bottom: 8px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: var(--tracking-nav);
+  text-transform: uppercase;
+  color: var(--c-ink);
+}
+
+/* Short brass line that extends under the link on hover */
+.insights__all::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 2.5rem;
+  height: 1px;
+  background: var(--c-brass);
+  transition: width var(--dur) var(--ease);
+}
+
+.insights__all:hover::after,
+.insights__all:focus-visible::after {
+  width: 100%;
+}
+
+.insights__all .btn__arrow {
+  transition: transform var(--dur) var(--ease);
+}
+
+.insights__all:hover .btn__arrow,
+.insights__all:focus-visible .btn__arrow {
+  transform: translateX(4px);
+}
+
+/* Fine rule under the header: draws across on reveal */
+.insights__rule {
+  height: 1px;
+  margin-top: clamp(2.5rem, 1.5rem + 2.5vw, 4rem);
+  background: rgba(169, 138, 82, 0.45);
+  transform-origin: left center;
+}
+
+.js .insights__rule[data-reveal] {
+  opacity: 1;
+  transform: scaleX(0);
+  transition: transform 2000ms var(--ease) 200ms;
+}
+
+.js .insights__rule[data-reveal].is-visible {
+  transform: scaleX(1);
+}
+
+/* Stories ------------------------------------------------------------------- */
+
+.insights__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  column-gap: clamp(1.5rem, 0.5rem + 3vw, 4.5rem);
+  margin-top: clamp(2.5rem, 1.5rem + 2.5vw, 4rem);
+}
+
+.story {
+  position: relative;
+}
+
+.story__media {
+  position: relative;
+  margin: 0;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: var(--c-limestone);
+}
+
+.story__media svg,
+.story__media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1400ms var(--ease);
+}
+
+.story__meta {
+  display: flex;
+  align-items: baseline;
+  gap: var(--s-3);
+  margin-top: var(--s-5);
+  font-size: var(--fs-label);
+  font-weight: 500;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--c-ink-muted);
+}
+
+.story__num {
+  font-family: var(--font-serif);
+  font-size: 0.9375rem;
+  letter-spacing: 0.04em;
+  color: var(--c-bronze);
+}
+
+.story__num::after {
+  content: "—";
+  margin-left: var(--s-3);
+  color: rgba(102, 83, 59, 0.6);
+}
+
+.story__title {
+  margin-top: var(--s-3);
+  font-family: var(--font-serif);
+  font-size: clamp(1.5rem, 1.1rem + 1vw, 2.125rem);
+  font-weight: 500;
+  line-height: 1.16;
+  letter-spacing: var(--tracking-heading);
+  text-wrap: balance;
+}
+
+.story__link {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size var(--dur) var(--ease);
+}
+
+/* The whole story is the hit area; the title stays the one real link */
+.story__link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.story__end {
+  white-space: nowrap;
+}
+
+.story__arrow {
+  display: inline-block;
+  width: 18px;
+  height: 10px;
+  margin-left: 0.5em;
+  vertical-align: middle;
+  color: var(--c-brass);
+  transition: transform var(--dur) var(--ease);
+}
+
+.story:hover .story__media svg,
+.story:hover .story__media img,
+.story:focus-within .story__media svg,
+.story:focus-within .story__media img {
+  transform: scale(1.02);
+}
+
+.story:hover .story__link,
+.story__link:focus-visible {
+  background-size: 100% 1px;
+}
+
+.story:hover .story__arrow,
+.story__link:focus-visible .story__arrow {
+  transform: translateX(4px);
+}
+
+/* Tablet: keep the three-column spread, a touch tighter */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .story__title {
+    font-size: 1.375rem;
+  }
+}
+
+/* Phone: stories stack, images stay large */
+@media (max-width: 640px) {
+  .insights__grid {
+    grid-template-columns: 1fr;
+    row-gap: var(--s-8);
+  }
+
+  .story__title {
+    font-size: 1.75rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js .insights__rule[data-reveal] {
+    transform: none;
+    transition: none;
+  }
+
+  .story:hover .story__media svg,
+  .story:hover .story__media img {
+    transform: none;
+  }
+}
