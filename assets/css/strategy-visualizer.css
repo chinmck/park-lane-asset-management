@@ -13,6 +13,8 @@
   background:
     radial-gradient(55% 50% at 68% 64%, rgba(6, 74, 18, 0.1), rgba(6, 74, 18, 0) 70%),
     var(--c-vault);
+  /* Enter a little sooner after the hero's fade */
+  padding-top: calc(var(--section-y) * 0.72);
 }
 
 .sv__layout {

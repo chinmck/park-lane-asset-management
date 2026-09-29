@@ -53,6 +53,33 @@
   object-position: var(--hero-pos, 50% 50%);
 }
 
+/* Hand-off to the Strategy Visualizer: the lower ~20% eases into the exact
+   visualizer ground (--c-vault). Eased stops (not linear) avoid a visible band. */
+.hero::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 22%;
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    rgba(8, 18, 13, 0) 0%,
+    rgba(8, 18, 13, 0.03) 10%,
+    rgba(8, 18, 13, 0.09) 20%,
+    rgba(8, 18, 13, 0.18) 30%,
+    rgba(8, 18, 13, 0.3) 40%,
+    rgba(8, 18, 13, 0.44) 50%,
+    rgba(8, 18, 13, 0.59) 60%,
+    rgba(8, 18, 13, 0.73) 70%,
+    rgba(8, 18, 13, 0.85) 80%,
+    rgba(8, 18, 13, 0.94) 90%,
+    var(--c-vault) 100%
+  );
+}
+
 /* Left-side shade only; a faint top band keeps the nav legible against the glass roof. */
 .hero__shade {
   position: absolute;
