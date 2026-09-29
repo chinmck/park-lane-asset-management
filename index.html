@@ -30,6 +30,7 @@
   <link rel="stylesheet" href="assets/css/process.css">
   <link rel="stylesheet" href="assets/css/generational.css">
   <link rel="stylesheet" href="assets/css/insights.css">
+  <link rel="stylesheet" href="assets/css/closing.css">
 
   <script>document.documentElement.classList.add("js");</script>
   <script type="module" src="assets/js/main.js"></script>
@@ -65,7 +66,7 @@
       </nav>
 
       <a class="btn btn--sm site-header__cta" href="#contact">
-        Book a Consultation
+        Private Access
         <svg class="btn__arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
       </a>
 
@@ -86,7 +87,7 @@
     </nav>
     <div class="mobile-menu__footer">
       <a class="btn" href="#contact">
-        Book a Consultation
+        Private Access
         <svg class="btn__arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
       </a>
     </div>
@@ -374,16 +375,24 @@
       </div>
     </section>
 
-    <!-- ===================== 6. FINAL CTA ===================== -->
-    <section class="section section--obsidian cta" id="contact" aria-labelledby="cta-title">
-      <div class="container">
-        <div class="cta__inner" data-reveal>
-          <span class="cta__rule" aria-hidden="true"></span>
-          <p class="eyebrow">Start a Conversation</p>
-          <h2 class="heading-section" id="cta-title">Possibility begins with intent.</h2>
-          <p class="lead">Whether you are building, reviewing or restructuring, the starting point is understanding what you want to achieve.</p>
-          <a class="btn" href="mailto:enquiries@parklane.example">
-            Book a Consultation
+    <!-- ===================== 6. FINAL CTA — PRIVATE ACCESS =====================
+         Styles: assets/css/closing.css. Referral-led: an access point, not a sales button.
+         PLACEHOLDER: mailto address below must be replaced with the real introductions address. -->
+    <section class="section access" id="contact" aria-labelledby="access-title">
+      <div class="container access__layout">
+        <figure class="access__visual" data-reveal>
+          <img src="assets/img/cta/private-office-plaque-480.webp"
+               srcset="assets/img/cta/private-office-plaque-480.webp 480w, assets/img/cta/private-office-plaque-750.webp 750w"
+               sizes="(max-width: 640px) calc(100vw - 2.5rem), (max-width: 1024px) 40vw, 480px"
+               width="750" height="937" loading="lazy" decoding="async" alt="">
+        </figure>
+
+        <div class="access__content" data-reveal style="--reveal-delay: 140ms">
+          <p class="eyebrow">Private Access</p>
+          <h2 class="access__title" id="access-title">Begin with a considered conversation.</h2>
+          <p class="access__copy">Tailored, long-term asset management and strategic advice for a select clientele, available by introduction or invitation.</p>
+          <a class="access__link" href="mailto:introductions@parklane.example?subject=Introduction">
+            <span>By invitation only</span>
             <svg class="btn__arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
           </a>
         </div>
@@ -392,7 +401,9 @@
 
   </main>
 
-  <!-- ===================== 7. FOOTER ===================== -->
+  <!-- ===================== 7. FOOTER =====================
+       Institutional, not promotional. PLACEHOLDERS: the legal links point to #legal and the
+       email is a stand-in until the real policy pages and address exist. -->
   <footer class="site-footer">
     <div class="container">
       <div class="site-footer__grid">
@@ -404,37 +415,38 @@
               <span class="brand__sub">Asset Management</span>
             </span>
           </a>
-          <p class="site-footer__tagline">Where property meets strategy.</p>
+          <p class="site-footer__tagline">Long-term thinking for a more certain tomorrow.</p>
         </div>
 
-        <nav aria-label="Footer — firm">
-          <p class="site-footer__heading">Firm</p>
+        <nav class="site-footer__col" aria-label="Footer">
+          <p class="site-footer__heading">Parklane</p>
           <ul class="site-footer__list">
             <li><a href="#approach">Approach</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#about">About</a></li>
-          </ul>
-        </nav>
-
-        <nav aria-label="Footer — resources">
-          <p class="site-footer__heading">Resources</p>
-          <ul class="site-footer__list">
+            <li><a href="#services">Capabilities</a></li>
             <li><a href="#insights">Insights</a></li>
+            <li><a href="#about">About</a></li>
             <li><a href="#contact">Contact</a></li>
           </ul>
         </nav>
 
-        <div>
-          <p class="site-footer__heading">Enquiries</p>
+        <nav class="site-footer__col" id="legal" aria-label="Legal">
+          <p class="site-footer__heading">Legal</p>
           <ul class="site-footer__list">
-            <li><a href="#contact">Book a Consultation</a></li>
+            <li><a href="#legal">Privacy Policy</a></li>
+            <li><a href="#legal">Terms of Use</a></li>
+            <li><a href="#legal">Disclosures</a></li>
           </ul>
+        </nav>
+
+        <div class="site-footer__col">
+          <p class="site-footer__heading">Contact</p>
+          <p class="site-footer__contact">By introduction or invitation.<br>
+            <a href="mailto:introductions@parklane.example">introductions@parklane.example</a></p>
         </div>
       </div>
 
       <div class="site-footer__base">
         <p>© <span data-year>2026</span> Parklane Asset Management. All rights reserved.</p>
-        <p>Property Investment · Asset Management · Portfolio Strategy</p>
       </div>
     </div>
   </footer>

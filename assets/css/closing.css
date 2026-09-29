@@ -1,0 +1,222 @@
+/* ==========================================================================
+   Parklane — Final CTA (Private Access) + Footer
+   Referral-led: the CTA is an access point, not a sales button. The footer
+   is institutional and quiet.
+   ========================================================================== */
+
+/* 6. PRIVATE ACCESS ======================================================== */
+
+.access {
+  /* A shade deeper than the Insights ivory so the two light sections separate */
+  background: #ebe5d8;
+  color: var(--c-ink);
+  border-top: 1px solid rgba(169, 138, 82, 0.28);
+}
+
+.access .eyebrow {
+  color: var(--c-bronze);
+}
+
+.access__layout {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  gap: clamp(3rem, 1rem + 6vw, 8rem);
+  align-items: center;
+}
+
+.access__visual {
+  margin: 0;
+  aspect-ratio: 4 / 5;
+  max-width: 30rem;
+  overflow: hidden;
+  background: var(--c-limestone);
+}
+
+.access__visual img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.94) contrast(1.02);
+}
+
+.access__content {
+  max-width: 32rem;
+}
+
+.access__title {
+  margin-top: var(--s-6);
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: clamp(2.25rem, 1.4rem + 2.6vw, 3.75rem);
+  line-height: 1.08;
+  letter-spacing: var(--tracking-heading);
+  text-wrap: balance;
+}
+
+.access__copy {
+  margin-top: var(--s-5);
+  max-width: 28rem;
+  font-size: var(--fs-lead);
+  line-height: 1.65;
+  color: var(--c-ink-muted);
+}
+
+/* Access point: framed by brass rules above and below, like a nameplate */
+.access__link {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--s-6);
+  max-width: 22rem;
+  margin-top: var(--s-7);
+  padding: 1.125rem 0;
+  border-top: 1px solid rgba(169, 138, 82, 0.55);
+  border-bottom: 1px solid rgba(169, 138, 82, 0.55);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--c-ink);
+}
+
+/* On hover a darker rule draws along the bottom edge */
+.access__link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 100%;
+  height: 1px;
+  background: var(--c-bronze);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform var(--dur) var(--ease);
+}
+
+.access__link .btn__arrow {
+  color: var(--c-bronze);
+  transition: transform var(--dur) var(--ease);
+}
+
+.access__link:hover::after,
+.access__link:focus-visible::after {
+  transform: scaleX(1);
+}
+
+.access__link:hover .btn__arrow,
+.access__link:focus-visible .btn__arrow {
+  transform: translateX(4px);
+}
+
+/* 7. FOOTER ================================================================= */
+
+.site-footer {
+  background: #0a0f0c;
+  color: var(--c-ivory-muted);
+  padding-block: clamp(4rem, 3rem + 3vw, 6rem) var(--s-6);
+  font-size: var(--fs-small);
+}
+
+.site-footer__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 2fr) minmax(0, 2fr) minmax(0, 3fr);
+  gap: var(--s-7);
+}
+
+.site-footer__tagline {
+  margin-top: var(--s-5);
+  max-width: 19rem;
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  line-height: 1.4;
+  color: var(--c-ivory);
+}
+
+.site-footer__heading {
+  margin-bottom: var(--s-4);
+  padding-bottom: var(--s-3);
+  border-bottom: 1px solid rgba(169, 138, 82, 0.3);
+  font-size: var(--fs-label);
+  font-weight: 500;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--c-brass);
+}
+
+.site-footer__list li + li {
+  margin-top: var(--s-2);
+}
+
+.site-footer__list a,
+.site-footer__contact a {
+  transition: color var(--dur) var(--ease);
+}
+
+.site-footer__list a:hover,
+.site-footer__list a:focus-visible,
+.site-footer__contact a:hover,
+.site-footer__contact a:focus-visible {
+  color: var(--c-ivory);
+}
+
+.site-footer__contact {
+  line-height: 1.8;
+}
+
+.site-footer__contact a {
+  color: var(--c-ivory-muted);
+  white-space: nowrap;
+}
+
+.site-footer__base {
+  margin-top: clamp(3rem, 2rem + 3vw, 5rem);
+  padding-top: var(--s-5);
+  border-top: 1px solid rgba(169, 138, 82, 0.22);
+  font-size: 0.75rem;
+  color: var(--c-ivory-faint);
+}
+
+/* Responsive ---------------------------------------------------------------- */
+
+@media (max-width: 1024px) {
+  .site-footer__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .site-footer__brand {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 640px) {
+  /* Invitation message first, image beneath */
+  .access__layout {
+    grid-template-columns: 1fr;
+    gap: var(--s-7);
+  }
+
+  .access__content {
+    order: -1;
+  }
+
+  .access__visual {
+    max-width: none;
+    aspect-ratio: 4 / 3;
+  }
+
+  .access__link {
+    max-width: none;
+  }
+
+  .site-footer__grid {
+    grid-template-columns: 1fr;
+    gap: var(--s-6);
+  }
+
+  .site-footer__contact a {
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+}
