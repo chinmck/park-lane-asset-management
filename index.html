@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Park Lane Asset Management - Strategic wealth management for select international families">
+    <title>Park Lane Asset Management</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            font-family: 'Inter', sans-serif;
+            background: #0F1419;
+            color: #F5F3F0;
+            overflow-x: hidden;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('hero.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            z-index: 1;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(15,20,25,0.25) 0%, rgba(15,20,25,0.4) 50%, rgba(15,20,25,0.6) 100%);
+            z-index: 2;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            max-width: 850px;
+            padding: 0 2rem;
+            animation: fadeInUp 1.2s ease 0.3s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .logo-badge {
+            display: inline-block;
+            margin-bottom: 3rem;
+            animation: fadeInDown 1s ease 0.2s both;
+        }
+
+        .logo-badge img {
+            height: 80px;
+            filter: drop-shadow(0 4px 20px rgba(0,0,0,0.4));
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(38px, 8vw, 72px);
+            font-weight: 700;
+            line-height: 1.15;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.5px;
+            color: #F5F3F0;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(14px, 2vw, 18px);
+            color: #E8E8E8;
+            font-weight: 400;
+            margin-bottom: 3rem;
+            line-height: 1.8;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #C9A961;
+            color: #0F1419;
+            padding: 1.1rem 3.5rem;
+            border: none;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            text-decoration: none;
+            box-shadow: 0 10px 30px rgba(201, 169, 97, 0.25);
+        }
+
+        .cta-button:hover {
+            background: #E0C39E;
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(201, 169, 97, 0.35);
+        }
+
+        /* EXCLUSIVITY STATEMENT */
+        .exclusivity {
+            position: relative;
+            z-index: 3;
+            margin-top: 2rem;
+            padding-top: 2.5rem;
+            border-top: 1px solid rgba(201, 169, 97, 0.3);
+        }
+
+        .exclusivity-text {
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #C9A961;
+            font-weight: 600;
+        }
+
+        /* SCROLL INDICATOR */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 5;
+            animation: bounce 2.5s infinite;
+        }
+
+        .scroll-indicator svg {
+            width: 24px;
+            height: 24px;
+            stroke: #C9A961;
+            stroke-width: 1.5;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(12px); }
+        }
+
+        /* WHAT WE MANAGE */
+        .what-we-manage {
+            background: #0F1419;
+            padding: 7rem 2rem;
+            border-top: 1px solid rgba(201, 169, 97, 0.15);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(32px, 6vw, 52px);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #F5F3F0;
+        }
+
+        .section-subtitle {
+            font-size: 15px;
+            color: #999;
+            font-weight: 400;
+            line-height: 1.8;
+        }
+
+        .asset-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .asset-card {
+            background: linear-gradient(135deg, rgba(26, 31, 40, 0.5) 0%, rgba(15, 20, 25, 0.8) 100%);
+            border: 1px solid rgba(201, 169, 97, 0.15);
+            padding: 3rem 2.5rem;
+            text-align: center;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .asset-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #C9A961;
+            transition: width 0.4s ease;
+        }
+
+        .asset-card:hover {
+            border-color: rgba(201, 169, 97, 0.35);
+            transform: translateY(-8px);
+            background: linear-gradient(135deg, rgba(26, 31, 40, 0.8) 0%, rgba(15, 20, 25, 0.95) 100%);
+        }
+
+        .asset-card:hover::before {
+            width: 100%;
+        }
+
+        .asset-icon {
+            font-size: 52px;
+            margin-bottom: 1.5rem;
+        }
+
+        .asset-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #F5F3F0;
+        }
+
+        .asset-card p {
+            font-size: 14px;
+            color: #999;
+            line-height: 1.7;
+        }
+
+        /* POSITIONING SECTION */
+        .positioning {
+            background: #1A1F28;
+            padding: 7rem 2rem;
+            border-top: 1px solid rgba(201, 169, 97, 0.15);
+            border-bottom: 1px solid rgba(201, 169, 97, 0.15);
+        }
+
+        .positioning-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .positioning-statements {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .statement {
+            padding: 2rem 1.5rem;
+        }
+
+        .statement-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #C9A961;
+        }
+
+        .statement-text {
+            font-size: 14px;
+            color: #D4D4D4;
+            line-height: 1.7;
+            font-weight: 300;
+        }
+
+        /* APPROACH */
+        .approach {
+            background: #0F1419;
+            padding: 7rem 2rem;
+        }
+
+        .approach-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .approach-text {
+            font-size: 16px;
+            color: #D4D4D4;
+            line-height: 1.9;
+            margin-bottom: 3rem;
+            font-weight: 300;
+        }
+
+        .principles {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+            text-align: left;
+        }
+
+        .principle {
+            padding: 2rem;
+            border-left: 2px solid #C9A961;
+            padding-left: 1.75rem;
+        }
+
+        .principle h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: #F5F3F0;
+        }
+
+        .principle p {
+            font-size: 13px;
+            color: #999;
+            line-height: 1.6;
+        }
+
+        /* FINAL CTA */
+        .final-cta {
+            background: linear-gradient(135deg, rgba(201, 169, 97, 0.08) 0%, transparent 100%);
+            padding: 6rem 2rem;
+            border-top: 1px solid rgba(201, 169, 97, 0.2);
+            text-align: center;
+        }
+
+        .cta-text {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(28px, 5vw, 48px);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #F5F3F0;
+        }
+
+        .cta-subtext {
+            font-size: 15px;
+            color: #999;
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 300;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #0F1419;
+            border-top: 1px solid rgba(201, 169, 97, 0.15);
+            padding: 3.5rem 2rem;
+            text-align: center;
+            font-size: 12px;
+            color: #666;
+        }
+
+        footer p {
+            margin-bottom: 1.5rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #999;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-size: 11px;
+            letter-spacing: 0.5px;
+        }
+
+        .footer-links a:hover {
+            color: #C9A961;
+        }
+
+        /* DIVIDER */
+        .divider {
+            width: 40px;
+            height: 1px;
+            background: #C9A961;
+            margin: 2rem auto;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .hero-content {
+                padding: 0 1.5rem;
+            }
+
+            .logo-badge img {
+                height: 60px;
+            }
+
+            .asset-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .positioning-statements {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .principles {
+                grid-template-columns: 1fr;
+            }
+
+            .what-we-manage,
+            .positioning,
+            .approach,
+            .final-cta {
+                padding: 4rem 1.5rem;
+            }
+
+            .scroll-indicator {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-background"></div>
+        <div class="hero-overlay"></div>
+
+        <div class="hero-content">
+            <div class="logo-badge">
+                <img src="logo-transparent.png" alt="Park Lane Asset Management">
+            </div>
+
+            <h1>Strategic Asset Management for Distinguished Families</h1>
+            <p class="hero-subtitle">Comprehensive wealth preservation and multi-generational growth across property, art, and business interests</p>
+
+            <button class="cta-button">Schedule a Consultation</button>
+
+            <div class="exclusivity">
+                <p class="exclusivity-text">Trusted by Select International Families</p>
+            </div>
+        </div>
+
+        <div class="scroll-indicator">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+        </div>
+    </section>
+
+    <!-- WHAT WE MANAGE -->
+    <section class="what-we-manage">
+        <div class="section-header">
+            <h2 class="section-title">What We Manage</h2>
+            <p class="section-subtitle">Comprehensive portfolio architecture across multiple asset classes</p>
+        </div>
+
+        <div class="asset-grid">
+            <div class="asset-card">
+                <div class="asset-icon">🏛️</div>
+                <h3>Property & Real Estate</h3>
+                <p>Luxury residential, commercial portfolios, and strategic property acquisitions globally</p>
+            </div>
+            <div class="asset-card">
+                <div class="asset-icon">🎨</div>
+                <h3>Art & Artifacts</h3>
+                <p>Curated fine art collections, sculptures, and investment-grade artifacts with authentication</p>
+            </div>
+            <div class="asset-card">
+                <div class="asset-icon">💼</div>
+                <h3>Business Interests</h3>
+                <p>Direct equity stakes, strategic acquisitions, and operating company stewardship</p>
+            </div>
+            <div class="asset-card">
+                <div class="asset-icon">📊</div>
+                <h3>Institutional Investments</h3>
+                <p>Private equity, hedge funds, and alternative asset strategies for accredited clients</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- POSITIONING -->
+    <section class="positioning">
+        <div class="positioning-content">
+            <h2 class="section-title">Our Difference</h2>
+            <div class="divider"></div>
+
+            <div class="positioning-statements">
+                <div class="statement">
+                    <div class="statement-title">Exclusivity First</div>
+                    <p class="statement-text">We do not chase growth. We select partners whose values align with ours.</p>
+                </div>
+                <div class="statement">
+                    <div class="statement-title">Multi-Generational</div>
+                    <p class="statement-text">Wealth architecture designed to endure and evolve across decades and generations.</p>
+                </div>
+                <div class="statement">
+                    <div class="statement-title">Discreet & Institutional</div>
+                    <p class="statement-text">Your affairs remain confidential. Your strategy remains strategic.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- APPROACH -->
+    <section class="approach">
+        <div class="approach-content">
+            <h2 class="section-title">Our Philosophy</h2>
+            <div class="divider"></div>
+
+            <p class="approach-text">
+                Exceptional wealth management requires more than financial expertise. It demands an understanding of legacy, cultural values, and the aspirations that define your family's future across generations.
+            </p>
+
+            <div class="principles">
+                <div class="principle">
+                    <h4>Bespoke Strategy</h4>
+                    <p>No templates. Your portfolio, your rules, your vision.</p>
+                </div>
+                <div class="principle">
+                    <h4>Conservative Foundation</h4>
+                    <p>Preservation first. Growth through excellence.</p>
+                </div>
+                <div class="principle">
+                    <h4>Transparent Partnership</h4>
+                    <p>Clear communication at every stage of stewardship.</p>
+                </div>
+                <div class="principle">
+                    <h4>Expert Stewardship</h4>
+                    <p>Decades of institutional knowledge applied with precision.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="final-cta">
+        <h2 class="cta-text">Ready to Architect Your Legacy?</h2>
+        <p class="cta-subtext">Let's discuss how Park Lane can help preserve, manage, and grow your wealth with complete discretion and strategic excellence</p>
+        <button class="cta-button">Book a Private Consultation</button>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>Park Lane Asset Management</p>
+        <div class="footer-links">
+            <a href="#">Privacy Policy</a>
+            <span>·</span>
+            <a href="#">Terms of Service</a>
+            <span>·</span>
+            <a href="#">FCA Regulated</a>
+        </div>
+        <p style="margin-top: 2rem; color: #444;">&copy; 2026 Park Lane Asset Management Ltd. All rights reserved.</p>
+    </footer>
+</body>
+</html>

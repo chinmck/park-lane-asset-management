@@ -1,0 +1,11 @@
+{
+  "name": "park-lane-website",
+  "version": "1.0.0",
+  "description": "Park Lane Asset Management - Premium one-pager",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/chinyeremckenzie/park-lane.git"
+  },
+  "keywords": ["wealth-management", "asset-management", "luxury", "hnwi"]
+}
