@@ -211,8 +211,8 @@
 /* The scene origin is a single point on the plinth; everything is placed from it. */
 .sv-scene {
   position: absolute;
-  left: 55.5%;                      /* cluster is wider on its left; keep it clear of the copy */
-  top: 82%;
+  left: 53%;                        /* laptop: cluster centred between the copy column and the edge */
+  top: 79%;
   width: 0;
   height: 0;
   transform-style: preserve-3d;
@@ -652,7 +652,7 @@
   }
 
   .sv-scene {
-    left: 50%;
+    left: 52.5%;                    /* cluster is heavier on its left; this centres it */
   }
 }
 
@@ -733,5 +733,12 @@
 
   .sv-detail {
     animation: none;
+  }
+}
+
+/* Wide desktops: as far left as keeps a clear gap from the controls */
+@media (min-width: 1360px) {
+  .sv-scene {
+    left: 54.8%;
   }
 }
