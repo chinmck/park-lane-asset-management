@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Park Lane Asset Management - Strategic wealth management for select international families">
+    <meta name="description" content="Park Lane Asset Management - Strategic wealth management for institutional partners and family offices">
     <title>Park Lane Asset Management</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
@@ -53,7 +53,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(180deg, rgba(15,20,25,0.25) 0%, rgba(15,20,25,0.4) 50%, rgba(15,20,25,0.6) 100%);
+            background: linear-gradient(180deg, rgba(15,20,25,0.3) 0%, rgba(15,20,25,0.45) 50%, rgba(15,20,25,0.65) 100%);
             z-index: 2;
         }
 
@@ -92,17 +92,29 @@
             font-size: clamp(38px, 8vw, 72px);
             font-weight: 700;
             line-height: 1.15;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             letter-spacing: -0.5px;
             color: #F5F3F0;
         }
 
+        .hero-tagline {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(18px, 3vw, 28px);
+            font-weight: 500;
+            color: #C9A961;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
         .hero-subtitle {
-            font-size: clamp(14px, 2vw, 18px);
-            color: #E8E8E8;
+            font-size: clamp(14px, 2vw, 16px);
+            color: #D4D4D4;
             font-weight: 400;
             margin-bottom: 3rem;
             line-height: 1.8;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .cta-button {
@@ -127,17 +139,17 @@
             box-shadow: 0 20px 50px rgba(201, 169, 97, 0.35);
         }
 
-        /* EXCLUSIVITY STATEMENT */
-        .exclusivity {
+        /* EXCLUSIVE BADGE */
+        .exclusive-badge {
             position: relative;
             z-index: 3;
-            margin-top: 2rem;
+            margin-top: 3rem;
             padding-top: 2.5rem;
             border-top: 1px solid rgba(201, 169, 97, 0.3);
         }
 
-        .exclusivity-text {
-            font-size: 12px;
+        .badge-text {
+            font-size: 11px;
             letter-spacing: 2px;
             text-transform: uppercase;
             color: #C9A961;
@@ -166,11 +178,41 @@
             50% { transform: translateX(-50%) translateY(12px); }
         }
 
-        /* WHAT WE MANAGE */
-        .what-we-manage {
+        /* ABOUT SECTION */
+        .about {
             background: #0F1419;
             padding: 7rem 2rem;
             border-top: 1px solid rgba(201, 169, 97, 0.15);
+        }
+
+        .about-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-text {
+            font-size: 16px;
+            color: #D4D4D4;
+            line-height: 1.9;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .about-highlight {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            color: #C9A961;
+            font-style: italic;
+            font-weight: 500;
+        }
+
+        /* WHAT WE MANAGE */
+        .what-we-manage {
+            background: #1A1F28;
+            padding: 7rem 2rem;
+            border-top: 1px solid rgba(201, 169, 97, 0.15);
+            border-bottom: 1px solid rgba(201, 169, 97, 0.15);
         }
 
         .section-header {
@@ -205,7 +247,7 @@
         }
 
         .asset-card {
-            background: linear-gradient(135deg, rgba(26, 31, 40, 0.5) 0%, rgba(15, 20, 25, 0.8) 100%);
+            background: linear-gradient(135deg, rgba(15, 20, 25, 0.6) 0%, rgba(15, 20, 25, 0.9) 100%);
             border: 1px solid rgba(201, 169, 97, 0.15);
             padding: 3rem 2.5rem;
             text-align: center;
@@ -228,7 +270,7 @@
         .asset-card:hover {
             border-color: rgba(201, 169, 97, 0.35);
             transform: translateY(-8px);
-            background: linear-gradient(135deg, rgba(26, 31, 40, 0.8) 0%, rgba(15, 20, 25, 0.95) 100%);
+            background: linear-gradient(135deg, rgba(15, 20, 25, 0.8) 0%, rgba(15, 20, 25, 0.98) 100%);
         }
 
         .asset-card:hover::before {
@@ -254,54 +296,14 @@
             line-height: 1.7;
         }
 
-        /* POSITIONING SECTION */
-        .positioning {
-            background: #1A1F28;
-            padding: 7rem 2rem;
-            border-top: 1px solid rgba(201, 169, 97, 0.15);
-            border-bottom: 1px solid rgba(201, 169, 97, 0.15);
-        }
-
-        .positioning-content {
-            max-width: 900px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .positioning-statements {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 3rem;
-            margin-top: 3rem;
-        }
-
-        .statement {
-            padding: 2rem 1.5rem;
-        }
-
-        .statement-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: #C9A961;
-        }
-
-        .statement-text {
-            font-size: 14px;
-            color: #D4D4D4;
-            line-height: 1.7;
-            font-weight: 300;
-        }
-
-        /* APPROACH */
+        /* OUR APPROACH */
         .approach {
             background: #0F1419;
             padding: 7rem 2rem;
         }
 
         .approach-content {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
             text-align: center;
         }
@@ -340,6 +342,53 @@
             font-size: 13px;
             color: #999;
             line-height: 1.6;
+        }
+
+        /* CLIENTS SECTION */
+        .clients-section {
+            background: #1A1F28;
+            padding: 7rem 2rem;
+            border-top: 1px solid rgba(201, 169, 97, 0.15);
+        }
+
+        .clients-text {
+            font-size: 15px;
+            color: #D4D4D4;
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            font-weight: 300;
+        }
+
+        .client-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .client-type {
+            text-align: center;
+            padding: 1.5rem;
+            border: 1px solid rgba(201, 169, 97, 0.1);
+            border-radius: 2px;
+        }
+
+        .client-type h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 16px;
+            font-weight: 600;
+            color: #C9A961;
+            margin-bottom: 0.5rem;
+        }
+
+        .client-type p {
+            font-size: 12px;
+            color: #999;
         }
 
         /* FINAL CTA */
@@ -384,26 +433,14 @@
             text-transform: uppercase;
         }
 
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .footer-links a {
-            color: #999;
-            text-decoration: none;
-            transition: color 0.3s ease;
+        .footer-note {
             font-size: 11px;
-            letter-spacing: 0.5px;
+            color: #555;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(201, 169, 97, 0.1);
+            padding-top: 2rem;
         }
 
-        .footer-links a:hover {
-            color: #C9A961;
-        }
-
-        /* DIVIDER */
         .divider {
             width: 40px;
             height: 1px;
@@ -426,18 +463,18 @@
                 gap: 1.5rem;
             }
 
-            .positioning-statements {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
             .principles {
                 grid-template-columns: 1fr;
             }
 
+            .client-types {
+                grid-template-columns: 1fr;
+            }
+
+            .about,
             .what-we-manage,
-            .positioning,
             .approach,
+            .clients-section,
             .final-cta {
                 padding: 4rem 1.5rem;
             }
@@ -459,13 +496,14 @@
                 <img src="logo-transparent.png" alt="Park Lane Asset Management">
             </div>
 
-            <h1>Strategic Asset Management for Distinguished Families</h1>
-            <p class="hero-subtitle">Comprehensive wealth preservation and multi-generational growth across property, art, and business interests</p>
+            <h1>Strategic Asset Management</h1>
+            <p class="hero-tagline">Where Property Meets Strategy</p>
+            <p class="hero-subtitle">Institutional wealth management for high-net-worth families, family offices, and distinguished institutions</p>
 
-            <button class="cta-button">Schedule a Consultation</button>
+            <button class="cta-button">Inquire</button>
 
-            <div class="exclusivity">
-                <p class="exclusivity-text">Trusted by Select International Families</p>
+            <div class="exclusive-badge">
+                <p class="badge-text">By Invitation Only</p>
             </div>
         </div>
 
@@ -476,108 +514,114 @@
         </div>
     </section>
 
+    <!-- ABOUT -->
+    <section class="about">
+        <div class="about-content">
+            <p class="about-text">
+                Park Lane manages the <span class="about-highlight">strategy behind the asset</span>. We provide comprehensive wealth management across property, art, and business interests—with institutional discipline and a long-term perspective.
+            </p>
+            <p class="about-text">
+                Limited to institutional partnerships and referred clients.
+            </p>
+        </div>
+    </section>
+
     <!-- WHAT WE MANAGE -->
     <section class="what-we-manage">
         <div class="section-header">
             <h2 class="section-title">What We Manage</h2>
-            <p class="section-subtitle">Comprehensive portfolio architecture across multiple asset classes</p>
+            <p class="section-subtitle">Multi-asset portfolio architecture for institutional partners</p>
         </div>
 
         <div class="asset-grid">
             <div class="asset-card">
                 <div class="asset-icon">🏛️</div>
                 <h3>Property & Real Estate</h3>
-                <p>Luxury residential, commercial portfolios, and strategic property acquisitions globally</p>
+                <p>Strategic acquisition and portfolio management of luxury residential and commercial properties globally</p>
             </div>
             <div class="asset-card">
                 <div class="asset-icon">🎨</div>
                 <h3>Art & Artifacts</h3>
-                <p>Curated fine art collections, sculptures, and investment-grade artifacts with authentication</p>
+                <p>Curated fine art collections and investment-grade artifacts with institutional-grade oversight</p>
             </div>
             <div class="asset-card">
                 <div class="asset-icon">💼</div>
                 <h3>Business Interests</h3>
-                <p>Direct equity stakes, strategic acquisitions, and operating company stewardship</p>
+                <p>Direct equity stakes, strategic acquisitions, and operating company stewardship across sectors</p>
             </div>
             <div class="asset-card">
                 <div class="asset-icon">📊</div>
                 <h3>Institutional Investments</h3>
-                <p>Private equity, hedge funds, and alternative asset strategies for accredited clients</p>
+                <p>Private equity, alternative assets, and institutional investment strategies for accredited partners</p>
             </div>
         </div>
     </section>
 
-    <!-- POSITIONING -->
-    <section class="positioning">
-        <div class="positioning-content">
-            <h2 class="section-title">Our Difference</h2>
-            <div class="divider"></div>
-
-            <div class="positioning-statements">
-                <div class="statement">
-                    <div class="statement-title">Exclusivity First</div>
-                    <p class="statement-text">We do not chase growth. We select partners whose values align with ours.</p>
-                </div>
-                <div class="statement">
-                    <div class="statement-title">Multi-Generational</div>
-                    <p class="statement-text">Wealth architecture designed to endure and evolve across decades and generations.</p>
-                </div>
-                <div class="statement">
-                    <div class="statement-title">Discreet & Institutional</div>
-                    <p class="statement-text">Your affairs remain confidential. Your strategy remains strategic.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- APPROACH -->
+    <!-- OUR APPROACH -->
     <section class="approach">
         <div class="approach-content">
             <h2 class="section-title">Our Philosophy</h2>
             <div class="divider"></div>
 
             <p class="approach-text">
-                Exceptional wealth management requires more than financial expertise. It demands an understanding of legacy, cultural values, and the aspirations that define your family's future across generations.
+                Strategic asset management requires more than financial expertise. It demands discipline, foresight, and an unwavering commitment to long-term wealth preservation across generations.
             </p>
 
             <div class="principles">
                 <div class="principle">
-                    <h4>Bespoke Strategy</h4>
-                    <p>No templates. Your portfolio, your rules, your vision.</p>
+                    <h4>Strategic Discipline</h4>
+                    <p>Every asset has a strategy. Execution with precision.</p>
                 </div>
                 <div class="principle">
-                    <h4>Conservative Foundation</h4>
-                    <p>Preservation first. Growth through excellence.</p>
+                    <h4>Long-Term Focus</h4>
+                    <p>Generational perspective. Enduring value.</p>
                 </div>
                 <div class="principle">
-                    <h4>Transparent Partnership</h4>
-                    <p>Clear communication at every stage of stewardship.</p>
+                    <h4>Active Management</h4>
+                    <p>Engaged oversight. Institutional excellence.</p>
                 </div>
                 <div class="principle">
-                    <h4>Expert Stewardship</h4>
-                    <p>Decades of institutional knowledge applied with precision.</p>
+                    <h4>Institutional Credibility</h4>
+                    <p>Partnerships with leading institutions globally.</p>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHO WE SERVE -->
+    <section class="clients-section">
+        <h2 class="section-title">Who We Serve</h2>
+        <div class="divider"></div>
+
+        <p class="clients-text">Park Lane partners exclusively with select institutional clients and referred high-net-worth families seeking discretion, expertise, and institutional-grade asset management.</p>
+
+        <div class="client-types">
+            <div class="client-type">
+                <h4>Family Offices</h4>
+                <p>Multi-generational wealth architecture</p>
+            </div>
+            <div class="client-type">
+                <h4>HNWI Families</h4>
+                <p>Strategic portfolio management</p>
+            </div>
+            <div class="client-type">
+                <h4>Institutional Partners</h4>
+                <p>Discretionary wealth partnerships</p>
             </div>
         </div>
     </section>
 
     <!-- FINAL CTA -->
     <section class="final-cta">
-        <h2 class="cta-text">Ready to Architect Your Legacy?</h2>
-        <p class="cta-subtext">Let's discuss how Park Lane can help preserve, manage, and grow your wealth with complete discretion and strategic excellence</p>
-        <button class="cta-button">Book a Private Consultation</button>
+        <h2 class="cta-text">Possibility Begins with Intent</h2>
+        <p class="cta-subtext">For institutional partners and referred clients seeking discretion, expertise, and strategic excellence</p>
+        <button class="cta-button">Make An Inquiry</button>
     </section>
 
     <!-- FOOTER -->
     <footer>
         <p>Park Lane Asset Management</p>
-        <div class="footer-links">
-            <a href="#">Privacy Policy</a>
-            <span>·</span>
-            <a href="#">Terms of Service</a>
-            <span>·</span>
-            <a href="#">FCA Regulated</a>
-        </div>
+        <p class="footer-note">By invitation only. Institutional partnerships and referrals exclusively.</p>
         <p style="margin-top: 2rem; color: #444;">&copy; 2026 Park Lane Asset Management Ltd. All rights reserved.</p>
     </footer>
 </body>
