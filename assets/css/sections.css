@@ -215,56 +215,7 @@
 
 /* 3. PROCESS — see process.css */
 
-/* 4. PHILOSOPHY ============================================================= */
-
-.philosophy__layout {
-  display: grid;
-  grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
-  gap: clamp(3rem, 2rem + 5vw, 8rem);
-  align-items: start;
-}
-
-.philosophy__quote {
-  font-family: var(--font-serif);
-  font-size: clamp(2.25rem, 1.5rem + 3vw, 4.25rem);
-  font-weight: 400;
-  line-height: 1.08;
-  letter-spacing: var(--tracking-heading);
-}
-
-.philosophy__quote em {
-  font-style: italic;
-  color: var(--c-limestone);
-}
-
-.philosophy__body {
-  padding-top: var(--s-4);
-}
-
-.philosophy__body .lead + .lead {
-  margin-top: var(--s-5);
-}
-
-.principles {
-  margin-top: var(--s-7);
-  border-top: 1px solid var(--c-hairline-dark);
-}
-
-.principles li {
-  display: flex;
-  justify-content: space-between;
-  gap: var(--s-5);
-  padding-block: var(--s-4);
-  border-bottom: 1px solid var(--c-hairline-dark);
-  font-size: var(--fs-small);
-  letter-spacing: 0.04em;
-}
-
-.principles li span:last-child {
-  color: var(--c-ivory-faint);
-  font-size: var(--fs-label);
-  letter-spacing: var(--tracking-label);
-}
+/* 4. GENERATIONAL THINKING — see generational.css */
 
 /* 5. INSIGHTS =============================================================== */
 
@@ -414,10 +365,6 @@
 /* Responsive collapse ------------------------------------------------------ */
 
 @media (max-width: 1024px) {
-  .philosophy__layout {
-    grid-template-columns: 1fr;
-  }
-
   .insights__grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }

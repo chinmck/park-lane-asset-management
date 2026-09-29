@@ -1,0 +1,211 @@
+/* ==========================================================================
+   Parklane — Generational Thinking
+   Returns to a darker, richer tone after the Process section. Editorial and
+   still: one dominant visual, long-form copy, five principles.
+   ========================================================================== */
+
+.gen {
+  --gen-bg: #171a16;
+  --gen-muted: #a8a397;          /* muted warm grey on the dark ground */
+  --gen-hairline: rgba(242, 239, 229, 0.12);
+  background: var(--gen-bg);
+  color: var(--c-ivory);
+}
+
+/* Desktop: heading + visual on the left, copy + principles on the right */
+.gen__layout {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  grid-template-areas:
+    "head   ."
+    "visual body";
+  column-gap: clamp(3rem, 1rem + 6vw, 8rem);
+  row-gap: clamp(2.5rem, 1.5rem + 2.5vw, 4rem);
+  align-items: start;
+}
+
+.gen__head   { grid-area: head; }
+.gen__visual { grid-area: visual; }
+.gen__body   { grid-area: body; }
+
+.gen__title {
+  margin-top: var(--s-6);
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: clamp(2.5rem, 1.4rem + 3.6vw, 5rem);
+  line-height: 1.04;
+  letter-spacing: var(--tracking-heading);
+}
+
+.gen__title span,
+.gen__title em {
+  display: block;
+}
+
+.gen__title em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--c-limestone);
+}
+
+/* Visual ------------------------------------------------------------------- */
+
+.gen__visual {
+  margin: 0;
+}
+
+.gen__frame {
+  position: relative;
+  aspect-ratio: 5 / 4;
+  overflow: hidden;
+  background:
+    radial-gradient(70% 65% at 50% 50%, #20251f 0%, #151814 70%, #111310 100%);
+  box-shadow: inset 0 0 0 1px var(--gen-hairline);
+}
+
+/* Stone grain */
+.gen__frame::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .95 0 0 0 0 .93 0 0 0 0 .88 0 0 0 .06 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E") 0 0 / 180px 180px;
+  pointer-events: none;
+}
+
+.gen__frame svg,
+.gen__frame img {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* The brass handrail draws itself in, slowly, once revealed */
+.js .gen__visual .gen__rail {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transition: stroke-dashoffset 3600ms var(--ease) 500ms;
+}
+
+.js .gen__visual.is-visible .gen__rail {
+  stroke-dashoffset: 0;
+}
+
+.gen__caption {
+  display: flex;
+  gap: var(--s-4);
+  margin-top: var(--s-4);
+  font-size: var(--fs-label);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--gen-muted);
+}
+
+.gen__caption span {
+  color: var(--c-brass);
+}
+
+/* Copy + principles -------------------------------------------------------- */
+
+.gen__body {
+  max-width: 28rem;
+}
+
+.gen__copy p {
+  font-size: var(--fs-lead);
+  line-height: 1.65;
+  color: var(--gen-muted);
+}
+
+.gen__copy p:first-child {
+  color: var(--c-ivory);
+}
+
+.gen__copy p + p {
+  margin-top: var(--s-5);
+}
+
+.gen__principles {
+  position: relative;
+  margin-top: var(--s-8);
+}
+
+/* Brass rule above the list draws across on reveal */
+.gen__principles::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 1px;
+  background: var(--c-brass);
+  transform-origin: left center;
+}
+
+.js .gen__principles[data-reveal]::before {
+  transform: scaleX(0);
+  transition: transform 1800ms var(--ease) 400ms;
+}
+
+.js .gen__principles[data-reveal].is-visible::before {
+  transform: scaleX(1);
+}
+
+.gen__principles li {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--s-5);
+  padding-block: 1.125rem;
+  border-bottom: 1px solid var(--gen-hairline);
+  font-size: 0.9375rem;
+  letter-spacing: 0.02em;
+}
+
+.gen__principles li span:last-child {
+  font-family: var(--font-serif);
+  font-size: 0.9375rem;
+  letter-spacing: 0.08em;
+  color: var(--c-brass);
+}
+
+/* Tablet: keep two columns, tighter */
+@media (max-width: 1024px) and (min-width: 641px) {
+  .gen__layout {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    column-gap: var(--s-7);
+  }
+}
+
+/* Phone: heading → image → copy → principles */
+@media (max-width: 640px) {
+  .gen__layout {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "head"
+      "visual"
+      "body";
+    row-gap: var(--s-7);
+  }
+
+  .gen__frame {
+    aspect-ratio: 4 / 5;
+  }
+
+  .gen__principles {
+    margin-top: var(--s-7);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js .gen__visual .gen__rail {
+    stroke-dashoffset: 0;
+    transition: none;
+  }
+
+  .js .gen__principles[data-reveal]::before {
+    transform: none;
+    transition: none;
+  }
+}
