@@ -1,0 +1,95 @@
+/* ==========================================================================
+   Parklane — Design tokens
+   Single source of truth for colour, type, spacing and motion.
+   ========================================================================== */
+
+:root {
+  /* Brand palette */
+  --c-green: #064A12;          /* Parklane Green — signature, used sparingly */
+  --c-obsidian: #0B0D0C;
+  --c-charcoal: #1B1C19;       /* Architectural Charcoal */
+  --c-ivory: #F2EFE5;          /* Warm Ivory */
+  --c-limestone: #C8C1B3;
+  --c-brass: #A98A52;          /* Antique Brass — metalwork, not jewellery */
+  --c-bronze: #66533B;         /* Deep Bronze */
+
+  /* Derived tones */
+  --c-green-deep: #053A0E;
+  --c-ivory-muted: rgba(242, 239, 229, 0.72);
+  --c-ivory-faint: rgba(242, 239, 229, 0.48);
+  --c-hairline-dark: rgba(242, 239, 229, 0.14);
+  --c-hairline-light: rgba(11, 13, 12, 0.14);
+  --c-brass-line: rgba(169, 138, 82, 0.55);
+
+  /* Semantic */
+  --bg: var(--c-obsidian);
+  --fg: var(--c-ivory);
+  --fg-muted: var(--c-ivory-muted);
+  --accent: var(--c-brass);
+  --focus: var(--c-brass);
+
+  /* Typography */
+  --font-serif: "Cormorant Garamond", "Cormorant", Garamond, "Times New Roman", serif;
+  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+
+  --fs-display: clamp(2.75rem, 1.4rem + 3.8vw, 5.25rem);   /* hero H1 */
+  --fs-h2: clamp(2rem, 1.4rem + 2.4vw, 3.5rem);
+  --fs-h3: clamp(1.375rem, 1.2rem + 0.7vw, 1.75rem);
+  --fs-lead: clamp(1.0625rem, 1rem + 0.3vw, 1.25rem);
+  --fs-body: 1rem;
+  --fs-small: 0.875rem;
+  --fs-label: 0.6875rem;                                     /* eyebrows, nav labels */
+
+  --lh-tight: 1.02;
+  --lh-heading: 1.12;
+  --lh-body: 1.7;
+
+  --tracking-label: 0.22em;
+  --tracking-nav: 0.14em;
+  --tracking-heading: -0.01em;
+
+  /* Layout */
+  --container: 1360px;
+  --container-wide: 1760px;   /* header + hero: lets copy sit clear of the sculpture */
+  --gutter: clamp(1.25rem, 0.5rem + 3.5vw, 4rem);
+  --measure: 36rem;            /* ~576px, within the 520–620 brief */
+  --measure-narrow: 32.5rem;   /* 520px */
+  --header-h: 88px;
+
+  /* Section rhythm — desktop 120–160 */
+  --section-y: clamp(7.5rem, 5rem + 4vw, 10rem);
+
+  /* Spacing scale */
+  --s-1: 0.25rem;
+  --s-2: 0.5rem;
+  --s-3: 0.75rem;
+  --s-4: 1rem;
+  --s-5: 1.5rem;
+  --s-6: 2rem;
+  --s-7: 3rem;
+  --s-8: 4rem;
+  --s-9: 6rem;
+
+  /* Motion — slow, controlled, no overshoot */
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --dur-fast: 240ms;
+  --dur: 480ms;
+  --dur-slow: 1100ms;
+}
+
+/* Tablet: 80–110 */
+@media (max-width: 1024px) {
+  :root {
+    --section-y: clamp(5rem, 3.5rem + 3vw, 6.875rem);
+    --header-h: 76px;
+  }
+}
+
+/* Mobile: 56–72 */
+@media (max-width: 640px) {
+  :root {
+    --section-y: clamp(3.5rem, 2.8rem + 2.5vw, 4.5rem);
+    --header-h: 64px;
+    --fs-display: clamp(2.5rem, 1.9rem + 3.2vw, 3.25rem);
+  }
+}

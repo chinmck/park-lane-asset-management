@@ -1,0 +1,575 @@
+/* ==========================================================================
+   Parklane — Homepage sections
+   ========================================================================== */
+
+.section {
+  position: relative;
+  padding-block: var(--section-y);
+}
+
+.section--obsidian { background: var(--c-obsidian); color: var(--c-ivory); }
+.section--charcoal { background: var(--c-charcoal); color: var(--c-ivory); }
+.section--green    { background: var(--c-green-deep); color: var(--c-ivory); }
+.section--ivory    { background: var(--c-ivory); color: var(--c-obsidian); }
+
+.section--ivory .lead { color: rgba(11, 13, 12, 0.7); }
+.section--ivory .eyebrow { color: var(--c-bronze); }
+
+.section-head {
+  display: grid;
+  gap: var(--s-5);
+  max-width: var(--measure);
+}
+
+/* 1. HERO ==================================================================
+   Static image. Crop is tuned per viewport through --hero-pos, and a
+   dedicated portrait crop is served to portrait tablets and phones.       */
+
+.hero {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  min-height: 100vh;
+  min-height: 100svh;
+  overflow: hidden;
+  background: var(--c-obsidian);
+  isolation: isolate;
+}
+
+.hero__media,
+.hero__media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.hero__media {
+  z-index: -2;
+}
+
+.hero__media img {
+  object-fit: cover;
+  object-position: var(--hero-pos, 50% 50%);
+}
+
+/* Left-side shade only; a faint top band keeps the nav legible against the glass roof. */
+.hero__shade {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(180deg, rgba(11, 13, 12, 0.42) 0, rgba(11, 13, 12, 0) 160px),
+    linear-gradient(
+      90deg,
+      rgba(11, 13, 12, 0.86) 0%,
+      rgba(11, 13, 12, 0.66) 24%,
+      rgba(11, 13, 12, 0.28) 44%,
+      rgba(11, 13, 12, 0) 62%
+    );
+}
+
+.hero__inner {
+  position: relative;
+  width: 100%;
+  padding-top: calc(var(--header-h) + var(--s-8));
+  padding-bottom: clamp(4.5rem, 3rem + 8vh, 9rem);
+}
+
+.hero__content {
+  max-width: 34rem;
+}
+
+.hero__title {
+  margin-top: var(--s-6);
+}
+
+.hero__title span {
+  display: block;
+}
+
+.hero__copy {
+  margin-top: var(--s-6);
+  max-width: 25rem;
+  font-size: var(--fs-lead);
+  line-height: 1.6;
+  color: var(--c-ivory-muted);
+}
+
+.hero__actions {
+  margin-top: var(--s-7);
+}
+
+.hero__values {
+  position: absolute;
+  top: 50%;
+  right: var(--gutter);
+  display: flex;
+  align-items: center;
+  gap: var(--s-5);
+  writing-mode: vertical-rl;
+  transform: translateY(-50%) rotate(180deg);
+  font-size: 0.625rem;
+  font-weight: 500;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--c-ivory-faint);
+}
+
+.hero__values li + li::before {
+  content: "";
+  display: inline-block;
+  width: 1px;
+  height: 1.75rem;
+  margin-bottom: var(--s-5);
+  background: var(--c-brass-line);
+  vertical-align: middle;
+}
+
+/* Hero load-in: text only, the image never moves */
+.js .hero [data-hero-item] {
+  opacity: 0;
+  transform: translateY(12px);
+  transition:
+    opacity var(--dur-slow) var(--ease),
+    transform var(--dur-slow) var(--ease);
+  transition-delay: var(--d, 0ms);
+}
+
+.js .hero.is-ready [data-hero-item] {
+  opacity: 1;
+  transform: none;
+}
+
+/* Crop tuning -------------------------------------------------------------- */
+
+/* Desktop wide (≥1600): image is wider than tall-viewport; hold the sculpture and roofline */
+@media (min-width: 1600px) {
+  .hero { --hero-pos: 50% 42%; }
+}
+
+/* Laptop (1025–1599): pull the frame left so the sculpture sits right of the copy */
+@media (min-width: 1025px) and (max-width: 1599px) {
+  .hero { --hero-pos: 22% 50%; }
+  .hero__content { max-width: 30rem; }
+}
+
+/* Tablet landscape / small laptop */
+@media (min-width: 641px) and (max-width: 1024px) and (orientation: landscape) {
+  .hero { --hero-pos: 18% 50%; }
+  .hero__content { max-width: 26rem; }
+}
+
+/* Portrait tablets and phones use the portrait crop (sculpture centred at 50%) */
+/* Portrait: the image occupies the upper frame so the whole sculpture reads,
+   then settles into obsidian beneath the copy. --hero-floor sets where. */
+@media (max-width: 1024px) and (orientation: portrait) {
+  /* Tablets get the wide crop, framed on the sculpture */
+  .hero {
+    --hero-pos: 58% 50%;
+    --hero-floor: 38%;
+  }
+
+  .hero__media {
+    bottom: var(--hero-floor);
+    height: auto;
+  }
+
+  .hero__shade {
+    background:
+      linear-gradient(180deg, rgba(11, 13, 12, 0.5) 0, rgba(11, 13, 12, 0) 140px),
+      linear-gradient(
+        0deg,
+        var(--c-obsidian) 0%,
+        var(--c-obsidian) var(--hero-floor),
+        rgba(11, 13, 12, 0.78) calc(var(--hero-floor) + 10%),
+        rgba(11, 13, 12, 0.2) calc(var(--hero-floor) + 26%),
+        rgba(11, 13, 12, 0) calc(var(--hero-floor) + 38%)
+      );
+  }
+
+  .hero__values { display: none; }
+}
+
+@media (max-width: 640px) and (orientation: portrait) {
+  /* Phones get the dedicated portrait crop */
+  .hero {
+    --hero-pos: 50% 50%;
+    --hero-floor: 36%;
+  }
+
+  .hero__inner {
+    padding-bottom: calc(var(--s-7) + env(safe-area-inset-bottom, 0px));
+  }
+
+  .hero__title { margin-top: var(--s-5); }
+  .hero__copy { margin-top: var(--s-5); font-size: 1rem; }
+  .hero__actions { margin-top: var(--s-6); }
+}
+
+@media (max-width: 1024px) {
+  .hero__values { display: none; }
+}
+
+/* 2. STRATEGY VISUALIZER (placeholder) ===================================== */
+
+.visualizer__head {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: var(--s-7);
+  align-items: end;
+}
+
+.visualizer__head .lead {
+  max-width: 26rem;
+  justify-self: end;
+}
+
+.visualizer__stage {
+  position: relative;
+  margin-top: var(--s-8);
+  min-height: clamp(420px, 52vw, 640px);
+  border: 1px solid rgba(242, 239, 229, 0.16);
+  display: grid;
+  place-items: center;
+}
+
+/* Rendered only while the interactive component has not mounted */
+.visualizer__placeholder {
+  display: grid;
+  justify-items: center;
+  gap: var(--s-3);
+  text-align: center;
+  font-size: var(--fs-label);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--c-ivory-faint);
+}
+
+.visualizer__placeholder::before {
+  content: "";
+  width: 1px;
+  height: 3rem;
+  background: var(--c-brass-line);
+}
+
+.visualizer__stage[data-mounted] .visualizer__placeholder {
+  display: none;
+}
+
+/* 3. PROCESS ================================================================ */
+
+.process__layout {
+  display: grid;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 7fr);
+  gap: clamp(3rem, 2rem + 5vw, 8rem);
+}
+
+.process__head {
+  align-self: start;
+  position: sticky;
+  top: calc(var(--header-h) + var(--s-7));
+}
+
+.process__steps {
+  counter-reset: step;
+  border-top: 1px solid var(--c-hairline-light);
+}
+
+.step {
+  display: grid;
+  grid-template-columns: 4.5rem minmax(0, 1fr);
+  gap: var(--s-5);
+  padding-block: var(--s-6);
+  border-bottom: 1px solid var(--c-hairline-light);
+}
+
+.step__num {
+  font-family: var(--font-serif);
+  font-size: 1.125rem;
+  color: var(--c-bronze);
+}
+
+.step__title {
+  font-family: var(--font-serif);
+  font-size: var(--fs-h3);
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.step__text {
+  margin-top: var(--s-2);
+  max-width: 30rem;
+  color: rgba(11, 13, 12, 0.68);
+}
+
+.process__close {
+  margin-top: var(--s-7);
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: var(--fs-h3);
+  color: var(--c-bronze);
+}
+
+/* 4. PHILOSOPHY ============================================================= */
+
+.philosophy__layout {
+  display: grid;
+  grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+  gap: clamp(3rem, 2rem + 5vw, 8rem);
+  align-items: start;
+}
+
+.philosophy__quote {
+  font-family: var(--font-serif);
+  font-size: clamp(2.25rem, 1.5rem + 3vw, 4.25rem);
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: var(--tracking-heading);
+}
+
+.philosophy__quote em {
+  font-style: italic;
+  color: var(--c-limestone);
+}
+
+.philosophy__body {
+  padding-top: var(--s-4);
+}
+
+.philosophy__body .lead + .lead {
+  margin-top: var(--s-5);
+}
+
+.principles {
+  margin-top: var(--s-7);
+  border-top: 1px solid var(--c-hairline-dark);
+}
+
+.principles li {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--s-5);
+  padding-block: var(--s-4);
+  border-bottom: 1px solid var(--c-hairline-dark);
+  font-size: var(--fs-small);
+  letter-spacing: 0.04em;
+}
+
+.principles li span:last-child {
+  color: var(--c-ivory-faint);
+  font-size: var(--fs-label);
+  letter-spacing: var(--tracking-label);
+}
+
+/* 5. INSIGHTS =============================================================== */
+
+.insights__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: var(--s-6);
+  flex-wrap: wrap;
+}
+
+.insights__grid {
+  margin-top: var(--s-8);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1.5rem, 1rem + 2vw, 3rem);
+}
+
+.insight {
+  display: grid;
+  gap: var(--s-4);
+}
+
+.insight__media {
+  aspect-ratio: 4 / 3;
+  background: var(--c-limestone);
+  overflow: hidden;
+}
+
+.insight__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.insight__meta {
+  margin-top: var(--s-2);
+  font-size: var(--fs-label);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--c-bronze);
+}
+
+.insight__title {
+  font-family: var(--font-serif);
+  font-size: var(--fs-h3);
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.insight__title a {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size var(--dur) var(--ease);
+}
+
+.insight__title a:hover,
+.insight__title a:focus-visible {
+  background-size: 100% 1px;
+}
+
+/* 6. FINAL CTA ============================================================== */
+
+.cta {
+  text-align: center;
+}
+
+.cta__inner {
+  display: grid;
+  justify-items: center;
+  gap: var(--s-6);
+  max-width: 44rem;
+  margin-inline: auto;
+}
+
+.cta__rule {
+  width: 1px;
+  height: 4rem;
+  background: var(--c-brass-line);
+}
+
+.cta .lead {
+  margin-inline: auto;
+}
+
+/* 7. FOOTER ================================================================= */
+
+.site-footer {
+  background: var(--c-obsidian);
+  color: var(--c-ivory-muted);
+  border-top: 1px solid var(--c-hairline-dark);
+  padding-block: var(--s-9) var(--s-6);
+  font-size: var(--fs-small);
+}
+
+.site-footer__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) repeat(3, minmax(0, 2fr));
+  gap: var(--s-7);
+}
+
+.site-footer__tagline {
+  margin-top: var(--s-5);
+  max-width: 20rem;
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  line-height: 1.4;
+  color: var(--c-ivory);
+}
+
+.site-footer__heading {
+  margin-bottom: var(--s-4);
+  font-size: var(--fs-label);
+  font-weight: 500;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--c-brass);
+}
+
+.site-footer__list li + li {
+  margin-top: var(--s-2);
+}
+
+.site-footer__list a {
+  transition: color var(--dur) var(--ease);
+}
+
+.site-footer__list a:hover,
+.site-footer__list a:focus-visible {
+  color: var(--c-ivory);
+}
+
+.site-footer__base {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--s-5);
+  flex-wrap: wrap;
+  margin-top: var(--s-9);
+  padding-top: var(--s-5);
+  border-top: 1px solid var(--c-hairline-dark);
+  font-size: 0.75rem;
+  color: var(--c-ivory-faint);
+}
+
+/* Responsive collapse ------------------------------------------------------ */
+
+@media (max-width: 1024px) {
+  .visualizer__head,
+  .process__layout,
+  .philosophy__layout {
+    grid-template-columns: 1fr;
+  }
+
+  .visualizer__head .lead {
+    justify-self: start;
+  }
+
+  .process__head {
+    position: static;
+  }
+
+  .insights__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .insights__grid .insight:nth-child(3) {
+    display: none;
+  }
+
+  .site-footer__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .site-footer__brand {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 640px) {
+  .visualizer__stage {
+    margin-top: var(--s-7);
+    min-height: 480px;
+  }
+
+  .step {
+    grid-template-columns: 3rem minmax(0, 1fr);
+    gap: var(--s-3);
+  }
+
+  .insights__grid {
+    grid-template-columns: 1fr;
+    margin-top: var(--s-7);
+  }
+
+  .insights__grid .insight:nth-child(3) {
+    display: grid;
+  }
+
+  .insight__media {
+    aspect-ratio: 3 / 2;
+  }
+
+  .site-footer {
+    padding-top: var(--s-8);
+  }
+
+  .site-footer__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
