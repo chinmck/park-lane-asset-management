@@ -88,6 +88,7 @@ const COMPACT_QUERY = window.matchMedia("(max-width: 640px)");
 const TABLET_QUERY = window.matchMedia("(max-width: 1024px)");
 // Only wide screens have the room for the largest model
 const WIDE_QUERY = window.matchMedia("(min-width: 1360px)");
+const SPREAD_WIDE = 0.955;
 const pad = (n) => String(n).padStart(2, "0");
 
 /* ---------------------------------------------------------------- building */
@@ -140,7 +141,7 @@ function buildSlab(asset, index) {
 /* ------------------------------------------------------------------ layout */
 
 /* Returns target placement for every slab plus the brass elements. Pure. */
-function layout(selected, compact) {
+function layout(selected, compact, spread = 1) {
   const chosen = ASSETS.filter((a) => selected.has(a.id));
   const n = chosen.length;
   const place = {};
@@ -156,7 +157,8 @@ function layout(selected, compact) {
       cursor += a.size.w + gap;
     });
   } else {
-    ASSETS.forEach((a) => (rest[a.id] = a.idle));
+    // spread < 1 draws the resting assets closer together (horizontal only)
+    ASSETS.forEach((a) => (rest[a.id] = { ...a.idle, x: a.idle.x * spread }));
   }
 
   let view = compact ? VIEW.compact : VIEW.idle;
@@ -238,7 +240,9 @@ export function mount(root) {
 
   function render() {
     const compact = COMPACT_QUERY.matches;
-    const { place, view, lintel: l, datum: dm } = layout(selected, compact);
+    // Wide desktops: slightly tighter spacing so the cluster keeps clear margins
+    const spread = WIDE_QUERY.matches ? SPREAD_WIDE : 1;
+    const { place, view, lintel: l, datum: dm } = layout(selected, compact, spread);
     // A wide assembly eases back, like stepping away from the model
     const fit = l ? Math.min(1, (compact ? 760 : 660) / l.w) : 1;
     const s = scaleFor(compact) * fit;

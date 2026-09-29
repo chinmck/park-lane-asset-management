@@ -739,6 +739,6 @@
 /* Wide desktops: as far left as keeps a clear gap from the controls */
 @media (min-width: 1360px) {
   .sv-scene {
-    left: 54.8%;
+    left: 55.9%;
   }
 }
