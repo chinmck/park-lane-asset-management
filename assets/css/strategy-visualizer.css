@@ -211,7 +211,7 @@
 /* The scene origin is a single point on the plinth; everything is placed from it. */
 .sv-scene {
   position: absolute;
-  left: 55%;                        /* cluster is wider on its left; keep it clear of the copy */
+  left: 55.5%;                      /* cluster is wider on its left; keep it clear of the copy */
   top: 82%;
   width: 0;
   height: 0;

@@ -28,7 +28,7 @@ const ASSETS = [
     material: "limestone",
     image: { src: "assets/img/visualizer/property.webp", src2x: "assets/img/visualizer/property@2x.webp" },
     size: { w: 253, h: 400, d: 44 },
-    idle: { x: -296, z: 30, ry: -5 },
+    idle: { x: -262, z: 30, ry: -5 },
     view: -20,
     title: "Property, held with a purpose.",
     text: "Acquisition, repositioning and long-term management. Every building is given a defined role, then financed and maintained to serve the wider portfolio.",
@@ -40,7 +40,7 @@ const ASSETS = [
     material: "bronze",
     image: { src: "assets/img/visualizer/art.webp", src2x: "assets/img/visualizer/art@2x.webp" },
     size: { w: 150, h: 330, d: 40 },
-    idle: { x: -167, z: -80, ry: 7 },
+    idle: { x: -150, z: -80, ry: 7 },
     view: -25,
     title: "Collections, stewarded like capital.",
     text: "Provenance, insurance, storage and considered disposal. Significant works are held under the same governance as every other asset.",
@@ -52,7 +52,7 @@ const ASSETS = [
     material: "glass",
     image: { src: "assets/img/visualizer/equities.webp", src2x: "assets/img/visualizer/equities@2x.webp" },
     size: { w: 186, h: 470, d: 20 },
-    idle: { x: 100, z: 80, ry: -2 },
+    idle: { x: 88, z: 80, ry: -2 },
     view: -31,
     title: "Liquidity, with discipline.",
     text: "Listed and private holdings structured around risk, income and time horizon: the liquid layer that lets the rest of the portfolio hold its course.",
@@ -64,7 +64,7 @@ const ASSETS = [
     material: "marble",
     image: { src: "assets/img/visualizer/business.webp", src2x: "assets/img/visualizer/business@2x.webp" },
     size: { w: 210, h: 360, d: 44 },
-    idle: { x: 236, z: -40, ry: 8 },
+    idle: { x: 206, z: -40, ry: 8 },
     view: -37,
     title: "Enterprise, aligned with the family.",
     text: "Operating companies and shareholdings, considered alongside succession, value extraction and the wider balance sheet.",
@@ -172,7 +172,7 @@ function layout(selected, compact) {
       place[a.id] =
         a === only
           ? { x: r.x * 0.45, y: 0, z: compact ? 150 : 190, ry: 0, receded: false, active: true }
-          : { x: r.x * 0.94, y: 0, z: r.z - 110, ry: r.ry, receded: true, active: false };
+          : { x: r.x * 0.86, y: 0, z: r.z - 110, ry: r.ry, receded: true, active: false };
     });
     view = compact ? VIEW.compact : { rx: -7, ry: only.view };
     const p = place[only.id];
@@ -232,15 +232,15 @@ export function mount(root) {
       return Math.min(0.62, (width - 36) / row);
     }
     // Side-by-side desktop gets the larger model; full-width tablet a gentler one
-    const divisor = TABLET_QUERY.matches ? 790 : WIDE_QUERY.matches ? 640 : 700;
-    return Math.max(0.5, Math.min(1.6, width / divisor));
+    const divisor = TABLET_QUERY.matches ? 740 : WIDE_QUERY.matches ? 590 : 640;
+    return Math.max(0.5, Math.min(1.8, width / divisor));
   }
 
   function render() {
     const compact = COMPACT_QUERY.matches;
     const { place, view, lintel: l, datum: dm } = layout(selected, compact);
     // A wide assembly eases back, like stepping away from the model
-    const fit = l ? Math.min(1, (compact ? 760 : 750) / l.w) : 1;
+    const fit = l ? Math.min(1, (compact ? 760 : 660) / l.w) : 1;
     const s = scaleFor(compact) * fit;
 
     scene.style.transform = `scale(${s}) rotateX(${view.rx}deg) rotateY(${view.ry}deg)`;
