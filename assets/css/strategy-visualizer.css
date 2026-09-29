@@ -211,8 +211,8 @@
 /* The scene origin is a single point on the plinth; everything is placed from it. */
 .sv-scene {
   position: absolute;
-  left: 50%;
-  top: 80%;
+  left: 54%;                        /* cluster is wider on its left; keep it clear of the copy */
+  top: 82%;
   width: 0;
   height: 0;
   transform-style: preserve-3d;
@@ -648,7 +648,11 @@
   }
 
   .sv__stage {
-    height: clamp(460px, 84vw, 680px);
+    height: clamp(440px, 74vw, 620px);
+  }
+
+  .sv-scene {
+    left: 50%;
   }
 }
 
@@ -689,7 +693,7 @@
   }
 
   .sv__stage {
-    height: 340px;
+    height: 300px;
     perspective: 1600px;
     margin-inline: calc(var(--gutter) * -1);
   }
@@ -701,6 +705,7 @@
 
   .sv-scene {
     top: 76%;
+    left: 50%;
   }
 
   .sv-tag {
