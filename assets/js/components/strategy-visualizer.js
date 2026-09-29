@@ -2,7 +2,7 @@
  *
  * An architectural model of the portfolio: each asset class is a material slab
  * on a stone plinth. Selecting one brings its slab forward; selecting several
- * assembles them into a single composition bound by a brass lintel.
+ * assembles them into one interlocking composition joined by a slim brass tie.
  *
  * main.js lazy-imports this module and calls `mount(root)`, where root is the
  * [data-component="strategy-visualizer"] element. Controls are real buttons in
@@ -19,8 +19,8 @@ const ASSETS = [
     label: "Property",
     material: "limestone",
     image: null,
-    size: { w: 200, h: 420, d: 34 },
-    idle: { x: -255, z: 40, ry: -6 },
+    size: { w: 228, h: 392, d: 44 },
+    idle: { x: -262, z: 28, ry: -5 },
     view: -20,
     title: "Property, held with a purpose.",
     text: "Acquisition, repositioning and long-term management. Every building is given a defined role, then financed and maintained to serve the wider portfolio.",
@@ -31,8 +31,8 @@ const ASSETS = [
     label: "Art & Collectibles",
     material: "bronze",
     image: null,
-    size: { w: 150, h: 320, d: 46 },
-    idle: { x: -75, z: -110, ry: 5 },
+    size: { w: 118, h: 286, d: 66 },
+    idle: { x: -92, z: -128, ry: 7 },
     view: -25,
     title: "Collections, stewarded like capital.",
     text: "Provenance, insurance, storage and considered disposal. Significant works are held under the same governance as every other asset.",
@@ -43,8 +43,8 @@ const ASSETS = [
     label: "Equities & Investments",
     material: "glass",
     image: null,
-    size: { w: 170, h: 470, d: 20 },
-    idle: { x: 95, z: 70, ry: -3 },
+    size: { w: 146, h: 508, d: 14 },
+    idle: { x: 62, z: 96, ry: -2 },
     view: -31,
     title: "Liquidity, with discipline.",
     text: "Listed and private holdings structured around risk, income and time horizon: the liquid layer that lets the rest of the portfolio hold its course.",
@@ -55,8 +55,8 @@ const ASSETS = [
     label: "Business Interests",
     material: "marble",
     image: null,
-    size: { w: 185, h: 350, d: 38 },
-    idle: { x: 262, z: -50, ry: 8 },
+    size: { w: 206, h: 326, d: 50 },
+    idle: { x: 240, z: -34, ry: 8 },
     view: -37,
     title: "Enterprise, aligned with the family.",
     text: "Operating companies and shareholdings, considered alongside succession, value extraction and the wider balance sheet.",
@@ -104,8 +104,9 @@ function buildSlab(asset, index) {
     slab.classList.add("has-image");
     slab.style.setProperty("--img", `url("${asset.image}")`);
   }
+  el("div", "sv-shadow", slab);
   const tag = el("span", "sv-tag", slab.querySelector(".sv-face--front"));
-  tag.innerHTML = `<b>${pad(index + 1)}</b>${asset.label}`;
+  tag.innerHTML = `<b>${pad(index + 1)}</b> ${asset.label}`;
   return slab;
 }
 
@@ -150,23 +151,28 @@ function layout(selected, compact) {
     const p = place[only.id];
     datum = { x: p.x - only.size.w / 2, z: p.z + only.size.d / 2 + 36, w: only.size.w };
   } else {
-    // Assemble the chosen slabs side by side, front faces aligned on one line.
-    const gap = 8;
+    // Assemble the chosen slabs into one massing: alternate planes step back a
+    // tier and overlap their neighbours; the outer planes turn in slightly.
+    const overlap = 18;
     const front = 70;
-    const total = chosen.reduce((s, a) => s + a.size.w, 0) + gap * (n - 1);
-    const maxH = Math.max(...chosen.map((a) => a.size.h));
+    const total = chosen.reduce((s, a) => s + a.size.w, 0) - overlap * (n - 1);
+    const minH = Math.min(...chosen.map((a) => a.size.h));
     const maxD = Math.max(...chosen.map((a) => a.size.d));
+    const tier = maxD + 16;
     let cursor = -total / 2;
-    chosen.forEach((a) => {
-      place[a.id] = { x: cursor + a.size.w / 2, y: 0, z: front - a.size.d / 2, ry: 0, receded: false, active: true };
-      cursor += a.size.w + gap;
+    chosen.forEach((a, i) => {
+      const back = i % 2 ? tier : 0;
+      const ry = n > 2 && i === 0 ? 5 : n > 2 && i === n - 1 ? -5 : 0;
+      place[a.id] = { x: cursor + a.size.w / 2, y: 0, z: front - a.size.d / 2 - back, ry, receded: false, active: true };
+      cursor += a.size.w - overlap;
     });
     ASSETS.filter((a) => !selected.has(a.id)).forEach((a) => {
       const r = rest[a.id];
       place[a.id] = { x: r.x * 1.3, y: 0, z: -330, ry: r.ry, receded: true, active: false };
     });
     view = compact ? VIEW.compact : VIEW.multi;
-    lintel = { w: total + 40, d: maxD + 18, y: -maxH, z: front - maxD / 2 };
+    // Brass tie threaded between the two tiers; its ends show past the outer planes
+    lintel = { w: total + 64, d: 3, y: -Math.round(minH * 0.58), z: front - maxD - 8 };
     datum = { x: -total / 2, z: front + 40, w: total };
   }
 
@@ -187,7 +193,7 @@ export function mount(root) {
   const scene = el("div", "sv-scene", stage);
   const plinth = el("div", "sv-plinth", scene);
   const slabs = new Map(ASSETS.map((a, i) => [a.id, scene.appendChild(buildSlab(a, i))]));
-  const lintel = scene.appendChild(buildBox("sv-slab sv-lintel m-brass", { w: 100, h: 12, d: 40 }));
+  const lintel = scene.appendChild(buildBox("sv-slab sv-lintel m-brass", { w: 100, h: 3, d: 3 }));
   const datum = el("div", "sv-datum", scene);
   const caption = el("div", "sv__caption", stage);
   stage.classList.add("is-mounted");

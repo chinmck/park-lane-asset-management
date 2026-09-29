@@ -36,7 +36,7 @@ Equities & Investments is smoked glass, and Business Interests is dark green mar
 
 - **One selected:** that slab comes forward with a green edge, the others recede, the view rebalances,
   and a brass datum line marks it.
-- **Several selected:** the chosen slabs assemble into one massing under a brass lintel
+- **Several selected:** the chosen slabs interlock in two staggered tiers, joined by a slim brass tie
   ("Different assets. One strategy.").
 - **Phones:** a shallow frontal row with a 2×2 grid of tap targets, using the same materials and states.
 

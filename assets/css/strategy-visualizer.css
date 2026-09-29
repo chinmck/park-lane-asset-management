@@ -11,7 +11,7 @@
   overflow-x: clip;
   /* A faint, low light pooling behind the model — not a gradient field */
   background:
-    radial-gradient(60% 55% at 68% 62%, rgba(6, 74, 18, 0.16), rgba(6, 74, 18, 0) 70%),
+    radial-gradient(55% 50% at 68% 64%, rgba(6, 74, 18, 0.1), rgba(6, 74, 18, 0) 70%),
     var(--c-vault);
 }
 
@@ -232,9 +232,9 @@
   margin-top: calc(var(--pd) / -2);
   transform: rotateX(90deg);
   background:
-    linear-gradient(rgba(242, 239, 229, 0.05) 1px, transparent 1px) 0 0 / 40px 40px,
-    linear-gradient(90deg, rgba(242, 239, 229, 0.05) 1px, transparent 1px) 0 0 / 40px 40px,
-    radial-gradient(closest-side, #1a211c, #0e1511);
+    linear-gradient(rgba(242, 239, 229, 0.035) 1px, transparent 1px) 0 0 / 40px 40px,
+    linear-gradient(90deg, rgba(242, 239, 229, 0.035) 1px, transparent 1px) 0 0 / 40px 40px,
+    radial-gradient(closest-side, #151b17, #0b100d);
   border: 1px solid rgba(242, 239, 229, 0.08);
   -webkit-mask-image: radial-gradient(closest-side, #000 62%, transparent 100%);
   mask-image: radial-gradient(closest-side, #000 62%, transparent 100%);
@@ -259,12 +259,12 @@
 }
 
 .sv-face::after {
-  /* Lighting + recession: a shade layer rather than filter/opacity,
+  /* Shade + recession: a layer rather than filter/opacity,
      which would flatten the 3D context */
   content: "";
   position: absolute;
   inset: 0;
-  background: #050907;
+  background: #040806;
   opacity: calc(var(--face-shade, 0) + var(--recede, 0));
   transition: opacity var(--sv-dur) var(--sv-ease);
   pointer-events: none;
@@ -276,8 +276,20 @@
   height: 100%;
 }
 
-.sv-face--front { transform: translateZ(calc(var(--d) * 0.5px)); }
-.sv-face--back  { transform: rotateY(180deg) translateZ(calc(var(--d) * 0.5px)); --face-shade: 0.6; }
+/* Key light from upper left: left + top faces lit, right face in shadow */
+.sv-face--front {
+  transform: translateZ(calc(var(--d) * 0.5px));
+  --light:
+    linear-gradient(180deg, rgba(255, 250, 240, 0.18) 0 2px, rgba(255, 250, 240, 0.05) 3px, transparent 7px),
+    linear-gradient(90deg, rgba(255, 250, 240, 0.1) 0 2px, transparent 5px),
+    linear-gradient(0deg, rgba(0, 0, 0, 0.34), rgba(0, 0, 0, 0) 22%),
+    linear-gradient(118deg, rgba(255, 248, 235, 0.1) 0%, rgba(255, 248, 235, 0) 40%, rgba(0, 0, 0, 0) 58%, rgba(0, 0, 0, 0.3) 100%);
+}
+
+.sv-face--back {
+  transform: rotateY(180deg) translateZ(calc(var(--d) * 0.5px));
+  --face-shade: 0.62;
+}
 
 .sv-face--left,
 .sv-face--right {
@@ -286,74 +298,124 @@
   left: calc((var(--w) - var(--d)) * 0.5px);
 }
 
-.sv-face--right { transform: rotateY(90deg) translateZ(calc(var(--w) * 0.5px)); --face-shade: 0.42; }
-.sv-face--left  { transform: rotateY(-90deg) translateZ(calc(var(--w) * 0.5px)); --face-shade: 0.18; }
+.sv-face--right {
+  transform: rotateY(90deg) translateZ(calc(var(--w) * 0.5px));
+  --face-shade: 0.52;
+  --light: linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0) 30%);
+}
+
+.sv-face--left {
+  transform: rotateY(-90deg) translateZ(calc(var(--w) * 0.5px));
+  --face-shade: 0.1;
+  --light:
+    linear-gradient(90deg, rgba(0, 0, 0, 0.12), rgba(255, 250, 240, 0.06)),
+    linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0) 26%);
+}
 
 .sv-face--top {
   width: 100%;
   height: calc(var(--d) * 1px);
   top: calc((var(--h) - var(--d)) * 0.5px);
   transform: rotateX(90deg) translateZ(calc(var(--h) * 0.5px));
-  --face-shade: -0.08;
+  --light: linear-gradient(180deg, rgba(255, 250, 240, 0.16), rgba(255, 250, 240, 0.08));
 }
 
-.sv-slab.is-receded { --recede: 0.52; }
+.sv-slab.is-receded { --recede: 0.55; }
 
-/* Selected: restrained green edge + low glow on the front face */
+/* Arrises: a lit top/left edge and a dark lower/right edge read as a chamfer */
+.sv-slab {
+  --arris:
+    inset 0 1px 0 rgba(255, 250, 240, 0.26),
+    inset 1px 0 0 rgba(255, 250, 240, 0.1),
+    inset -1px 0 0 rgba(0, 0, 0, 0.4),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.45);
+}
+
 .sv-slab .sv-face--front {
+  box-shadow: var(--arris);
   transition: box-shadow var(--sv-dur) var(--sv-ease);
 }
 
+/* Selected: restrained Parklane-green edge light */
 .sv-slab.is-active .sv-face--front {
   box-shadow:
-    inset 0 0 0 1px rgba(47, 122, 64, 0.9),
-    0 30px 80px -30px rgba(6, 74, 18, 0.9);
+    var(--arris),
+    inset 0 0 0 1px rgba(47, 122, 64, 0.8),
+    inset 10px 0 18px -14px rgba(47, 122, 64, 0.7),
+    0 40px 90px -44px rgba(6, 74, 18, 0.85);
 }
 
-.sv-slab.is-active .sv-face--left,
-.sv-slab.is-active .sv-face--right {
-  box-shadow: inset 0 0 0 1px rgba(47, 122, 64, 0.5);
+.sv-slab.is-active .sv-face--left {
+  box-shadow: inset 0 0 0 1px rgba(47, 122, 64, 0.45);
 }
 
-/* Specimen tag on the front face */
+/* Contact shadow on the plinth, cast back and to the right */
+.sv-shadow {
+  position: absolute;
+  left: calc(var(--w) * -0.25px);
+  width: calc(var(--w) * 1.5px);
+  height: calc((var(--d) + 150) * 1px);
+  top: calc(var(--h) * 1px - (var(--d) + 150) * 0.5px);
+  transform: translate3d(22px, -1px, -34px) rotateX(90deg);
+  background:
+    radial-gradient(closest-side, rgba(0, 0, 0, 0.78), rgba(0, 0, 0, 0.35) 55%, rgba(0, 0, 0, 0));
+  pointer-events: none;
+}
+
+.sv-shadow::after {
+  content: "";
+  position: absolute;
+  inset: 20% 12%;
+  background: radial-gradient(closest-side, rgba(6, 74, 18, 0.6), rgba(6, 74, 18, 0));
+  opacity: 0;
+  transition: opacity var(--sv-dur) var(--sv-ease);
+}
+
+.sv-slab.is-active .sv-shadow::after {
+  opacity: 1;
+}
+
+/* Specimen tag — small and quiet; the object leads */
 .sv-tag {
   position: absolute;
-  left: 14px;
-  bottom: 14px;
+  left: 12px;
+  bottom: 12px;
   z-index: 1;
-  display: grid;
-  gap: 2px;
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
   font-family: var(--font-sans);
-  font-size: 9px;
+  font-size: 7.5px;
   font-weight: 500;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  line-height: 1.3;
-  color: var(--tag, rgba(242, 239, 229, 0.72));
+  white-space: nowrap;
+  color: var(--tag, rgba(242, 239, 229, 0.6));
+  opacity: 0.8;
   transform: translateZ(1px);
+  transition: opacity var(--sv-dur) var(--sv-ease);
 }
 
 .sv-slab.is-receded .sv-tag {
-  opacity: 0.35;
-}
-
-.sv-tag {
-  transition: opacity var(--sv-dur) var(--sv-ease);
+  opacity: 0.3;
 }
 
 .sv-tag b {
   font-family: var(--font-serif);
-  font-size: 13px;
+  font-size: 10px;
   font-weight: 500;
-  letter-spacing: 0;
+  letter-spacing: 0.04em;
   color: var(--c-brass);
 }
 
-/* Brass: lintel that binds the assembled composition, and a floor datum line */
+/* Brass: a slim tie that joins the assembled composition, and a floor datum line */
 .sv-lintel {
-  transition:
-    transform var(--sv-dur) var(--sv-ease),
-    opacity var(--sv-dur) var(--sv-ease);
+  cursor: default;
+  transition: transform var(--sv-dur) var(--sv-ease);
+}
+
+.sv-lintel .sv-face--front {
+  box-shadow: none;
 }
 
 .sv-datum {
@@ -403,23 +465,27 @@
 }
 
 /* Materials ------------------------------------------------------------------
-   Neutral placeholders. Each asset can instead supply an `image` in the JS
-   config, which is laid over its front face.                                 */
+   Neutral placeholders, matte by design. Each face stacks:
+   base colour (--mat) → texture (--tex) → fine grain → light (--light) → shade.
+   An asset can instead supply an `image` in the JS config for its front face. */
 
 .sv-slab {
-  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .32 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .3 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  --none: linear-gradient(transparent, transparent);
 }
 
 .sv-face {
   background: var(--mat);
 }
 
-/* Grain sits on its own layer so material gradients keep their full size */
 .sv-face::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: var(--grain) 0 0 / 180px 180px;
+  background:
+    var(--light, var(--none)) 0 0 / 100% 100%,
+    var(--grain, var(--none)) 0 0 / 180px 180px,
+    var(--tex, var(--none)) 0 0 / var(--tex-size, 480px 480px);
   pointer-events: none;
 }
 
@@ -427,61 +493,62 @@
   background: var(--img) center / cover no-repeat, var(--mat);
 }
 
-/* Limestone, with a drafted plan etched into it */
+/* Limestone — warm, clouded, with sparse fossil specks and an etched plan */
 .m-limestone {
-  --mat: linear-gradient(172deg, #d9d2c3 0%, #c8c1b3 55%, #b5ad9d 100%);
-  --tag: rgba(11, 13, 12, 0.66);
+  --mat: linear-gradient(174deg, #d8d1c1 0%, #cbc4b5 50%, #bdb5a4 100%);
+  --tex: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='480' height='480'%3E%3Cfilter id='a'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.006 .018' numOctaves='4' seed='4' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .42 0 0 0 0 .38 0 0 0 0 .31 0 0 0 1 -.36'/%3E%3C/filter%3E%3Cfilter id='b'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.55' numOctaves='1' seed='9' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .3 0 0 0 0 .27 0 0 0 0 .22 0 0 0 7 -4.95'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23a)'/%3E%3Crect width='100%25' height='100%25' filter='url(%23b)'/%3E%3C/svg%3E");
+  --tag: rgba(11, 13, 12, 0.5);
 }
 
 .m-limestone .sv-face--front {
   background:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 160' fill='none' stroke='%230B0D0C' stroke-opacity='.22' stroke-width='.6'%3E%3Crect x='10' y='14' width='100' height='120'/%3E%3Cpath d='M10 60h58v74M68 88h42M40 60v-46M86 14v40h24M68 110h-20'/%3E%3Cpath d='M48 110a14 14 0 0 1 14-14' stroke-dasharray='1.5 1.5'/%3E%3Cpath d='M10 146h100M10 143v6M110 143v6' stroke='%2366533B' stroke-opacity='.5'/%3E%3C/svg%3E") 50% 38% / 78% auto no-repeat,
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 160' fill='none' stroke='%230B0D0C' stroke-opacity='.16' stroke-width='.5'%3E%3Crect x='10' y='14' width='100' height='120'/%3E%3Cpath d='M10 60h58v74M68 88h42M40 60v-46M86 14v40h24M68 110h-20'/%3E%3Cpath d='M48 110a14 14 0 0 1 14-14' stroke-dasharray='1.5 1.5'/%3E%3Cpath d='M10 146h100M10 143v6M110 143v6' stroke='%2366533B' stroke-opacity='.4'/%3E%3C/svg%3E") 50% 36% / 72% auto no-repeat,
     var(--mat);
 }
 
-/* Patinated bronze — matte, not polished */
+/* Patinated bronze — dark blotching with a trace of verdigris; no shine */
 .m-bronze {
-  --mat:
-    linear-gradient(90deg, rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 0) 75%, rgba(0, 0, 0, 0.22)),
-    linear-gradient(168deg, #7d6647 0%, #5f4c35 40%, #43362a 100%);
-  --tag: rgba(242, 239, 229, 0.72);
+  --mat: linear-gradient(170deg, #6f5a3f 0%, #58472f 45%, #3d3124 100%);
+  --tex: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='420' height='420'%3E%3Cfilter id='a'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.012 .03' numOctaves='4' seed='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .1 0 0 0 0 .07 0 0 0 0 .04 0 0 0 1.8 -.62'/%3E%3C/filter%3E%3Cfilter id='b'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.02' numOctaves='3' seed='11' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .26 0 0 0 0 .33 0 0 0 0 .27 0 0 0 1.2 -.74'/%3E%3C/filter%3E%3Cfilter id='c'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.035' numOctaves='3' seed='5' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .62 0 0 0 0 .5 0 0 0 0 .33 0 0 0 .9 -.6'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23a)'/%3E%3Crect width='100%25' height='100%25' filter='url(%23b)'/%3E%3Crect width='100%25' height='100%25' filter='url(%23c)'/%3E%3C/svg%3E");
+  --tex-size: 420px 420px;
+  --tag: rgba(242, 239, 229, 0.55);
 }
 
-/* Smoked glass — tinted and framed, no blur */
+/* Smoked glass — tinted, matte, framed; edges read green like thick glass */
 .m-glass {
   --mat:
-    linear-gradient(90deg, transparent calc(50% - 0.5px), rgba(242, 239, 229, 0.12) 50%, transparent calc(50% + 0.5px)),
-    linear-gradient(180deg, rgba(242, 239, 229, 0.07), rgba(242, 239, 229, 0) 45%),
-    rgba(20, 28, 24, 0.72);
+    linear-gradient(101deg, rgba(242, 239, 229, 0) 18%, rgba(242, 239, 229, 0.05) 30%, rgba(242, 239, 229, 0) 42%),
+    linear-gradient(180deg, rgba(242, 239, 229, 0.05), rgba(242, 239, 229, 0) 40%),
+    rgba(18, 26, 22, 0.74);
   --grain: none;
-}
-
-.m-glass .sv-face::before {
-  display: none;
-}
-
-.m-glass .sv-face {
-  border: 1px solid rgba(169, 138, 82, 0.35);
+  --tag: rgba(242, 239, 229, 0.5);
 }
 
 .m-glass .sv-face--front {
+  border: 1px solid rgba(169, 138, 82, 0.28);
   background:
-    repeating-linear-gradient(180deg, transparent 0 71px, rgba(242, 239, 229, 0.1) 71px 72px),
+    repeating-linear-gradient(180deg, transparent 0 83px, rgba(242, 239, 229, 0.07) 83px 84px),
     var(--mat);
 }
 
-/* Dark green marble with veining */
-.m-marble {
-  --mat:
-    linear-gradient(118deg, transparent 38%, rgba(200, 193, 179, 0.16) 39%, transparent 40.5%),
-    linear-gradient(104deg, transparent 58%, rgba(200, 193, 179, 0.1) 58.6%, transparent 60%),
-    linear-gradient(132deg, transparent 18%, rgba(200, 193, 179, 0.08) 18.5%, transparent 20%),
-    linear-gradient(160deg, #10301d 0%, #0a2215 50%, #06160d 100%);
+.m-glass .sv-face--left,
+.m-glass .sv-face--right,
+.m-glass .sv-face--top {
+  background: rgba(38, 66, 50, 0.9);
 }
 
-/* Brass lintel */
+/* Deep green marble — clouded ground with fine turbulent veining */
+.m-marble {
+  --mat: linear-gradient(162deg, #0f2c1b 0%, #0a2114 50%, #06150d 100%);
+  --tex: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='520' height='520'%3E%3Cfilter id='a'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.008 .014' numOctaves='3' seed='6' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .02 0 0 0 0 .05 0 0 0 0 .03 0 0 0 1.6 -.5'/%3E%3C/filter%3E%3Cfilter id='v'%3E%3CfeTurbulence type='turbulence' baseFrequency='.0035 .022' numOctaves='5' seed='8' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .78 0 0 0 0 .77 0 0 0 0 .7 0 0 0 -3.2 .42'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23a)'/%3E%3Cg transform='rotate(-32 260 260)'%3E%3Crect x='-200' y='-200' width='920' height='920' filter='url(%23v)'/%3E%3C/g%3E%3C/svg%3E");
+  --tex-size: 520px 520px;
+  --tag: rgba(242, 239, 229, 0.5);
+}
+
+/* Brass tie */
 .m-brass {
-  --mat: linear-gradient(180deg, #b39462, #8e7244);
+  --mat: linear-gradient(180deg, #bb9d68, #8a6f45);
+  --grain: none;
 }
 
 /* Responsive -------------------------------------------------------------- */
@@ -573,6 +640,11 @@
 
   .sv__fig {
     display: none;
+  }
+
+  .sv__caption {
+    letter-spacing: 0.14em;
+    white-space: nowrap;
   }
 }
 
