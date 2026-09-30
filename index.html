@@ -31,6 +31,7 @@
   <link rel="stylesheet" href="assets/css/generational.css">
   <link rel="stylesheet" href="assets/css/insights.css">
   <link rel="stylesheet" href="assets/css/closing.css">
+  <link rel="stylesheet" href="assets/css/introduction.css">
 
   <script>document.documentElement.classList.add("js");</script>
   <script type="module" src="assets/js/main.js"></script>
@@ -65,7 +66,7 @@
         </ul>
       </nav>
 
-      <a class="btn btn--sm site-header__cta" href="#contact">
+      <a class="btn btn--sm site-header__cta" href="#contact" data-intro-open>
         Private Access
         <svg class="btn__arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
       </a>
@@ -86,7 +87,7 @@
       </ul>
     </nav>
     <div class="mobile-menu__footer">
-      <a class="btn" href="#contact">
+      <a class="btn" href="#contact" data-intro-open>
         Private Access
         <svg class="btn__arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
       </a>
@@ -339,7 +340,7 @@
 
     <!-- ===================== 6. FINAL CTA — PRIVATE ACCESS =====================
          Styles: assets/css/closing.css. Full-bleed closing image; referral-led access point, not a sales button.
-         PLACEHOLDER: mailto address below must be replaced with the real introductions address. -->
+         The CTA opens the Request an Introduction dialog (no public email address). -->
     <section class="access" id="contact" aria-labelledby="access-title">
       <div class="access__media" aria-hidden="true">
         <img src="assets/img/cta/private_access_a_considered_conversation-1376.webp"
@@ -353,10 +354,11 @@
           <p class="eyebrow">Private Access</p>
           <h2 class="access__title" id="access-title">Begin with a considered conversation.</h2>
           <p class="access__copy">Tailored, long-term asset management and strategic advice for a select clientele, available by introduction or invitation.</p>
-          <a class="access__link" href="mailto:introductions@parklane.example?subject=Introduction">
-            <span>By invitation only</span>
+          <p class="access__note">Engagements are considered by introduction or referral only.</p>
+          <button class="access__link" type="button" data-intro-open>
+            <span>Request an introduction</span>
             <svg class="btn__arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
-          </a>
+          </button>
         </div>
       </div>
     </section>
@@ -364,8 +366,8 @@
   </main>
 
   <!-- ===================== 7. FOOTER =====================
-       Institutional, not promotional. PLACEHOLDERS: the legal links point to #legal and the
-       email is a stand-in until the real policy pages and address exist. -->
+       Institutional, not promotional. No public email address; contact is by introduction only.
+       PLACEHOLDER: the legal links point to #legal until the real policy pages exist. -->
   <footer class="site-footer">
     <div class="container">
       <div class="site-footer__grid">
@@ -402,8 +404,10 @@
 
         <div class="site-footer__col">
           <p class="site-footer__heading">Contact</p>
-          <p class="site-footer__contact">By introduction or invitation.<br>
-            <a href="mailto:introductions@parklane.example">introductions@parklane.example</a></p>
+          <p class="site-footer__contact">Engagements are considered by introduction or referral only.</p>
+          <button class="site-footer__intro" type="button" data-intro-open>
+            Request an introduction <svg class="btn__arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
+          </button>
         </div>
       </div>
 
@@ -412,5 +416,103 @@
       </div>
     </div>
   </footer>
+  <!-- ===================== REQUEST AN INTRODUCTION =====================
+       Styles: assets/css/introduction.css · Behaviour: assets/js/components/introduction.js
+       Submissions go to Netlify Forms (form name "introduction"). The receiving address is set
+       only in the Netlify dashboard (Forms → Form notifications) and never appears in this code. -->
+  <dialog class="intro" id="introduction" aria-labelledby="intro-title" aria-describedby="intro-lead">
+    <div class="intro__panel">
+      <button class="intro__close" type="button" data-intro-close aria-label="Close">
+        <span aria-hidden="true"></span>
+      </button>
+
+      <div class="intro__body" data-intro-view="form">
+        <p class="eyebrow">Private Access</p>
+        <h2 class="intro__title" id="intro-title">Request an Introduction</h2>
+        <p class="intro__lead" id="intro-lead">Parklane Asset Management operates on a private, selective basis. Please provide the information below. Submissions are reviewed individually and do not constitute acceptance or engagement.</p>
+
+        <form class="intro__form" name="introduction" method="POST" action="/" data-netlify="true" netlify-honeypot="website" novalidate>
+          <input type="hidden" name="form-name" value="introduction">
+          <input type="hidden" name="subject" value="Request an Introduction">
+          <input type="hidden" name="Submitted" value="">
+          <p class="intro__trap" aria-hidden="true">
+            <label>Leave this field empty <input name="website" tabindex="-1" autocomplete="off"></label>
+          </p>
+
+          <div class="intro__grid">
+            <div class="field">
+              <label class="field__label" for="intro-name">Full Name</label>
+              <input class="field__input" id="intro-name" name="Full Name" type="text" autocomplete="name" required aria-describedby="intro-name-err">
+              <p class="field__error" id="intro-name-err" data-error></p>
+            </div>
+
+            <div class="field">
+              <label class="field__label" for="intro-company">Company / Organisation</label>
+              <input class="field__input" id="intro-company" name="Company / Organisation" type="text" autocomplete="organization" required aria-describedby="intro-company-err">
+              <p class="field__error" id="intro-company-err" data-error></p>
+            </div>
+
+            <div class="field">
+              <label class="field__label" for="intro-email">Email Address</label>
+              <input class="field__input" id="intro-email" name="Email" type="email" autocomplete="email" inputmode="email" required aria-describedby="intro-email-err">
+              <p class="field__error" id="intro-email-err" data-error></p>
+            </div>
+
+            <div class="field">
+              <label class="field__label" for="intro-phone">Telephone Number</label>
+              <input class="field__input" id="intro-phone" name="Telephone" type="tel" autocomplete="tel" inputmode="tel" required aria-describedby="intro-phone-hint intro-phone-err">
+              <p class="field__hint" id="intro-phone-hint">Include the country code, e.g. +44.</p>
+              <p class="field__error" id="intro-phone-err" data-error></p>
+            </div>
+
+            <div class="field field--wide">
+              <label class="field__label" for="intro-nature">Nature of Enquiry</label>
+              <div class="field__select">
+                <select class="field__input" id="intro-nature" name="Nature of Enquiry" required aria-describedby="intro-nature-err">
+                  <option value="" selected disabled>Select one</option>
+                  <option>Investment Opportunity</option>
+                  <option>Property Acquisition</option>
+                  <option>Partnership / Joint Venture</option>
+                  <option>Professional Introduction</option>
+                  <option>Private Client Enquiry</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <p class="field__error" id="intro-nature-err" data-error></p>
+            </div>
+
+            <div class="field field--wide">
+              <label class="field__label" for="intro-referrer">Introduced / Referred By</label>
+              <input class="field__input" id="intro-referrer" name="Introduced / Referred By" type="text" required aria-describedby="intro-referrer-hint intro-referrer-err">
+              <p class="field__hint" id="intro-referrer-hint">Name of the individual or organisation making the introduction.</p>
+              <p class="field__error" id="intro-referrer-err" data-error></p>
+            </div>
+
+            <div class="field field--wide">
+              <label class="field__label" for="intro-details">Brief Details</label>
+              <textarea class="field__input field__input--area" id="intro-details" name="Brief Details" rows="4" required placeholder="Please provide a concise overview of your enquiry or proposed opportunity." aria-describedby="intro-details-err"></textarea>
+              <p class="field__error" id="intro-details-err" data-error></p>
+            </div>
+          </div>
+
+          <div class="intro__actions">
+            <p class="intro__status" role="alert" data-intro-status></p>
+            <button class="intro__submit" type="submit">
+              <span data-submit-label>Submit for consideration</span>
+              <svg class="btn__arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <div class="intro__body intro__done" data-intro-view="done" hidden tabindex="-1">
+        <span class="intro__done-rule" aria-hidden="true"></span>
+        <p class="eyebrow">Request Received</p>
+        <p class="intro__done-text">Your introduction request has been received and will be considered privately.</p>
+        <button class="intro__return" type="button" data-intro-close>Return to the site</button>
+      </div>
+    </div>
+  </dialog>
+
 </body>
 </html>

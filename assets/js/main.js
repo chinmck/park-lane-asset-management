@@ -91,3 +91,10 @@ if ("IntersectionObserver" in window) {
 } else {
   components.forEach(mountComponent);
 }
+
+/* Request an Introduction dialog — present on every page */
+if (document.getElementById("introduction")) {
+  import("./components/introduction.js")
+    .then((mod) => mod.init())
+    .catch((err) => console.error("[parklane] failed to load introduction dialog", err));
+}
