@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Capabilities — Parklane Asset Management</title>
+  <meta name="description" content="Property, art and collectibles, equities and investments, and business interests — each considered for its role within the wider position.">
+  <meta name="theme-color" content="#0B0D0C">
+  <link rel="icon" type="image/png" href="assets/img/mark.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500&display=swap">
+
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/closing.css">
+  <link rel="stylesheet" href="assets/css/introduction.css">
+  <link rel="stylesheet" href="assets/css/capabilities.css">
+
+  <script>document.documentElement.classList.add("js");</script>
+  <script type="module" src="assets/js/main.js"></script>
+  <script type="module" src="assets/js/capabilities.js"></script>
+</head>
+<body class="page-capabilities">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Shared arrow glyph -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-arrow" viewBox="0 0 18 10">
+      <path d="M0 5h16.5M12.5 1l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1"/>
+    </symbol>
+  </svg>
+
+  <!-- ===================== HEADER ===================== -->
+  <header class="site-header" data-header>
+    <div class="container container--wide site-header__inner">
+      <a class="brand" href="index.html" aria-label="Parklane Asset Management — home">
+        <img class="brand__mark" src="assets/img/mark.png" srcset="assets/img/mark.png 1x, assets/img/mark-2x.png 2x" width="120" height="65" alt="">
+        <span class="brand__word" aria-hidden="true">
+          <span class="brand__name">Parklane</span>
+          <span class="brand__sub">Asset Management</span>
+        </span>
+      </a>
+
+      <nav class="nav-primary" aria-label="Primary">
+        <ul class="nav-primary__list">
+          <li><a class="nav-primary__link" href="approach.html">Approach</a></li>
+          <li><a class="nav-primary__link" href="capabilities.html" aria-current="page">Capabilities</a></li>
+          <li><a class="nav-primary__link" href="index.html#insights">Insights</a></li>
+          <li><a class="nav-primary__link" href="index.html#about">About</a></li>
+        </ul>
+      </nav>
+
+      <a class="btn btn--sm site-header__cta" href="#contact" data-intro-open>
+        Private Access
+        <svg class="btn__arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
+      </a>
+
+      <button class="menu-toggle" type="button" data-menu-toggle aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
+        <span class="menu-toggle__bars" aria-hidden="true"></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="mobile-menu" id="mobile-menu">
+    <nav aria-label="Mobile">
+      <ul class="mobile-menu__list">
+        <li><a class="mobile-menu__link" href="approach.html">Approach <span>01</span></a></li>
+        <li><a class="mobile-menu__link" href="capabilities.html" aria-current="page">Capabilities <span>02</span></a></li>
+        <li><a class="mobile-menu__link" href="index.html#insights">Insights <span>03</span></a></li>
+        <li><a class="mobile-menu__link" href="index.html#about">About <span>04</span></a></li>
+      </ul>
+    </nav>
+    <div class="mobile-menu__footer">
+      <a class="btn" href="#contact" data-intro-open>
+        Private Access
+        <svg class="btn__arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <main id="main">
+
+    <!-- ===================== HERO — typographic, with the page's own contents ===================== -->
+    <section class="cap-hero" id="top" aria-labelledby="cap-title">
+      <div class="container container--wide cap-hero__layout">
+        <div class="cap-hero__content">
+          <p class="eyebrow" data-reveal>Capabilities</p>
+          <h1 class="cap-hero__title" id="cap-title" data-reveal style="--reveal-delay: 120ms">
+            <span>Different assets.</span>
+            <em>One considered view.</em>
+          </h1>
+          <p class="cap-hero__lead" data-reveal style="--reveal-delay: 240ms">Parklane works across property, art and collectibles, equities and investments, and business interests — considering the role of each holding within the wider position.</p>
+        </div>
+        <nav class="cap-contents" aria-label="Capabilities on this page" data-reveal style="--reveal-delay: 320ms">
+          <ol>
+            <li><a class="cap-contents__link" href="#property"><span>01</span>Property<svg class="btn__arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+            <li><a class="cap-contents__link" href="#art"><span>02</span>Art &amp; Collectibles<svg class="btn__arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+            <li><a class="cap-contents__link" href="#equities"><span>03</span>Equities &amp; Investments<svg class="btn__arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+            <li><a class="cap-contents__link" href="#business"><span>04</span>Business Interests<svg class="btn__arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+          </ol>
+        </nav>
+      </div>
+    </section>
+
+    <!-- ===================== 01 — PROPERTY ===================== -->
+    <section class="cap-section cap-ivory" id="property" aria-labelledby="cap-property-title">
+      <div class="container cap-section__layout">
+        <div class="cap-section__visual" data-reveal>
+          <figure class="cap-visual cap-visual--property" aria-hidden="true">
+            <img src="assets/img/visualizer/property.webp"
+                 srcset="assets/img/visualizer/property.webp 1x, assets/img/visualizer/property@2x.webp 2x"
+                 loading="lazy" decoding="async" alt="" data-drift>
+          </figure>
+        </div>
+        <div class="cap-section__text">
+          <p class="cap-index" data-reveal><span class="cap-index__n">01</span><span class="cap-index__label">Property</span></p>
+          <h2 class="cap-heading" id="cap-property-title" data-reveal style="--reveal-delay: 100ms">Buildings held <em>with a defined purpose.</em></h2>
+          <p class="cap-lead" data-reveal style="--reveal-delay: 180ms">From a single residence to an established portfolio, each property is assessed for what it contributes today and what it could become.</p>
+          <ul class="cap-scope" aria-label="Property — scope" data-reveal style="--reveal-delay: 240ms">
+              <li class="cap-scope__row">
+                <span class="cap-scope__term">Acquisition</span>
+                <span class="cap-scope__text">Identifying, assessing and securing property that fits the wider position.</span>
+              </li>
+              <li class="cap-scope__row">
+                <span class="cap-scope__term">Repositioning</span>
+                <span class="cap-scope__text">Changing use, tenancy or specification to change what an asset can deliver.</span>
+              </li>
+              <li class="cap-scope__row">
+                <span class="cap-scope__term">Development</span>
+                <span class="cap-scope__text">Coordinating planning, design and delivery where the value lies in what can be built.</span>
+              </li>
+              <li class="cap-scope__row">
+                <span class="cap-scope__term">Financing</span>
+                <span class="cap-scope__text">Structuring debt and equity so each property supports, rather than strains, the position.</span>
+              </li>
+              <li class="cap-scope__row">
+                <span class="cap-scope__term">Income</span>
+                <span class="cap-scope__text">Letting, tenancy and yield managed as a dependable contribution.</span>
+              </li>
+              <li class="cap-scope__row">
+                <span class="cap-scope__term">Management</span>
+                <span class="cap-scope__text">Active oversight of operations, condition and performance.</span>
+              </li>
+              <li class="cap-scope__row">
+                <span class="cap-scope__term">Realisation</span>
+                <span class="cap-scope__text">Disposal considered on timing, terms and its effect on everything else held.</span>
+              </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <!-- ===================== 02 — ART &AMP; COLLECTIBLES ===================== -->
+    <section class="cap-section cap-dark cap-section--flip" id="art" aria-labelledby="cap-art-title">
+      <div class="container cap-section__layout">
+        <div class="cap-section__visual" data-reveal>
+          <figure class="cap-visual cap-visual--art" aria-hidden="true">
+            <div class="cap-gallery"><span class="cap-gallery__light"></span></div>
+            <img src="assets/img/visualizer/art.webp"
+                 srcset="assets/img/visualizer/art.webp 1x, assets/img/visualizer/art@2x.webp 2x"
+                 loading="lazy" decoding="async" alt="" data-drift>
+          </figure>
+        </div>
+        <div class="cap-section__text">
+          <p class="cap-index" data-reveal><span class="cap-index__n">02</span><span class="cap-index__label">Art &amp; Collectibles</span></p>
+          <h2 class="cap-heading" id="cap-art-title" data-reveal style="--reveal-delay: 100ms">Works held <em>with care and intent.</em></h2>
+          <p class="cap-lead" data-reveal style="--reveal-delay: 180ms">Significant works and collections carry their own obligations — to protect, to document and, in time, to pass on or release.</p>
+          <ul class="cap-scope" aria-label="Art and Collectibles — scope" data-reveal style="--reveal-delay: 240ms">
+              <li class="cap-scope__row">
+                <span class="cap-scope__term">Acquisition</span>
+                <span class="cap-scope__text">Considered additions, assessed for significance, condition and place within the collection.</span>
+              </li>
+              <li class="cap-scope__row">
+                <span class="cap-scope__term">Stewardship</span>
+                <span class="cap-scope__text">Storage, conservation, loans and display arranged with the long view in mind.</span>
+              </li>
+              <li class="cap-scope__row">
+                <span class="cap-scope__term">Provenance</span>
+                <span class="cap-scope__text">Records of ownership, authenticity and history kept complete and current.</span>
+              </li>
+              <li class="cap-scope__row">
+                <span class="cap-scope__term">Protection</span>
+                <span class="cap-scope__text">Insurance, valuation and security reviewed as the collection and its value change.</span>
+              </li>
+              <li class="cap-scope__row">
+                <span class="cap-scope__term">Disposal</span>
+                <span class="cap-scope__text">Sale or consignment approached discreetly, at the right moment and in the right venue.</span>
+              </li>
+              <li class="cap-scope__row">
+                <span class="cap-scope__term">Succession</span>
+                <span class="cap-scope__text">Planning how works pass between generations without dispute or loss of value.</span>
+              </li>
+              <li class="cap-scope__row">
+                <span class="cap-scope__term">Legacy</span>
+                <span class="cap-scope__text">Gifts, bequests and long-term arrangements that reflect what a collection is meant to stand for.</span>
+              </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <!-- ===================== 03 — EQUITIES &AMP; INVESTMENTS ===================== -->
+    <section class="cap-section cap-ivory" id="equities" aria-labelledby="cap-equities-title">
+      <div class="container cap-section__layout">
+        <div class="cap-section__visual" data-reveal>
+          <figure class="cap-visual cap-visual--equities" aria-hidden="true">
+            <div class="cap-stone">
+              <span class="cap-pane cap-pane--rear"><svg viewBox="0 0 320 400" preserveAspectRatio="xMidYMid meet" focusable="false"><path d="M40 20V380M80 20V380M120 20V380M160 20V380M200 20V380M240 20V380M280 20V380" stroke="#26241f" stroke-opacity="0.08" stroke-width="0.4" fill="none"/><path d="M20 40H300M20 80H300M20 120H300M20 160H300M20 200H300M20 240H300M20 280H300M20 320H300M20 360H300" stroke="#26241f" stroke-opacity="0.08" stroke-width="0.4" fill="none"/><path d="M160.0 90.0A110 110 0 0 1 244.3 270.7" stroke="#26241f" stroke-opacity="0.6" stroke-width="1.1" fill="none"/><path d="M236.4 279.1A110 110 0 0 1 64.7 255.0" stroke="#26241f" stroke-opacity="0.45" stroke-width="1.1" fill="none"/><path d="M59.5 244.7A110 110 0 0 1 83.6 120.9" stroke="#26241f" stroke-opacity="0.35" stroke-width="1.1" fill="none"/><path d="M92.3 113.3A110 110 0 0 1 152.3 90.3" stroke="#A98A52" stroke-opacity="0.95" stroke-width="1.3" fill="none"/><path d="M160.0 120.0A80 80 0 1 1 120.0 269.3" stroke="#26241f" stroke-opacity="0.3" stroke-width="0.6" fill="none"/><path d="M113.0 264.7A80 80 0 0 1 154.4 120.2" stroke="#26241f" stroke-opacity="0.2" stroke-width="0.6" fill="none"/><circle cx="160" cy="200" r="3" fill="#A98A52"/><path d="M160 70V92M160 308V330M30 200H52M268 200H290" stroke="#26241f" stroke-opacity="0.3" stroke-width="0.5" fill="none"/><text x="160" y="356" fill="#26241f" fill-opacity="0.5" font-family="Inter, sans-serif" font-size="7" letter-spacing=".22em" text-anchor="middle">ALLOCATION</text></svg></span>
+              <span class="cap-pane cap-pane--front"><svg viewBox="0 0 360 360" preserveAspectRatio="xMidYMid meet" focusable="false"><path d="M30 30V330M60 30V330M90 30V330M120 30V330M150 30V330M180 30V330M210 30V330M240 30V330M270 30V330M300 30V330M330 30V330" stroke="#26241f" stroke-opacity="0.07" stroke-width="0.4" fill="none"/><path d="M30 30H330M30 60H330M30 90H330M30 120H330M30 150H330M30 180H330M30 210H330M30 240H330M30 270H330M30 300H330M30 330H330" stroke="#26241f" stroke-opacity="0.07" stroke-width="0.4" fill="none"/><path d="M30 330H330M30 30V330" stroke="#26241f" stroke-opacity="0.4" stroke-width="0.6" fill="none"/><path d="M30 270H90V250H150V262H210V214H270V190H330" stroke="#26241f" stroke-opacity="0.62" stroke-width="0.9" fill="none"/><path d="M30 290H90V282H150V286H210V268H270V262H330" stroke="#26241f" stroke-opacity="0.3" stroke-width="0.6" fill="none" stroke-dasharray="2 3"/><path d="M210 214V330M270 190V330" stroke="#26241f" stroke-opacity="0.12" stroke-width="0.4" fill="none"/><path d="M270 190h60" stroke="#A98A52" stroke-opacity="0.95" stroke-width="1.2" fill="none"/><circle cx="270" cy="190" r="2.6" fill="#A98A52"/><path d="M30 336v5M60 336v5M90 336v5M120 336v5M150 336v5M180 336v5M210 336v5M240 336v5M270 336v5M300 336v5M330 336v5" stroke="#26241f" stroke-opacity="0.3" stroke-width="0.4" fill="none"/><text x="30" y="22" fill="#26241f" fill-opacity="0.45" font-family="Inter, sans-serif" font-size="6.5" letter-spacing=".22em" text-anchor="start">EXPOSURE · LIQUIDITY · HORIZON</text></svg></span>
+            </div>
+          </figure>
+        </div>
+        <div class="cap-section__text">
+          <p class="cap-index" data-reveal><span class="cap-index__n">03</span><span class="cap-index__label">Equities &amp; Investments</span></p>
+          <h2 class="cap-heading" id="cap-equities-title" data-reveal style="--reveal-delay: 100ms">Liquidity, <em>held with discipline.</em></h2>
+          <p class="cap-lead" data-reveal style="--reveal-delay: 180ms">Listed and private holdings are structured around the role they play — often the liquid layer that allows the rest of the position to hold its course.</p>
+          <ul class="cap-scope" aria-label="Equities and Investments — scope" data-reveal style="--reveal-delay: 240ms">
+              <li class="cap-scope__row">
+                <span class="cap-scope__term">Allocation</span>
+                <span class="cap-scope__text">How capital is divided across holdings, markets and horizons.</span>
+              </li>
+              <li class="cap-scope__row">
+                <span class="cap-scope__term">Exposure</span>
+                <span class="cap-scope__text">Concentration understood by sector, geography, currency and underlying risk.</span>
+              </li>
+              <li class="cap-scope__row">
+                <span class="cap-scope__term">Liquidity</span>
+                <span class="cap-scope__text">Capital available when obligations or opportunities require it.</span>
+              </li>
+              <li class="cap-scope__row">
+                <span class="cap-scope__term">Diversification</span>
+                <span class="cap-scope__text">Holdings balanced so that no single outcome determines the whole.</span>
+              </li>
+              <li class="cap-scope__row">
+                <span class="cap-scope__term">Risk</span>
+                <span class="cap-scope__text">Volatility, correlation and downside monitored against the wider objectives.</span>
+              </li>
+              <li class="cap-scope__row">
+                <span class="cap-scope__term">Opportunity</span>
+                <span class="cap-scope__text">Recognising when conditions justify a change of course.</span>
+              </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <!-- ===================== 04 — BUSINESS INTERESTS ===================== -->
+    <section class="cap-section cap-dark cap-section--flip" id="business" aria-labelledby="cap-business-title">
+      <div class="container cap-section__layout">
+        <div class="cap-section__visual" data-reveal>
+          <figure class="cap-visual cap-visual--business" aria-hidden="true">
+            <img src="assets/img/visualizer/business.webp"
+                 srcset="assets/img/visualizer/business.webp 1x, assets/img/visualizer/business@2x.webp 2x"
+                 loading="lazy" decoding="async" alt="" data-drift>
+          </figure>
+        </div>
+        <div class="cap-section__text">
+          <p class="cap-index" data-reveal><span class="cap-index__n">04</span><span class="cap-index__label">Business Interests</span></p>
+          <h2 class="cap-heading" id="cap-business-title" data-reveal style="--reveal-delay: 100ms">Enterprise, <em>considered within the whole.</em></h2>
+          <p class="cap-lead" data-reveal style="--reveal-delay: 180ms">Operating companies and shareholdings are often the most significant — and least liquid — part of a position. Decisions about them rarely stay contained.</p>
+          <ul class="cap-scope" aria-label="Business Interests — scope" data-reveal style="--reveal-delay: 240ms">
+              <li class="cap-scope__row">
+                <span class="cap-scope__term">Ownership</span>
+                <span class="cap-scope__text">Clarifying who holds what, and how control and economics are arranged.</span>
+              </li>
+              <li class="cap-scope__row">
+                <span class="cap-scope__term">Growth</span>
+                <span class="cap-scope__text">Supporting expansion in a way the wider position can sustain.</span>
+              </li>
+              <li class="cap-scope__row">
+                <span class="cap-scope__term">Capital structure</span>
+                <span class="cap-scope__text">Balancing debt, equity and retained earnings against risk and flexibility.</span>
+              </li>
+              <li class="cap-scope__row">
+                <span class="cap-scope__term">Partnerships</span>
+                <span class="cap-scope__text">Joint ventures and co-investment arranged with aligned interests and clear terms.</span>
+              </li>
+              <li class="cap-scope__row">
+                <span class="cap-scope__term">Restructuring</span>
+                <span class="cap-scope__text">Reorganising holdings, entities or obligations as circumstances change.</span>
+              </li>
+              <li class="cap-scope__row">
+                <span class="cap-scope__term">Succession</span>
+                <span class="cap-scope__text">Preparing leadership and ownership to pass on without disruption.</span>
+              </li>
+              <li class="cap-scope__row">
+                <span class="cap-scope__term">Liquidity events &amp; exits</span>
+                <span class="cap-scope__text">Sales, recapitalisations and exits planned for their effect on everything else held.</span>
+              </li>
+          </ul>
+          <figure class="cap-etched" data-reveal>
+            <svg viewBox="0 0 560 400" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Illustrative ownership structure: a holding company above operating, property and investment companies, with a subsidiary, a joint venture and a planned liquidity event"><path d="M40 30H520" stroke="#F2EFE5" stroke-opacity="0.08" stroke-width="0.5" fill="none"/><path d="M40 370H520" stroke="#F2EFE5" stroke-opacity="0.08" stroke-width="0.5" fill="none"/><rect x="230" y="50" width="100" height="36" stroke="#A98A52" stroke-width=".8" fill="none"/><text x="280" y="72" fill="#A98A52" fill-opacity="0.95" font-family="Inter, sans-serif" font-size="7.5" letter-spacing=".26em" text-anchor="middle">HOLDING</text><path d="M280 86V130M110 130H450" stroke="#F2EFE5" stroke-opacity="0.4" stroke-width="0.7" fill="none"/><path d="M110 130V160" stroke="#F2EFE5" stroke-opacity="0.4" stroke-width="0.7" fill="none"/><rect x="48" y="160" width="124" height="34" stroke="#F2EFE5" stroke-opacity=".55" stroke-width=".7" fill="none"/><text x="110" y="181" fill="#F2EFE5" fill-opacity="0.75" font-family="Inter, sans-serif" font-size="7" letter-spacing=".2em" text-anchor="middle">OPERATING CO.</text><path d="M280 130V160" stroke="#F2EFE5" stroke-opacity="0.4" stroke-width="0.7" fill="none"/><rect x="218" y="160" width="124" height="34" stroke="#F2EFE5" stroke-opacity=".55" stroke-width=".7" fill="none"/><text x="280" y="181" fill="#F2EFE5" fill-opacity="0.75" font-family="Inter, sans-serif" font-size="7" letter-spacing=".2em" text-anchor="middle">PROPERTY CO.</text><path d="M450 130V160" stroke="#F2EFE5" stroke-opacity="0.4" stroke-width="0.7" fill="none"/><rect x="388" y="160" width="124" height="34" stroke="#F2EFE5" stroke-opacity=".55" stroke-width=".7" fill="none"/><text x="450" y="181" fill="#F2EFE5" fill-opacity="0.75" font-family="Inter, sans-serif" font-size="7" letter-spacing=".2em" text-anchor="middle">INVESTMENTS</text><text x="290" y="118" fill="#F2EFE5" fill-opacity="0.4" font-family="Inter, sans-serif" font-size="6.5" letter-spacing=".1em" text-anchor="start">100%</text><path d="M110 194V236M60 236H160M60 236V262M160 236V262" stroke="#F2EFE5" stroke-opacity="0.3" stroke-width="0.6" fill="none"/><rect x="22" y="262" width="76" height="28" stroke="#F2EFE5" stroke-opacity=".35" stroke-width=".6" fill="none"/><text x="60" y="280" fill="#F2EFE5" fill-opacity="0.5" font-family="Inter, sans-serif" font-size="6" letter-spacing=".16em" text-anchor="middle">SUBSIDIARY</text><rect x="122" y="262" width="76" height="28" stroke="#F2EFE5" stroke-opacity=".35" stroke-width=".6" fill="none" stroke-dasharray="3 2"/><text x="160" y="280" fill="#F2EFE5" fill-opacity="0.5" font-family="Inter, sans-serif" font-size="6" letter-spacing=".16em" text-anchor="middle">JV · 50%</text><path d="M450 194V300" stroke="#F2EFE5" stroke-opacity="0.2" stroke-width="0.5" fill="none" stroke-dasharray="1 4"/><text x="450" y="318" fill="#A98A52" fill-opacity="0.85" font-family="Inter, sans-serif" font-size="6.5" letter-spacing=".2em" text-anchor="middle">LIQUIDITY EVENT</text><path d="M436 300h28" stroke="#A98A52" stroke-opacity="0.8" stroke-width="0.8" fill="none"/><path d="M20 24h8M24 20v8" stroke="#F2EFE5" stroke-opacity="0.2" stroke-width="0.4" fill="none"/><path d="M532 24h8M536 20v8" stroke="#F2EFE5" stroke-opacity="0.2" stroke-width="0.4" fill="none"/><path d="M20 376h8M24 372v8" stroke="#F2EFE5" stroke-opacity="0.2" stroke-width="0.4" fill="none"/><path d="M532 376h8M536 372v8" stroke="#F2EFE5" stroke-opacity="0.2" stroke-width="0.4" fill="none"/></svg>
+            <figcaption>Illustrative ownership structure</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== ONE POSITION — the four materials under one beam ===================== -->
+    <section class="cap-section cap-ivory cap-synthesis" id="one-position" aria-labelledby="cap-one-title">
+      <div class="container">
+        <div class="cap-synthesis__head">
+          <p class="eyebrow" data-reveal>One Position</p>
+          <h2 class="cap-heading cap-heading--xl" id="cap-one-title" data-reveal style="--reveal-delay: 100ms">Held differently. <em>Considered together.</em></h2>
+          <p class="cap-lead" data-reveal style="--reveal-delay: 180ms">Property, collections, portfolios and enterprises are held differently — with their own horizons, liquidity and obligations — but they answer to the same objectives.</p>
+          <p class="cap-lead cap-lead--strong" data-reveal style="--reveal-delay: 240ms">Parklane considers how each class affects the others before acting on any one of them, rather than managing each in isolation.</p>
+        </div>
+
+        <figure class="cap-elev" data-reveal style="--reveal-delay: 160ms">
+          <div class="cap-elev__beam" aria-hidden="true"><span>One position</span></div>
+          <ul class="cap-elev__cols" aria-label="The four asset classes, held under one position">
+            <li class="cap-elev__col cap-elev__col--limestone"><span class="cap-elev__mat"></span><span class="cap-elev__label">Property</span></li>
+            <li class="cap-elev__col cap-elev__col--bronze"><span class="cap-elev__mat"></span><span class="cap-elev__label">Art &amp; Collectibles</span></li>
+            <li class="cap-elev__col cap-elev__col--glass"><span class="cap-elev__mat"></span><span class="cap-elev__label">Equities &amp; Investments</span></li>
+            <li class="cap-elev__col cap-elev__col--marble"><span class="cap-elev__mat"></span><span class="cap-elev__label">Business Interests</span></li>
+          </ul>
+          <div class="cap-elev__ground" aria-hidden="true"></div>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ===================== PRIVATE ACCESS ===================== -->
+    <section class="cap-section cap-access" id="contact" aria-labelledby="cap-access-title">
+      <div class="container cap-access__inner" data-reveal>
+        <span class="cap-access__rule" aria-hidden="true"></span>
+        <p class="eyebrow">Private Access</p>
+        <h2 class="cap-access__title" id="cap-access-title">Engagements are considered by introduction or referral only.</h2>
+        <button class="access__link" type="button" data-intro-open>
+          <span>Request an introduction</span>
+          <svg class="btn__arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
+        </button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===================== 7. FOOTER =====================
+       Institutional, not promotional. No public email address; contact is by introduction only.
+       PLACEHOLDER: the legal links point to #legal until the real policy pages exist. -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="site-footer__grid">
+        <div class="site-footer__brand">
+          <a class="brand" href="#top" aria-label="Parklane Asset Management — back to top">
+            <img class="brand__mark" src="assets/img/mark.png" srcset="assets/img/mark.png 1x, assets/img/mark-2x.png 2x" width="120" height="65" alt="" loading="lazy">
+            <span class="brand__word" aria-hidden="true">
+              <span class="brand__name">Parklane</span>
+              <span class="brand__sub">Asset Management</span>
+            </span>
+          </a>
+          <p class="site-footer__tagline">Long-term thinking for a more certain tomorrow.</p>
+        </div>
+
+        <nav class="site-footer__col" aria-label="Footer">
+          <p class="site-footer__heading">Parklane</p>
+          <ul class="site-footer__list">
+            <li><a href="approach.html">Approach</a></li>
+            <li><a href="capabilities.html">Capabilities</a></li>
+            <li><a href="index.html#insights">Insights</a></li>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+
+        <nav class="site-footer__col" id="legal" aria-label="Legal">
+          <p class="site-footer__heading">Legal</p>
+          <ul class="site-footer__list">
+            <li><a href="#legal">Privacy Policy</a></li>
+            <li><a href="#legal">Terms of Use</a></li>
+            <li><a href="#legal">Disclosures</a></li>
+          </ul>
+        </nav>
+
+        <div class="site-footer__col">
+          <p class="site-footer__heading">Contact</p>
+          <p class="site-footer__contact">Engagements are considered by introduction or referral only.</p>
+          <button class="site-footer__intro" type="button" data-intro-open>
+            Request an introduction <svg class="btn__arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="site-footer__base">
+        <p>© <span data-year>2026</span> Parklane Asset Management. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+  <!-- ===================== REQUEST AN INTRODUCTION =====================
+       Styles: assets/css/introduction.css · Behaviour: assets/js/components/introduction.js
+       Submissions go to Netlify Forms (form name "introduction"). The receiving address is set
+       only in the Netlify dashboard (Forms → Form notifications) and never appears in this code. -->
+  <dialog class="intro" id="introduction" aria-labelledby="intro-title" aria-describedby="intro-lead">
+    <div class="intro__panel">
+      <button class="intro__close" type="button" data-intro-close aria-label="Close">
+        <span aria-hidden="true"></span>
+      </button>
+
+      <div class="intro__body" data-intro-view="form">
+        <p class="eyebrow">Private Access</p>
+        <h2 class="intro__title" id="intro-title">Request an Introduction</h2>
+        <p class="intro__lead" id="intro-lead">Parklane Asset Management operates on a private, selective basis. Please provide the information below. Submissions are reviewed individually and do not constitute acceptance or engagement.</p>
+
+        <form class="intro__form" name="introduction" method="POST" action="/" data-netlify="true" netlify-honeypot="website" novalidate>
+          <input type="hidden" name="form-name" value="introduction">
+          <input type="hidden" name="subject" value="Request an Introduction">
+          <input type="hidden" name="Submitted" value="">
+          <p class="intro__trap" aria-hidden="true">
+            <label>Leave this field empty <input name="website" tabindex="-1" autocomplete="off"></label>
+          </p>
+
+          <div class="intro__grid">
+            <div class="field">
+              <label class="field__label" for="intro-name">Full Name</label>
+              <input class="field__input" id="intro-name" name="Full Name" type="text" autocomplete="name" required aria-describedby="intro-name-err">
+              <p class="field__error" id="intro-name-err" data-error></p>
+            </div>
+
+            <div class="field">
+              <label class="field__label" for="intro-company">Company / Organisation</label>
+              <input class="field__input" id="intro-company" name="Company / Organisation" type="text" autocomplete="organization" required aria-describedby="intro-company-err">
+              <p class="field__error" id="intro-company-err" data-error></p>
+            </div>
+
+            <div class="field">
+              <label class="field__label" for="intro-email">Email Address</label>
+              <input class="field__input" id="intro-email" name="Email" type="email" autocomplete="email" inputmode="email" required aria-describedby="intro-email-err">
+              <p class="field__error" id="intro-email-err" data-error></p>
+            </div>
+
+            <div class="field">
+              <label class="field__label" for="intro-phone">Telephone Number</label>
+              <input class="field__input" id="intro-phone" name="Telephone" type="tel" autocomplete="tel" inputmode="tel" required aria-describedby="intro-phone-hint intro-phone-err">
+              <p class="field__hint" id="intro-phone-hint">Include the country code, e.g. +44.</p>
+              <p class="field__error" id="intro-phone-err" data-error></p>
+            </div>
+
+            <div class="field field--wide">
+              <label class="field__label" for="intro-nature">Nature of Enquiry</label>
+              <div class="field__select">
+                <select class="field__input" id="intro-nature" name="Nature of Enquiry" required aria-describedby="intro-nature-err">
+                  <option value="" selected disabled>Select one</option>
+                  <option>Investment Opportunity</option>
+                  <option>Property Acquisition</option>
+                  <option>Partnership / Joint Venture</option>
+                  <option>Professional Introduction</option>
+                  <option>Private Client Enquiry</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <p class="field__error" id="intro-nature-err" data-error></p>
+            </div>
+
+            <div class="field field--wide">
+              <label class="field__label" for="intro-referrer">Introduced / Referred By</label>
+              <input class="field__input" id="intro-referrer" name="Introduced / Referred By" type="text" required aria-describedby="intro-referrer-hint intro-referrer-err">
+              <p class="field__hint" id="intro-referrer-hint">Name of the individual or organisation making the introduction.</p>
+              <p class="field__error" id="intro-referrer-err" data-error></p>
+            </div>
+
+            <div class="field field--wide">
+              <label class="field__label" for="intro-details">Brief Details</label>
+              <textarea class="field__input field__input--area" id="intro-details" name="Brief Details" rows="4" required placeholder="Please provide a concise overview of your enquiry or proposed opportunity." aria-describedby="intro-details-err"></textarea>
+              <p class="field__error" id="intro-details-err" data-error></p>
+            </div>
+          </div>
+
+          <div class="intro__actions">
+            <p class="intro__status" role="alert" data-intro-status></p>
+            <button class="intro__submit" type="submit">
+              <span data-submit-label>Submit for consideration</span>
+              <svg class="btn__arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <div class="intro__body intro__done" data-intro-view="done" hidden tabindex="-1">
+        <span class="intro__done-rule" aria-hidden="true"></span>
+        <p class="eyebrow">Request Received</p>
+        <p class="intro__done-text">Your introduction request has been received and will be considered privately.</p>
+        <button class="intro__return" type="button" data-intro-close>Return to the site</button>
+      </div>
+    </div>
+  </dialog>
+
+</body>
+</html>

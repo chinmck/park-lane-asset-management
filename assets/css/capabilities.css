@@ -1,0 +1,574 @@
+/* ==========================================================================
+   Parklane — Capabilities page
+   Rhythm: dark hero → ivory (Property) → dark (Art) → ivory (Equities)
+   → dark (Business) → ivory (One Position) → dark (Private Access).
+   Each capability: one large visual + editorial text and a ruled scope list.
+   ========================================================================== */
+
+.page-capabilities {
+  --cap-dark: var(--c-vault);
+  --cap-dark-2: #0b100d;
+  --cap-hair-dark: rgba(242, 239, 229, 0.12);
+  --cap-hair-light: rgba(23, 24, 22, 0.12);
+  --cap-muted-dark: #a8a397;
+  background: var(--c-obsidian);
+}
+
+/* Section shell ---------------------------------------------------------------- */
+
+.cap-section {
+  position: relative;
+  padding-block: var(--section-y);
+}
+
+.cap-dark  { background: var(--cap-dark); color: var(--c-ivory); }
+.cap-ivory { background: var(--c-ivory); color: var(--c-ink); }
+
+.cap-ivory .eyebrow { color: var(--c-bronze); }
+
+/* Light ↔ dark meet on a brass hairline (as on the Approach page) */
+.cap-section + .cap-section::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(169, 138, 82, 0.45) 30%, rgba(169, 138, 82, 0.45) 70%, transparent 100%);
+  pointer-events: none;
+}
+
+.cap-section__layout {
+  display: grid;
+  grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+  gap: clamp(3rem, 1rem + 6vw, 8rem);
+  align-items: start;
+}
+
+.cap-section--flip .cap-section__visual { order: 2; }
+.cap-section--flip .cap-section__text   { order: 1; }
+
+/* Visual stays in view while the scope list scrolls past */
+.cap-section__visual {
+  position: sticky;
+  top: calc(var(--header-h) + var(--s-6));
+}
+
+/* Type -------------------------------------------------------------------------- */
+
+.cap-index {
+  display: flex;
+  align-items: baseline;
+  gap: var(--s-4);
+  padding-bottom: var(--s-4);
+  border-bottom: 1px solid rgba(169, 138, 82, 0.5);
+}
+
+.cap-index__n {
+  font-family: var(--font-serif);
+  font-size: clamp(3rem, 2rem + 3vw, 5rem);
+  line-height: 0.8;
+  color: rgba(169, 138, 82, 0.55);
+}
+
+.cap-index__label {
+  font-size: var(--fs-label);
+  font-weight: 500;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--c-brass);
+}
+
+.cap-ivory .cap-index__label { color: var(--c-bronze); }
+
+.cap-heading {
+  margin-top: var(--s-6);
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: clamp(2.25rem, 1.4rem + 2.6vw, 3.75rem);
+  line-height: 1.08;
+  letter-spacing: var(--tracking-heading);
+  text-wrap: balance;
+}
+
+.cap-heading em {
+  font-style: italic;
+  color: var(--c-limestone);
+}
+
+.cap-ivory .cap-heading em { color: #6e665a; }
+
+.cap-heading--xl {
+  font-size: clamp(2.5rem, 1.3rem + 3.8vw, 5rem);
+  line-height: 1.02;
+}
+
+.cap-lead {
+  margin-top: var(--s-5);
+  max-width: 32rem;
+  font-size: var(--fs-lead);
+  line-height: 1.7;
+  color: var(--cap-muted-dark);
+}
+
+.cap-ivory .cap-lead { color: var(--c-ink-muted); }
+
+.cap-lead--strong { color: var(--c-ink); }
+
+/* Scope list: ruled rows, term + one line */
+.cap-scope {
+  margin-top: var(--s-7);
+  border-top: 1px solid var(--cap-hair-dark);
+}
+
+.cap-ivory .cap-scope { border-top-color: var(--cap-hair-light); }
+
+.cap-scope__row {
+  display: grid;
+  grid-template-columns: minmax(8.5rem, 2fr) minmax(0, 5fr);
+  gap: var(--s-5);
+  padding-block: 1.125rem;
+  border-bottom: 1px solid var(--cap-hair-dark);
+}
+
+.cap-ivory .cap-scope__row { border-bottom-color: var(--cap-hair-light); }
+
+.cap-scope__term {
+  font-family: var(--font-serif);
+  font-size: 1.3125rem;
+  line-height: 1.25;
+}
+
+.cap-scope__text {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--cap-muted-dark);
+}
+
+.cap-ivory .cap-scope__text { color: var(--c-ink-muted); }
+
+/* HERO ============================================================================ */
+
+.cap-hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: min(92svh, 56rem);
+  padding-block: calc(var(--header-h) + var(--s-8)) var(--s-9);
+  overflow: hidden;
+  color: var(--c-ivory);
+  background:
+    /* a faint drafting grid, strongest behind the contents */
+    linear-gradient(rgba(242, 239, 229, 0.028) 1px, transparent 1px) 0 0 / 64px 64px,
+    linear-gradient(90deg, rgba(242, 239, 229, 0.028) 1px, transparent 1px) 0 0 / 64px 64px,
+    radial-gradient(60% 70% at 75% 50%, rgba(6, 74, 18, 0.1), rgba(6, 74, 18, 0) 70%),
+    var(--c-obsidian);
+}
+
+.cap-hero__layout {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
+  gap: clamp(3rem, 1rem + 5vw, 7rem);
+  align-items: end;
+  width: 100%;
+}
+
+.cap-hero__title {
+  margin-top: var(--s-6);
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: var(--fs-display);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--tracking-heading);
+}
+
+.cap-hero__title span,
+.cap-hero__title em { display: block; }
+
+.cap-hero__title em {
+  font-style: italic;
+  color: var(--c-limestone);
+}
+
+.cap-hero__lead {
+  margin-top: var(--s-7);
+  max-width: 34rem;
+  font-size: var(--fs-lead);
+  line-height: 1.65;
+  color: var(--cap-muted-dark);
+}
+
+/* Contents: the four capabilities as an index */
+.cap-contents ol {
+  border-top: 1px solid rgba(169, 138, 82, 0.5);
+}
+
+.cap-contents__link {
+  display: grid;
+  grid-template-columns: 2.5rem 1fr auto;
+  align-items: center;
+  padding-block: 1.125rem;
+  border-bottom: 1px solid var(--cap-hair-dark);
+  font-size: 0.9375rem;
+  letter-spacing: 0.02em;
+  color: var(--c-ivory);
+}
+
+.cap-contents__link span {
+  font-family: var(--font-serif);
+  color: var(--c-brass);
+}
+
+.cap-contents__link .btn__arrow {
+  color: var(--c-brass);
+  opacity: 0.6;
+  transition: transform var(--dur) var(--ease), opacity var(--dur) var(--ease);
+}
+
+.cap-contents__link:hover .btn__arrow,
+.cap-contents__link:focus-visible .btn__arrow {
+  opacity: 1;
+  transform: translateX(4px);
+}
+
+/* VISUALS ========================================================================= */
+
+.cap-visual {
+  position: relative;
+  margin: 0;
+  display: grid;
+  place-items: end center;
+  aspect-ratio: 5 / 6;
+  overflow: hidden;
+}
+
+.cap-visual img {
+  position: relative;
+  z-index: 1;
+  width: auto;
+  height: 88%;
+  max-width: 88%;
+  object-fit: contain;
+  object-position: 50% 100%;
+  will-change: transform;
+}
+
+/* 01 Property — the limestone building on a stone plinth, in raking light */
+.cap-visual--property {
+  background:
+    radial-gradient(70% 60% at 30% 20%, rgba(255, 252, 244, 0.6), rgba(255, 252, 244, 0) 70%),
+    linear-gradient(180deg, #e4ddcf 0%, #d6cdbb 100%);
+}
+
+.cap-visual--property img {
+  margin-bottom: 9%;
+  filter: drop-shadow(26px 30px 30px rgba(52, 42, 28, 0.35));
+}
+
+
+/* 02 Art — a dark gallery bay with a single overhead light */
+.cap-visual--art {
+  background: #0d110e;
+  box-shadow: inset 0 0 0 1px var(--cap-hair-dark);
+}
+
+.cap-gallery {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, 0) 78%, rgba(242, 239, 229, 0.04) 78%, rgba(242, 239, 229, 0.02) 100%);
+}
+
+.cap-gallery__light {
+  position: absolute;
+  left: 50%;
+  top: -10%;
+  width: 90%;
+  height: 100%;
+  transform: translateX(-50%);
+  background: radial-gradient(45% 55% at 50% 30%, rgba(242, 226, 190, 0.2), rgba(242, 226, 190, 0) 70%);
+}
+
+.cap-visual--art img {
+  height: 74%;
+  margin-bottom: 18%;
+  filter: drop-shadow(0 30px 40px rgba(0, 0, 0, 0.6));
+}
+
+/* 03 Equities — two smoked-glass planes over limestone */
+.cap-visual--equities {
+  place-items: stretch;
+}
+
+.cap-stone {
+  position: relative;
+  background:
+    radial-gradient(110% 80% at 20% 10%, rgba(255, 252, 244, 0.5) 0%, rgba(255, 252, 244, 0) 60%),
+    linear-gradient(90deg, transparent 61%, rgba(120, 106, 84, 0.2) 61%, rgba(120, 106, 84, 0.2) calc(61% + 1px), transparent calc(61% + 1px)),
+    linear-gradient(180deg, #ddd5c5 0%, #cbc2af 100%);
+}
+
+.cap-pane {
+  --depth: 18px;
+  position: absolute;
+  background:
+    linear-gradient(128deg, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0) 32%),
+    rgba(92, 98, 88, 0.05);
+  -webkit-backdrop-filter: blur(1.8px) saturate(0.9);
+  backdrop-filter: blur(1.8px) saturate(0.9);
+  box-shadow:
+    inset 1px 1px 0 rgba(255, 255, 255, 0.9),
+    inset -1px -1px 0 rgba(96, 104, 92, 0.35),
+    2px 3px 0 rgba(150, 158, 140, 0.34),
+    calc(var(--depth) * 1.2) calc(var(--depth) * 1.8) calc(var(--depth) * 3) calc(var(--depth) * -0.6) rgba(64, 52, 36, 0.24);
+}
+
+.cap-pane svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.cap-pane--rear  { --depth: 10px; inset: 8% 36% 34% 8%; opacity: 0.9; }
+.cap-pane--front { --depth: 24px; inset: 30% 8% 8% 30%; }
+
+/* 04 Business — the tower on a dark marble ground */
+.cap-visual--business {
+  background:
+    radial-gradient(60% 50% at 50% 30%, rgba(6, 74, 18, 0.14), rgba(6, 74, 18, 0) 70%),
+    #0c120e;
+  box-shadow: inset 0 0 0 1px var(--cap-hair-dark);
+}
+
+.cap-visual--business img {
+  margin-bottom: 6%;
+  filter: drop-shadow(0 34px 44px rgba(0, 0, 0, 0.65));
+}
+
+.cap-etched {
+  margin: var(--s-8) 0 0;
+  padding: var(--s-5);
+  background:
+    linear-gradient(135deg, rgba(242, 239, 229, 0.05) 0%, rgba(242, 239, 229, 0) 40%),
+    rgba(242, 239, 229, 0.015);
+  box-shadow: inset 1px 1px 0 rgba(242, 239, 229, 0.12), inset -1px -1px 0 rgba(0, 0, 0, 0.4);
+}
+
+.cap-etched svg { display: block; width: 100%; height: auto; }
+
+.cap-etched figcaption {
+  margin-top: var(--s-3);
+  font-size: var(--fs-label);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: rgba(242, 239, 229, 0.4);
+}
+
+/* ONE POSITION: an elevation — four material columns under one lintel ========
+   Equal height, different widths: each class carries a different weight,
+   all bear the same beam and stand on the same base. */
+
+.cap-synthesis__head { max-width: 46rem; }
+
+.cap-elev {
+  position: relative;
+  margin: clamp(4rem, 3rem + 3vw, 6.5rem) auto 0;
+  max-width: 60rem;
+}
+
+.cap-elev__beam {
+  position: relative;
+  height: 16px;
+  margin: 0 -3%;
+  background: linear-gradient(180deg, #bb9d6a, #876c43);
+  box-shadow: inset 0 1px 0 rgba(255, 244, 220, 0.5), 0 12px 22px -12px rgba(52, 42, 28, 0.55);
+}
+
+.cap-elev__beam span {
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 16px);
+  transform: translateX(-50%);
+  font-size: var(--fs-label);
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--c-bronze);
+}
+
+.cap-elev__cols {
+  display: grid;
+  grid-template-columns: 5fr 3fr 4fr 6fr;
+  gap: clamp(1.25rem, 0.5rem + 2.5vw, 3.5rem);
+  padding-inline: 2%;
+}
+
+.cap-elev__col {
+  position: relative;
+}
+
+.cap-elev__mat {
+  display: block;
+  height: clamp(15rem, 11rem + 10vw, 22rem);
+  box-shadow: inset 1px 0 0 rgba(255, 255, 255, 0.4), 14px 20px 28px -18px rgba(52, 42, 28, 0.5);
+}
+
+.cap-elev__col--limestone .cap-elev__mat {
+  background: linear-gradient(90deg, #e4ddce, #c7bdab);
+}
+
+.cap-elev__col--bronze .cap-elev__mat {
+  background: linear-gradient(90deg, #806849, #4a3b2b);
+}
+
+.cap-elev__col--glass .cap-elev__mat {
+  background:
+    linear-gradient(90deg, transparent calc(50% - 0.5px), rgba(255, 255, 255, 0.4) 50%, transparent calc(50% + 0.5px)),
+    linear-gradient(90deg, rgba(130, 138, 128, 0.26), rgba(86, 94, 86, 0.36));
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.5), 14px 20px 28px -18px rgba(52, 42, 28, 0.4);
+}
+
+.cap-elev__col--marble .cap-elev__mat {
+  background:
+    linear-gradient(118deg, transparent 38%, rgba(200, 193, 179, 0.2) 39%, transparent 41%),
+    linear-gradient(104deg, transparent 62%, rgba(200, 193, 179, 0.12) 63%, transparent 65%),
+    linear-gradient(160deg, #143722, #07170e);
+}
+
+/* shared stone base under all four */
+.cap-elev__ground {
+  height: 12px;
+  margin: 0 -3%;
+  background: linear-gradient(180deg, #d3cab8, #bdb3a0);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+.cap-elev__label {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(100% + 12px + var(--s-4));   /* below the shared base */
+  font-size: var(--fs-label);
+  font-weight: 500;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  line-height: 1.5;
+  color: var(--c-ink-muted);
+}
+
+/* room for the labels under the base */
+.cap-elev {
+  padding-bottom: 4.5rem;
+}
+
+/* Beam draws across once revealed */
+.js .cap-elev[data-reveal] .cap-elev__beam {
+  transform: scaleX(0.001);
+  transform-origin: center;
+  transition: transform 1600ms var(--ease) 200ms;
+}
+
+.js .cap-elev[data-reveal].is-visible .cap-elev__beam {
+  transform: none;
+}
+
+/* PRIVATE ACCESS ================================================================== */
+
+.cap-access {
+  background:
+    radial-gradient(50% 60% at 50% 40%, rgba(6, 74, 18, 0.12), rgba(6, 74, 18, 0) 70%),
+    var(--cap-dark);
+  color: var(--c-ivory);
+  text-align: center;
+  padding-block: clamp(7rem, 5rem + 6vw, 12rem);
+}
+
+.cap-access__inner {
+  display: grid;
+  justify-items: center;
+  gap: var(--s-5);
+}
+
+.cap-access__rule {
+  width: 1px;
+  height: 4rem;
+  margin-bottom: var(--s-3);
+  background: rgba(169, 138, 82, 0.55);
+}
+
+.cap-access__title {
+  max-width: 20ch;
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: clamp(2.125rem, 1.4rem + 2.4vw, 3.5rem);
+  line-height: 1.1;
+  text-wrap: balance;
+}
+
+.cap-access .access__link {
+  width: 100%;
+  max-width: 22rem;
+  margin-top: var(--s-5);
+}
+
+/* RESPONSIVE ====================================================================== */
+
+@media (max-width: 1024px) {
+  .cap-hero__layout,
+  .cap-section__layout {
+    grid-template-columns: 1fr;
+  }
+
+  .cap-section--flip .cap-section__visual { order: 0; }
+  .cap-section--flip .cap-section__text   { order: 0; }
+
+  .cap-section__visual {
+    position: static;
+  }
+
+  .cap-visual {
+    aspect-ratio: 4 / 3;
+  }
+
+  .cap-contents { max-width: 30rem; }
+}
+
+@media (max-width: 640px) {
+  .cap-hero {
+    min-height: 0;
+  }
+
+  .cap-visual {
+    aspect-ratio: 4 / 5;
+  }
+
+  .cap-scope__row {
+    grid-template-columns: 1fr;
+    gap: var(--s-1);
+  }
+
+  .cap-elev__cols {
+    grid-template-columns: repeat(4, minmax(0, 1fr));   /* equal widths so every label fits */
+    gap: var(--s-2);
+    padding-inline: 0;
+  }
+
+  .cap-elev__mat {
+    height: 12rem;
+  }
+
+  .cap-elev__label {
+    font-size: 0.5rem;
+    letter-spacing: 0.06em;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js .cap-elev[data-reveal] .cap-elev__beam {
+    transform: none;
+    transition: none;
+  }
+
+  .cap-visual img {
+    transform: none !important;
+  }
+}
