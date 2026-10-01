@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Insights — Parklane Asset Management</title>
+  <meta name="description" content="Ideas on ownership, opportunity, capital and the decisions that shape long-term value.">
+  <meta name="theme-color" content="#0B0D0C">
+  <link rel="icon" type="image/png" href="assets/img/mark.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500&display=swap">
+
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/closing.css">
+  <link rel="stylesheet" href="assets/css/introduction.css">
+  <link rel="stylesheet" href="assets/css/journal.css">
+
+  <script>document.documentElement.classList.add("js");</script>
+  <script type="module" src="assets/js/main.js"></script>
+</head>
+<body class="page-journal">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Shared arrow glyph -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-arrow" viewBox="0 0 18 10">
+      <path d="M0 5h16.5M12.5 1l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1"/>
+    </symbol>
+  </svg>
+
+  <!-- ===================== HEADER ===================== -->
+  <header class="site-header" data-header>
+    <div class="container container--wide site-header__inner">
+      <a class="brand" href="index.html" aria-label="Parklane Asset Management — home">
+        <img class="brand__mark" src="assets/img/mark.png" srcset="assets/img/mark.png 1x, assets/img/mark-2x.png 2x" width="120" height="65" alt="">
+        <span class="brand__word" aria-hidden="true">
+          <span class="brand__name">Parklane</span>
+          <span class="brand__sub">Asset Management</span>
+        </span>
+      </a>
+
+      <nav class="nav-primary" aria-label="Primary">
+        <ul class="nav-primary__list">
+          <li><a class="nav-primary__link" href="approach.html">Approach</a></li>
+          <li><a class="nav-primary__link" href="capabilities.html">Capabilities</a></li>
+          <li><a class="nav-primary__link" href="insights.html" aria-current="page">Insights</a></li>
+          <li><a class="nav-primary__link" href="index.html#about">About</a></li>
+        </ul>
+      </nav>
+
+      <a class="btn btn--sm site-header__cta" href="#contact" data-intro-open>
+        Private Access
+        <svg class="btn__arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
+      </a>
+
+      <button class="menu-toggle" type="button" data-menu-toggle aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
+        <span class="menu-toggle__bars" aria-hidden="true"></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="mobile-menu" id="mobile-menu">
+    <nav aria-label="Mobile">
+      <ul class="mobile-menu__list">
+        <li><a class="mobile-menu__link" href="approach.html">Approach <span>01</span></a></li>
+        <li><a class="mobile-menu__link" href="capabilities.html">Capabilities <span>02</span></a></li>
+        <li><a class="mobile-menu__link" href="insights.html" aria-current="page">Insights <span>03</span></a></li>
+        <li><a class="mobile-menu__link" href="index.html#about">About <span>04</span></a></li>
+      </ul>
+    </nav>
+    <div class="mobile-menu__footer">
+      <a class="btn" href="#contact" data-intro-open>
+        Private Access
+        <svg class="btn__arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <main id="main">
+
+    <!-- ===================== HERO ===================== -->
+    <section class="jr-hero" id="top" aria-labelledby="jr-title">
+      <div class="container container--wide jr-hero__layout">
+        <p class="eyebrow" data-reveal>Insights</p>
+        <h1 class="jr-hero__title" id="jr-title" data-reveal style="--reveal-delay: 120ms">Perspective, <em>considered.</em></h1>
+        <div class="jr-hero__foot" data-reveal style="--reveal-delay: 240ms">
+          <p class="jr-hero__lead">Ideas on ownership, opportunity, capital and the decisions that shape long-term value.</p>
+          <p class="jr-hero__index" aria-hidden="true">Featured · I–VI</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== FEATURED — a magazine spread ===================== -->
+    <section class="jr-section jr-ivory jr-featured" id="featured" aria-labelledby="jr-featured-title">
+      <div class="container container--wide jr-featured__layout">
+        <figure class="jr-plate jr-plate--photo jr-plate--featured" data-reveal>
+          <div class="jr-plate__frame">
+            <img src="assets/img/generational/stair-720.webp" srcset="assets/img/generational/stair-720.webp 720w, assets/img/generational/stair-1448.webp 1448w"
+                 sizes="(max-width: 1024px) 100vw, 58vw" width="1448" height="1086" loading="lazy" decoding="async" alt="">
+          </div>
+        </figure>
+        <div class="jr-featured__text" data-reveal style="--reveal-delay: 140ms">
+          <p class="eyebrow">Featured Perspective</p>
+          <h2 class="jr-featured__title" id="jr-featured-title">The role of an asset is <em>rarely fixed.</em></h2>
+          <p class="jr-featured__copy">Assets change as circumstances, markets and objectives change. The question is not simply what something is worth today, but what role it should play next.</p>
+          <a class="jr-cta" href="#featured">
+            <span>Read the perspective</span>
+            <svg class="btn__arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== ARCHIVE — six entries, alternating spreads =====================
+         TEMPORARY IMAGES: every plate on this page (featured + 01–06) reuses imagery from
+         other pages and will be replaced by six dedicated editorial images. Replace the <img>
+         inside each .jr-plate__frame; the frame, perspex treatment and layout stay as they are.
+         Titles link to their own anchors until article pages exist (PLACEHOLDER). -->
+    <section class="jr-section jr-ivory jr-archive" aria-labelledby="jr-archive-title">
+      <div class="container container--wide">
+        <header class="jr-archive__head" data-reveal>
+          <h2 class="jr-archive__title" id="jr-archive-title">The Journal</h2>
+          <span class="jr-archive__rule" aria-hidden="true"></span>
+        </header>
+        <article class="jr-entry jr-entry--a" id="insight-01" aria-labelledby="insight-01-title">
+          <figure class="jr-plate jr-plate--photo" data-reveal>
+            <div class="jr-plate__frame"><img src="assets/img/insights/sunlit_classical_stone_colonnade-600.webp" srcset="assets/img/insights/sunlit_classical_stone_colonnade-600.webp 600w, assets/img/insights/sunlit_classical_stone_colonnade-1122.webp 1122w" sizes="(max-width: 1024px) 100vw, 60vw" width="1122" height="1402" loading="lazy" decoding="async" alt=""></div>
+          </figure>
+          <div class="jr-entry__text" data-reveal style="--reveal-delay: 120ms">
+            <p class="jr-meta"><span class="jr-meta__n">01</span><span class="jr-meta__cat">Portfolio Strategy</span></p>
+            <h3 class="jr-entry__title" id="insight-01-title">
+              <a class="jr-link" href="#insight-01">Balance today. Position for <span class="jr-link__end">tomorrow.<svg class="btn__arrow" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
+            </h3>
+          </div>
+        </article>
+        <article class="jr-entry jr-entry--b" id="insight-02" aria-labelledby="insight-02-title">
+          <figure class="jr-plate jr-plate--photo" data-reveal>
+            <div class="jr-plate__frame"><img src="assets/img/insights/sunlit_limestone_wall_with_bronze_plaque-600.webp" srcset="assets/img/insights/sunlit_limestone_wall_with_bronze_plaque-600.webp 600w, assets/img/insights/sunlit_limestone_wall_with_bronze_plaque-1122.webp 1122w" sizes="(max-width: 1024px) 100vw, 60vw" width="1122" height="1402" loading="lazy" decoding="async" alt=""></div>
+          </figure>
+          <div class="jr-entry__text" data-reveal style="--reveal-delay: 120ms">
+            <p class="jr-meta"><span class="jr-meta__n">02</span><span class="jr-meta__cat">Asset Management</span></p>
+            <h3 class="jr-entry__title" id="insight-02-title">
+              <a class="jr-link" href="#insight-02">Assets don’t create value. Decisions <span class="jr-link__end">do.<svg class="btn__arrow" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
+            </h3>
+          </div>
+        </article>
+        <article class="jr-entry jr-entry--c" id="insight-03" aria-labelledby="insight-03-title">
+          <figure class="jr-plate jr-plate--photo" data-reveal>
+            <div class="jr-plate__frame"><img src="assets/img/insights/sunlit_stairway_through_shadow-600.webp" srcset="assets/img/insights/sunlit_stairway_through_shadow-600.webp 600w, assets/img/insights/sunlit_stairway_through_shadow-1122.webp 1122w" sizes="(max-width: 1024px) 100vw, 60vw" width="1122" height="1402" loading="lazy" decoding="async" alt=""></div>
+          </figure>
+          <div class="jr-entry__text" data-reveal style="--reveal-delay: 120ms">
+            <p class="jr-meta"><span class="jr-meta__n">03</span><span class="jr-meta__cat">Investment</span></p>
+            <h3 class="jr-entry__title" id="insight-03-title">
+              <a class="jr-link" href="#insight-03">Value is often hidden where others <span class="jr-link__end">overlook.<svg class="btn__arrow" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
+            </h3>
+          </div>
+        </article>
+        <article class="jr-entry jr-entry--a" id="insight-04" aria-labelledby="insight-04-title">
+          <figure class="jr-plate jr-plate--photo" data-reveal>
+            <div class="jr-plate__frame"><img src="assets/img/hero-960.jpg" srcset="assets/img/hero-960.jpg 960w, assets/img/hero-1280.jpg 1280w, assets/img/hero-1672.jpg 1672w" sizes="(max-width: 1024px) 100vw, 60vw" width="1672" height="941" loading="lazy" decoding="async" alt=""></div>
+          </figure>
+          <div class="jr-entry__text" data-reveal style="--reveal-delay: 120ms">
+            <p class="jr-meta"><span class="jr-meta__n">04</span><span class="jr-meta__cat">Property</span></p>
+            <h3 class="jr-entry__title" id="insight-04-title">
+              <a class="jr-link" href="#insight-04">The value of place changes with <span class="jr-link__end">purpose.<svg class="btn__arrow" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
+            </h3>
+          </div>
+        </article>
+        <article class="jr-entry jr-entry--b" id="insight-05" aria-labelledby="insight-05-title">
+          <figure class="jr-plate jr-plate--object" data-reveal>
+            <div class="jr-plate__frame"><img src="assets/img/visualizer/art.webp" srcset="assets/img/visualizer/art.webp 1x, assets/img/visualizer/art@2x.webp 2x" loading="lazy" decoding="async" alt=""></div>
+          </figure>
+          <div class="jr-entry__text" data-reveal style="--reveal-delay: 120ms">
+            <p class="jr-meta"><span class="jr-meta__n">05</span><span class="jr-meta__cat">Collecting &amp; Legacy</span></p>
+            <h3 class="jr-entry__title" id="insight-05-title">
+              <a class="jr-link" href="#insight-05">Some assets carry meaning beyond <span class="jr-link__end">return.<svg class="btn__arrow" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
+            </h3>
+          </div>
+        </article>
+        <article class="jr-entry jr-entry--c" id="insight-06" aria-labelledby="insight-06-title">
+          <figure class="jr-plate jr-plate--object" data-reveal>
+            <div class="jr-plate__frame"><img src="assets/img/visualizer/business.webp" srcset="assets/img/visualizer/business.webp 1x, assets/img/visualizer/business@2x.webp 2x" loading="lazy" decoding="async" alt=""></div>
+          </figure>
+          <div class="jr-entry__text" data-reveal style="--reveal-delay: 120ms">
+            <p class="jr-meta"><span class="jr-meta__n">06</span><span class="jr-meta__cat">Business &amp; Capital</span></p>
+            <h3 class="jr-entry__title" id="insight-06-title">
+              <a class="jr-link" href="#insight-06">Enterprise rarely exists in <span class="jr-link__end">isolation.<svg class="btn__arrow" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
+            </h3>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===================== DARK EDITORIAL MOMENT ===================== -->
+    <section class="jr-moment" aria-labelledby="jr-moment-title">
+      <svg class="jr-moment__lines" viewBox="0 0 1440 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+        <g fill="none" stroke="#F2EFE5" stroke-width=".6">
+          <path d="M0 380H1440" stroke-opacity=".07"/>
+          <path d="M720 380L0 600M720 380L360 600M720 380L1080 600M720 380L1440 600" stroke-opacity=".04"/>
+          <path d="M120 380v-8M240 380v-8M360 380v-8M480 380v-8M600 380v-8M840 380v-8M960 380v-8M1080 380v-8M1200 380v-8M1320 380v-8" stroke-opacity=".08"/>
+          <path d="M0 440H1440M0 520H1440" stroke-opacity=".03"/>
+        </g>
+        <path d="M700 380h40" stroke="#A98A52" stroke-opacity=".5" stroke-width=".8"/>
+      </svg>
+      <div class="container jr-moment__inner" data-reveal>
+        <h2 class="jr-moment__title" id="jr-moment-title">A longer view changes <em>what becomes visible.</em></h2>
+        <p class="jr-moment__copy">Parklane considers assets within the context of time, ownership, opportunity and the wider position.</p>
+      </div>
+    </section>
+
+    <!-- ===================== PRIVATE ACCESS ===================== -->
+    <section class="jr-access" id="contact" aria-labelledby="jr-access-title">
+      <div class="container jr-access__inner" data-reveal>
+        <span class="jr-access__rule" aria-hidden="true"></span>
+        <p class="eyebrow">Private Access</p>
+        <h2 class="jr-access__title" id="jr-access-title">Some conversations begin <em>with a perspective.</em></h2>
+        <p class="jr-access__copy">Engagements are considered by introduction or referral only.</p>
+        <button class="access__link" type="button" data-intro-open>
+          <span>Request an introduction</span>
+          <svg class="btn__arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
+        </button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===================== 7. FOOTER =====================
+       Institutional, not promotional. No public email address; contact is by introduction only.
+       PLACEHOLDER: the legal links point to #legal until the real policy pages exist. -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="site-footer__grid">
+        <div class="site-footer__brand">
+          <a class="brand" href="#top" aria-label="Parklane Asset Management — back to top">
+            <img class="brand__mark" src="assets/img/mark.png" srcset="assets/img/mark.png 1x, assets/img/mark-2x.png 2x" width="120" height="65" alt="" loading="lazy">
+            <span class="brand__word" aria-hidden="true">
+              <span class="brand__name">Parklane</span>
+              <span class="brand__sub">Asset Management</span>
+            </span>
+          </a>
+          <p class="site-footer__tagline">Long-term thinking for a more certain tomorrow.</p>
+        </div>
+
+        <nav class="site-footer__col" aria-label="Footer">
+          <p class="site-footer__heading">Parklane</p>
+          <ul class="site-footer__list">
+            <li><a href="approach.html">Approach</a></li>
+            <li><a href="capabilities.html">Capabilities</a></li>
+            <li><a href="insights.html">Insights</a></li>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+
+        <nav class="site-footer__col" id="legal" aria-label="Legal">
+          <p class="site-footer__heading">Legal</p>
+          <ul class="site-footer__list">
+            <li><a href="#legal">Privacy Policy</a></li>
+            <li><a href="#legal">Terms of Use</a></li>
+            <li><a href="#legal">Disclosures</a></li>
+          </ul>
+        </nav>
+
+        <div class="site-footer__col">
+          <p class="site-footer__heading">Contact</p>
+          <p class="site-footer__contact">Engagements are considered by introduction or referral only.</p>
+          <button class="site-footer__intro" type="button" data-intro-open>
+            Request an introduction <svg class="btn__arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="site-footer__base">
+        <p>© <span data-year>2026</span> Parklane Asset Management. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+  <!-- ===================== REQUEST AN INTRODUCTION =====================
+       Styles: assets/css/introduction.css · Behaviour: assets/js/components/introduction.js
+       Submissions go to Netlify Forms (form name "introduction"). The receiving address is set
+       only in the Netlify dashboard (Forms → Form notifications) and never appears in this code. -->
+  <dialog class="intro" id="introduction" aria-labelledby="intro-title" aria-describedby="intro-lead">
+    <div class="intro__panel">
+      <button class="intro__close" type="button" data-intro-close aria-label="Close">
+        <span aria-hidden="true"></span>
+      </button>
+
+      <div class="intro__body" data-intro-view="form">
+        <p class="eyebrow">Private Access</p>
+        <h2 class="intro__title" id="intro-title">Request an Introduction</h2>
+        <p class="intro__lead" id="intro-lead">Parklane Asset Management operates on a private, selective basis. Please provide the information below. Submissions are reviewed individually and do not constitute acceptance or engagement.</p>
+
+        <form class="intro__form" name="introduction" method="POST" action="/" data-netlify="true" netlify-honeypot="website" novalidate>
+          <input type="hidden" name="form-name" value="introduction">
+          <input type="hidden" name="subject" value="Request an Introduction">
+          <input type="hidden" name="Submitted" value="">
+          <p class="intro__trap" aria-hidden="true">
+            <label>Leave this field empty <input name="website" tabindex="-1" autocomplete="off"></label>
+          </p>
+
+          <div class="intro__grid">
+            <div class="field">
+              <label class="field__label" for="intro-name">Full Name</label>
+              <input class="field__input" id="intro-name" name="Full Name" type="text" autocomplete="name" required aria-describedby="intro-name-err">
+              <p class="field__error" id="intro-name-err" data-error></p>
+            </div>
+
+            <div class="field">
+              <label class="field__label" for="intro-company">Company / Organisation</label>
+              <input class="field__input" id="intro-company" name="Company / Organisation" type="text" autocomplete="organization" required aria-describedby="intro-company-err">
+              <p class="field__error" id="intro-company-err" data-error></p>
+            </div>
+
+            <div class="field">
+              <label class="field__label" for="intro-email">Email Address</label>
+              <input class="field__input" id="intro-email" name="Email" type="email" autocomplete="email" inputmode="email" required aria-describedby="intro-email-err">
+              <p class="field__error" id="intro-email-err" data-error></p>
+            </div>
+
+            <div class="field">
+              <label class="field__label" for="intro-phone">Telephone Number</label>
+              <input class="field__input" id="intro-phone" name="Telephone" type="tel" autocomplete="tel" inputmode="tel" required aria-describedby="intro-phone-hint intro-phone-err">
+              <p class="field__hint" id="intro-phone-hint">Include the country code, e.g. +44.</p>
+              <p class="field__error" id="intro-phone-err" data-error></p>
+            </div>
+
+            <div class="field field--wide">
+              <label class="field__label" for="intro-nature">Nature of Enquiry</label>
+              <div class="field__select">
+                <select class="field__input" id="intro-nature" name="Nature of Enquiry" required aria-describedby="intro-nature-err">
+                  <option value="" selected disabled>Select one</option>
+                  <option>Investment Opportunity</option>
+                  <option>Property Acquisition</option>
+                  <option>Partnership / Joint Venture</option>
+                  <option>Professional Introduction</option>
+                  <option>Private Client Enquiry</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <p class="field__error" id="intro-nature-err" data-error></p>
+            </div>
+
+            <div class="field field--wide">
+              <label class="field__label" for="intro-referrer">Introduced / Referred By</label>
+              <input class="field__input" id="intro-referrer" name="Introduced / Referred By" type="text" required aria-describedby="intro-referrer-hint intro-referrer-err">
+              <p class="field__hint" id="intro-referrer-hint">Name of the individual or organisation making the introduction.</p>
+              <p class="field__error" id="intro-referrer-err" data-error></p>
+            </div>
+
+            <div class="field field--wide">
+              <label class="field__label" for="intro-details">Brief Details</label>
+              <textarea class="field__input field__input--area" id="intro-details" name="Brief Details" rows="4" required placeholder="Please provide a concise overview of your enquiry or proposed opportunity." aria-describedby="intro-details-err"></textarea>
+              <p class="field__error" id="intro-details-err" data-error></p>
+            </div>
+          </div>
+
+          <div class="intro__actions">
+            <p class="intro__status" role="alert" data-intro-status></p>
+            <button class="intro__submit" type="submit">
+              <span data-submit-label>Submit for consideration</span>
+              <svg class="btn__arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <div class="intro__body intro__done" data-intro-view="done" hidden tabindex="-1">
+        <span class="intro__done-rule" aria-hidden="true"></span>
+        <p class="eyebrow">Request Received</p>
+        <p class="intro__done-text">Your introduction request has been received and will be considered privately.</p>
+        <button class="intro__return" type="button" data-intro-close>Return to the site</button>
+      </div>
+    </div>
+  </dialog>
+
+</body>
+</html>

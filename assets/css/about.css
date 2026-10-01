@@ -1,0 +1,384 @@
+/* ==========================================================================
+   Parklane — About page
+   Rhythm: dark hero → ivory (perspective) → deep green (view) → dark
+   (coordination) → ivory (private by design) → full-bleed image → deep
+   green (private access).
+   ========================================================================== */
+
+.page-about {
+  --ab-dark: var(--c-vault);
+  --ab-green: #0a2414;
+  --ab-hair-dark: rgba(242, 239, 229, 0.12);
+  --ab-hair-light: rgba(23, 24, 22, 0.12);
+  --ab-muted-dark: #a8a397;
+  background: var(--c-obsidian);
+}
+
+.ab-section {
+  position: relative;
+  padding-block: var(--section-y);
+}
+
+.ab-ivory { background: var(--c-ivory); color: var(--c-ink); }
+.ab-dark  { background: var(--ab-dark); color: var(--c-ivory); }
+
+.ab-ivory .eyebrow { color: var(--c-bronze); }
+
+/* Tone changes meet on a brass hairline */
+.ab-section::before,
+.ab-view::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(169, 138, 82, 0.4) 30%, rgba(169, 138, 82, 0.4) 70%, transparent 100%);
+  pointer-events: none;
+}
+
+.ab-heading {
+  margin-top: var(--s-6);
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: clamp(2.25rem, 1.4rem + 2.6vw, 3.75rem);
+  line-height: 1.08;
+  letter-spacing: var(--tracking-heading);
+  text-wrap: balance;
+}
+
+.ab-heading em { font-style: italic; color: var(--c-limestone); }
+.ab-ivory .ab-heading em { color: #6e665a; }
+
+.ab-heading--xl {
+  font-size: clamp(2.5rem, 1.3rem + 3.8vw, 5rem);
+  line-height: 1.02;
+}
+
+.ab-body {
+  margin-top: var(--s-5);
+  max-width: 32rem;
+  font-size: var(--fs-lead);
+  line-height: 1.7;
+  color: var(--ab-muted-dark);
+}
+
+.ab-ivory .ab-body { color: var(--c-ink-muted); }
+.ab-body--strong { color: var(--c-ivory); }
+
+/* 1. HERO ========================================================================= */
+
+.ab-hero {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  min-height: min(100svh, 60rem);
+  padding-block: calc(var(--header-h) + var(--s-9)) clamp(5rem, 3rem + 6vw, 9rem);
+  background: var(--c-obsidian);
+  color: var(--c-ivory);
+}
+
+.ab-hero > .container { width: 100%; }
+
+.ab-hero__title {
+  margin-top: var(--s-7);
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: clamp(3rem, 1.3rem + 6.2vw, 7.75rem);
+  line-height: 0.98;
+  letter-spacing: -0.015em;
+}
+
+.ab-hero__title span,
+.ab-hero__title em { display: block; }
+
+.ab-hero__title em {
+  font-style: italic;
+  color: var(--c-limestone);
+}
+
+.ab-hero__foot {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  gap: var(--s-7);
+  align-items: start;
+  margin-top: clamp(4rem, 3rem + 4vw, 7rem);
+}
+
+.ab-hero__rule {
+  height: 1px;
+  margin-top: 0.8em;
+  background: rgba(169, 138, 82, 0.5);
+}
+
+.ab-hero__lead {
+  max-width: 34rem;
+  font-size: var(--fs-lead);
+  line-height: 1.7;
+  color: var(--ab-muted-dark);
+}
+
+/* 2. PERSPECTIVE + PRINCIPLES ===================================================== */
+
+.ab-perspective__head {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: clamp(3rem, 1rem + 5vw, 7rem);
+  align-items: end;
+}
+
+.ab-perspective__head .ab-heading { max-width: 16ch; }
+.ab-perspective__head .ab-body { margin-top: 0; }
+
+/* An architectural row: four bays between vertical rules, under a brass beam */
+.ab-principles {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin-top: clamp(4rem, 3rem + 4vw, 7rem);
+  border-top: 1px solid rgba(169, 138, 82, 0.55);
+}
+
+.ab-principle {
+  padding: var(--s-6) clamp(1rem, 0.5rem + 1.5vw, 2.25rem) var(--s-4);
+}
+
+.ab-principle:first-child { padding-left: 0; }
+.ab-principle:last-child  { padding-right: 0; }
+.ab-principle + .ab-principle { border-left: 1px solid var(--ab-hair-light); }
+
+.ab-principle__n {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: 2.5rem;
+  line-height: 0.8;
+  color: rgba(169, 138, 82, 0.7);
+}
+
+.ab-principle__title {
+  margin-top: var(--s-6);
+  font-size: var(--fs-label);
+  font-weight: 500;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--c-ink);
+}
+
+.ab-principle__text {
+  margin-top: var(--s-3);
+  font-family: var(--font-serif);
+  font-size: 1.3125rem;
+  line-height: 1.4;
+  color: #4a4740;
+}
+
+/* 3. THE PARKLANE VIEW ============================================================ */
+
+.ab-view {
+  position: relative;
+  overflow: hidden;
+  padding-block: clamp(7rem, 4rem + 8vw, 13rem);
+  background: var(--ab-green);
+  color: var(--c-ivory);
+}
+
+.ab-view__lines {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(90deg, transparent 50%, #000 72%, #000 100%);
+  mask-image: linear-gradient(90deg, transparent 50%, #000 72%, #000 100%);
+}
+
+.ab-view__inner { position: relative; }
+
+.ab-view__title {
+  margin-top: var(--s-6);
+  max-width: 24ch;
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: clamp(2.5rem, 1.4rem + 3.6vw, 5rem);
+  line-height: 1.04;
+  letter-spacing: var(--tracking-heading);
+}
+
+.ab-view__title span,
+.ab-view__title em { display: block; }
+
+.ab-view__title em {
+  font-style: italic;
+  color: var(--c-limestone);
+}
+
+.ab-view__copy {
+  margin-top: var(--s-7);
+  max-width: 34rem;
+  font-size: var(--fs-lead);
+  line-height: 1.7;
+  color: rgba(242, 239, 229, 0.7);
+}
+
+/* 4. COORDINATION ================================================================= */
+
+.ab-split {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  gap: clamp(3rem, 1rem + 6vw, 8rem);
+  align-items: center;
+}
+
+.ab-diagram { margin: 0; }
+
+.ab-diagram svg {
+  display: block;
+  width: 100%;
+  max-width: 34rem;
+  height: auto;
+  margin-inline: auto;
+}
+
+/* 5. PRIVATE BY DESIGN ============================================================ */
+
+.ab-private__layout {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
+  gap: clamp(3rem, 1rem + 5vw, 7rem);
+  align-items: end;
+}
+
+.ab-private__text .ab-body { margin-top: 0; }
+
+.ab-private__note {
+  margin-top: var(--s-6);
+  padding-top: var(--s-5);
+  border-top: 1px solid rgba(169, 138, 82, 0.5);
+  font-size: 0.9375rem;
+  letter-spacing: 0.02em;
+  color: var(--c-ink);
+}
+
+/* 6. MONUMENT ===================================================================== */
+
+.ab-monument {
+  position: relative;
+  height: clamp(32rem, 70vw, 58rem);
+  max-height: 92svh;
+  overflow: hidden;
+  background: #1a1b17;
+}
+
+.ab-monument img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 62%;
+}
+
+/* a quiet vignette only at the edges, no text over the image body */
+.ab-monument::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(10, 36, 20, 0) 70%, rgba(10, 36, 20, 0.9) 100%);
+  pointer-events: none;
+}
+
+
+/* 7. PRIVATE ACCESS =============================================================== */
+
+.ab-access {
+  position: relative;
+  padding-block: clamp(7rem, 5rem + 6vw, 12rem);
+  background: var(--ab-green);
+  color: var(--c-ivory);
+  text-align: center;
+}
+
+.ab-access__inner {
+  display: grid;
+  justify-items: center;
+  gap: var(--s-5);
+}
+
+.ab-access__rule {
+  width: 1px;
+  height: 4rem;
+  margin-bottom: var(--s-3);
+  background: rgba(169, 138, 82, 0.55);
+}
+
+.ab-access__title {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: clamp(2.25rem, 1.4rem + 2.6vw, 3.75rem);
+  line-height: 1.08;
+}
+
+.ab-access__copy {
+  max-width: 30rem;
+  font-size: var(--fs-lead);
+  line-height: 1.65;
+  color: rgba(242, 239, 229, 0.7);
+}
+
+.ab-access .access__link {
+  width: 100%;
+  max-width: 22rem;
+  margin-top: var(--s-5);
+}
+
+/* RESPONSIVE ====================================================================== */
+
+@media (max-width: 1024px) {
+  .ab-perspective__head,
+  .ab-split,
+  .ab-private__layout {
+    grid-template-columns: 1fr;
+  }
+
+  .ab-perspective__head { align-items: start; }
+
+  .ab-principles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+  .ab-principle,
+  .ab-principle:first-child,
+  .ab-principle:last-child { padding: var(--s-6) var(--s-5) var(--s-6); }
+
+  .ab-principle:nth-child(odd) { padding-left: 0; border-left: 0; }
+  .ab-principle:nth-child(n + 3) { border-top: 1px solid var(--ab-hair-light); }
+
+  .ab-monument { height: clamp(26rem, 80vw, 40rem); }
+}
+
+@media (max-width: 640px) {
+  .ab-hero { min-height: 0; }
+
+  .ab-hero__foot {
+    grid-template-columns: 1fr;
+    gap: var(--s-5);
+  }
+
+  .ab-hero__rule { width: 4rem; }
+
+  .ab-principles { grid-template-columns: 1fr; }
+
+  .ab-principle,
+  .ab-principle:first-child,
+  .ab-principle:last-child {
+    padding: var(--s-6) 0;
+    border-left: 0;
+  }
+
+  .ab-principle + .ab-principle {
+    border-left: 0;
+    border-top: 1px solid var(--ab-hair-light);
+  }
+
+  .ab-monument { height: 30rem; }
+
+
+  /* diagram labels scale with the drawing; lift them to stay legible */
+  .ab-diagram svg text { font-size: 14px; letter-spacing: 0.08em; }
+
+  .ab-view__lines { -webkit-mask-image: linear-gradient(180deg, transparent 60%, #000 85%); mask-image: linear-gradient(180deg, transparent 60%, #000 85%); }
+}
