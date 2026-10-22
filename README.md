@@ -32,7 +32,7 @@ The hero image is static. Framing is set per viewport with `--hero-pos` in `sect
 
 An architectural model built with CSS 3D. Each asset class is a slab on a stone plinth:
 Property is limestone with an etched plan, Art & Collectibles is patinated bronze,
-and Business Interests is dark green marble. Equities & Investments is not an option.
+Equities & Investments is smoked glass, and Business Interests is dark green marble.
 
 - **One selected:** that slab comes forward with a green edge, the others recede, the view rebalances,
   and a brass datum line marks it.

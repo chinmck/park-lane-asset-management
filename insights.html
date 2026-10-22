@@ -48,7 +48,7 @@
           <li><a class="nav-primary__link" href="approach.html">Approach</a></li>
           <li><a class="nav-primary__link" href="capabilities.html">Capabilities</a></li>
           <li><a class="nav-primary__link" href="insights.html" aria-current="page">Insights</a></li>
-          <li><a class="nav-primary__link" href="about.html">About</a></li>
+          <li><a class="nav-primary__link" href="index.html#about">About</a></li>
         </ul>
       </nav>
 
@@ -69,7 +69,7 @@
         <li><a class="mobile-menu__link" href="approach.html">Approach <span>01</span></a></li>
         <li><a class="mobile-menu__link" href="capabilities.html">Capabilities <span>02</span></a></li>
         <li><a class="mobile-menu__link" href="insights.html" aria-current="page">Insights <span>03</span></a></li>
-        <li><a class="mobile-menu__link" href="about.html">About <span>04</span></a></li>
+        <li><a class="mobile-menu__link" href="index.html#about">About <span>04</span></a></li>
       </ul>
     </nav>
     <div class="mobile-menu__footer">
@@ -89,26 +89,25 @@
         <h1 class="jr-hero__title" id="jr-title" data-reveal style="--reveal-delay: 120ms">Perspective, <em>considered.</em></h1>
         <div class="jr-hero__foot" data-reveal style="--reveal-delay: 240ms">
           <p class="jr-hero__lead">Ideas on ownership, opportunity, capital and the decisions that shape long-term value.</p>
-          <p class="jr-hero__index" aria-hidden="true">Journal · 01–04</p>
+          <p class="jr-hero__index" aria-hidden="true">Featured · I–VI</p>
         </div>
       </div>
     </section>
 
-    <!-- ===================== FEATURED — first published article =====================
-         Opening paragraph is the article's own first paragraph, unchanged. -->
+    <!-- ===================== FEATURED — a magazine spread ===================== -->
     <section class="jr-section jr-ivory jr-featured" id="featured" aria-labelledby="jr-featured-title">
       <div class="container container--wide jr-featured__layout">
         <figure class="jr-plate jr-plate--photo jr-plate--featured" data-reveal>
           <div class="jr-plate__frame">
-            <img src="assets/img/insights/sunlit_classical_stone_colonnade-600.webp" srcset="assets/img/insights/sunlit_classical_stone_colonnade-600.webp 600w, assets/img/insights/sunlit_classical_stone_colonnade-1122.webp 1122w"
-                 sizes="(max-width: 1024px) 100vw, 58vw" width="1122" height="1402" loading="lazy" decoding="async" alt="">
+            <img src="assets/img/generational/stair-720.webp" srcset="assets/img/generational/stair-720.webp 720w, assets/img/generational/stair-1448.webp 1448w"
+                 sizes="(max-width: 1024px) 100vw, 58vw" width="1448" height="1086" loading="lazy" decoding="async" alt="">
           </div>
         </figure>
         <div class="jr-featured__text" data-reveal style="--reveal-delay: 140ms">
-          <p class="eyebrow">Property</p>
-          <h2 class="jr-featured__title" id="jr-featured-title">Licensing shared homes in Liverpool and Wirral: what applies in 2026</h2>
-          <p class="jr-featured__copy">Anyone who owns or manages rented homes in Merseyside now has two licensing questions to answer for every property: does it need an HMO licence, and is it in a selective licensing area? The answers decide what paperwork, fees and standards apply before a single room is let. This article sets out the rules as published by government and the two councils.</p>
-          <a class="jr-cta" href="insights/hmo-and-selective-licensing-liverpool-wirral.html">
+          <p class="eyebrow">Featured Perspective</p>
+          <h2 class="jr-featured__title" id="jr-featured-title">The role of an asset is <em>rarely fixed.</em></h2>
+          <p class="jr-featured__copy">Assets change as circumstances, markets and objectives change. The question is not simply what something is worth today, but what role it should play next.</p>
+          <a class="jr-cta" href="#featured">
             <span>Read the perspective</span>
             <svg class="btn__arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
           </a>
@@ -116,9 +115,12 @@
       </div>
     </section>
 
-    <!-- ===================== ARCHIVE — the four published articles =====================
-         Photographs are existing site images. Titles and categories are the articles' own. -->
-    <section class="jr-section jr-ivory jr-archive" id="journal" aria-labelledby="jr-archive-title">
+    <!-- ===================== ARCHIVE — six entries, alternating spreads =====================
+         TEMPORARY IMAGES: every plate on this page (featured + 01–06) reuses imagery from
+         other pages and will be replaced by six dedicated editorial images. Replace the <img>
+         inside each .jr-plate__frame; the frame, perspex treatment and layout stay as they are.
+         Titles link to their own anchors until article pages exist (PLACEHOLDER). -->
+    <section class="jr-section jr-ivory jr-archive" aria-labelledby="jr-archive-title">
       <div class="container container--wide">
         <header class="jr-archive__head" data-reveal>
           <h2 class="jr-archive__title" id="jr-archive-title">The Journal</h2>
@@ -129,9 +131,9 @@
             <div class="jr-plate__frame"><img src="assets/img/insights/sunlit_classical_stone_colonnade-600.webp" srcset="assets/img/insights/sunlit_classical_stone_colonnade-600.webp 600w, assets/img/insights/sunlit_classical_stone_colonnade-1122.webp 1122w" sizes="(max-width: 1024px) 100vw, 60vw" width="1122" height="1402" loading="lazy" decoding="async" alt=""></div>
           </figure>
           <div class="jr-entry__text" data-reveal style="--reveal-delay: 120ms">
-            <p class="jr-meta"><span class="jr-meta__n">01</span><span class="jr-meta__cat">Property</span></p>
+            <p class="jr-meta"><span class="jr-meta__n">01</span><span class="jr-meta__cat">Portfolio Strategy</span></p>
             <h3 class="jr-entry__title" id="insight-01-title">
-              <a class="jr-link" href="insights/hmo-and-selective-licensing-liverpool-wirral.html">Licensing shared homes in Liverpool and Wirral: what applies in <span class="jr-link__end">2026<svg class="btn__arrow" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
+              <a class="jr-link" href="#insight-01">Balance today. Position for <span class="jr-link__end">tomorrow.<svg class="btn__arrow" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
             </h3>
           </div>
         </article>
@@ -140,9 +142,9 @@
             <div class="jr-plate__frame"><img src="assets/img/insights/sunlit_limestone_wall_with_bronze_plaque-600.webp" srcset="assets/img/insights/sunlit_limestone_wall_with_bronze_plaque-600.webp 600w, assets/img/insights/sunlit_limestone_wall_with_bronze_plaque-1122.webp 1122w" sizes="(max-width: 1024px) 100vw, 60vw" width="1122" height="1402" loading="lazy" decoding="async" alt=""></div>
           </figure>
           <div class="jr-entry__text" data-reveal style="--reveal-delay: 120ms">
-            <p class="jr-meta"><span class="jr-meta__n">02</span><span class="jr-meta__cat">Lettings</span></p>
+            <p class="jr-meta"><span class="jr-meta__n">02</span><span class="jr-meta__cat">Asset Management</span></p>
             <h3 class="jr-entry__title" id="insight-02-title">
-              <a class="jr-link" href="insights/renters-rights-act-what-changed-1-may-2026.html">The Renters' Rights Act: what changed on 1 May 2026 for shared-house <span class="jr-link__end">landlords<svg class="btn__arrow" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
+              <a class="jr-link" href="#insight-02">Assets don’t create value. Decisions <span class="jr-link__end">do.<svg class="btn__arrow" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
             </h3>
           </div>
         </article>
@@ -151,20 +153,42 @@
             <div class="jr-plate__frame"><img src="assets/img/insights/sunlit_stairway_through_shadow-600.webp" srcset="assets/img/insights/sunlit_stairway_through_shadow-600.webp 600w, assets/img/insights/sunlit_stairway_through_shadow-1122.webp 1122w" sizes="(max-width: 1024px) 100vw, 60vw" width="1122" height="1402" loading="lazy" decoding="async" alt=""></div>
           </figure>
           <div class="jr-entry__text" data-reveal style="--reveal-delay: 120ms">
-            <p class="jr-meta"><span class="jr-meta__n">03</span><span class="jr-meta__cat">Planning</span></p>
+            <p class="jr-meta"><span class="jr-meta__n">03</span><span class="jr-meta__cat">Investment</span></p>
             <h3 class="jr-entry__title" id="insight-03-title">
-              <a class="jr-link" href="insights/article-4-and-hmo-planning-liverpool.html">Article 4 and HMOs in Liverpool: why planning now matters as much as <span class="jr-link__end">licensing<svg class="btn__arrow" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
+              <a class="jr-link" href="#insight-03">Value is often hidden where others <span class="jr-link__end">overlook.<svg class="btn__arrow" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
             </h3>
           </div>
         </article>
         <article class="jr-entry jr-entry--a" id="insight-04" aria-labelledby="insight-04-title">
           <figure class="jr-plate jr-plate--photo" data-reveal>
-            <div class="jr-plate__frame"><img src="assets/img/generational/stair-720.webp" srcset="assets/img/generational/stair-720.webp 720w, assets/img/generational/stair-1448.webp 1448w" sizes="(max-width: 1024px) 100vw, 60vw" width="1448" height="1086" loading="lazy" decoding="async" alt=""></div>
+            <div class="jr-plate__frame"><img src="assets/img/hero-960.jpg" srcset="assets/img/hero-960.jpg 960w, assets/img/hero-1280.jpg 1280w, assets/img/hero-1672.jpg 1672w" sizes="(max-width: 1024px) 100vw, 60vw" width="1672" height="941" loading="lazy" decoding="async" alt=""></div>
           </figure>
           <div class="jr-entry__text" data-reveal style="--reveal-delay: 120ms">
-            <p class="jr-meta"><span class="jr-meta__n">04</span><span class="jr-meta__cat">Asset Management</span></p>
+            <p class="jr-meta"><span class="jr-meta__n">04</span><span class="jr-meta__cat">Property</span></p>
             <h3 class="jr-entry__title" id="insight-04-title">
-              <a class="jr-link" href="insights/safety-compliance-in-room-let-homes.html">Safety compliance in room-let homes: the core legal <span class="jr-link__end">checks<svg class="btn__arrow" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
+              <a class="jr-link" href="#insight-04">The value of place changes with <span class="jr-link__end">purpose.<svg class="btn__arrow" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
+            </h3>
+          </div>
+        </article>
+        <article class="jr-entry jr-entry--b" id="insight-05" aria-labelledby="insight-05-title">
+          <figure class="jr-plate jr-plate--object" data-reveal>
+            <div class="jr-plate__frame"><img src="assets/img/visualizer/art.webp" srcset="assets/img/visualizer/art.webp 1x, assets/img/visualizer/art@2x.webp 2x" loading="lazy" decoding="async" alt=""></div>
+          </figure>
+          <div class="jr-entry__text" data-reveal style="--reveal-delay: 120ms">
+            <p class="jr-meta"><span class="jr-meta__n">05</span><span class="jr-meta__cat">Collecting &amp; Legacy</span></p>
+            <h3 class="jr-entry__title" id="insight-05-title">
+              <a class="jr-link" href="#insight-05">Some assets carry meaning beyond <span class="jr-link__end">return.<svg class="btn__arrow" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
+            </h3>
+          </div>
+        </article>
+        <article class="jr-entry jr-entry--c" id="insight-06" aria-labelledby="insight-06-title">
+          <figure class="jr-plate jr-plate--object" data-reveal>
+            <div class="jr-plate__frame"><img src="assets/img/visualizer/business.webp" srcset="assets/img/visualizer/business.webp 1x, assets/img/visualizer/business@2x.webp 2x" loading="lazy" decoding="async" alt=""></div>
+          </figure>
+          <div class="jr-entry__text" data-reveal style="--reveal-delay: 120ms">
+            <p class="jr-meta"><span class="jr-meta__n">06</span><span class="jr-meta__cat">Business &amp; Capital</span></p>
+            <h3 class="jr-entry__title" id="insight-06-title">
+              <a class="jr-link" href="#insight-06">Enterprise rarely exists in <span class="jr-link__end">isolation.<svg class="btn__arrow" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
             </h3>
           </div>
         </article>
@@ -205,7 +229,8 @@
   </main>
 
   <!-- ===================== 7. FOOTER =====================
-       Company details, the public email and the legal links are the approved footer block. -->
+       Institutional, not promotional. No public email address; contact is by introduction only.
+       Company details and legal links are the approved footer block. -->
   <footer class="site-footer">
     <div class="container">
       <div class="site-footer__grid">
@@ -226,7 +251,7 @@
             <li><a href="approach.html">Approach</a></li>
             <li><a href="capabilities.html">Capabilities</a></li>
             <li><a href="insights.html">Insights</a></li>
-            <li><a href="about.html">About</a></li>
+            <li><a href="index.html#about">About</a></li>
             <li><a href="#contact">Contact</a></li>
           </ul>
         </nav>
@@ -303,10 +328,11 @@
               <div class="field__select">
                 <select class="field__input" id="intro-nature" name="Nature of Enquiry" required aria-describedby="intro-nature-err">
                   <option value="" selected disabled>Select one</option>
-                  <option>Property Sale or Acquisition</option>
+                  <option>Investment Opportunity</option>
+                  <option>Property Acquisition</option>
                   <option>Partnership / Joint Venture</option>
-                  <option>Lender or Finance Partner</option>
                   <option>Professional Introduction</option>
+                  <option>Private Client Enquiry</option>
                   <option>Other</option>
                 </select>
               </div>

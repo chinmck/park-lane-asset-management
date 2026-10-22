@@ -28,7 +28,7 @@ const ASSETS = [
     material: "limestone",
     image: { src: "assets/img/visualizer/property.webp", src2x: "assets/img/visualizer/property@2x.webp" },
     size: { w: 253, h: 400, d: 44 },
-    idle: { x: -240, z: 30, ry: -5 },
+    idle: { x: -262, z: 30, ry: -5 },
     view: -20,
     title: "Property, held with a purpose.",
     text: "Acquisition, repositioning and long-term management. Every building is given a defined role, then financed and maintained to serve the wider portfolio.",
@@ -40,11 +40,23 @@ const ASSETS = [
     material: "bronze",
     image: { src: "assets/img/visualizer/art.webp", src2x: "assets/img/visualizer/art@2x.webp" },
     size: { w: 150, h: 330, d: 40 },
-    idle: { x: -10, z: -80, ry: 7 },
+    idle: { x: -150, z: -80, ry: 7 },
     view: -25,
     title: "Collections, stewarded like capital.",
     text: "Provenance, insurance, storage and considered disposal. Significant works are held under the same governance as every other asset.",
     roles: ["Provenance", "Protect", "Steward"],
+  },
+  {
+    id: "equities",
+    label: "Equities & Investments",
+    material: "glass",
+    image: { src: "assets/img/visualizer/equities.webp", src2x: "assets/img/visualizer/equities@2x.webp" },
+    size: { w: 186, h: 470, d: 20 },
+    idle: { x: 88, z: 80, ry: -2 },
+    view: -31,
+    title: "Liquidity, with discipline.",
+    text: "Listed and private holdings structured around risk, income and time horizon: the liquid layer that lets the rest of the portfolio hold its course.",
+    roles: ["Allocate", "Balance", "Review"],
   },
   {
     id: "business",
@@ -52,7 +64,7 @@ const ASSETS = [
     material: "marble",
     image: { src: "assets/img/visualizer/business.webp", src2x: "assets/img/visualizer/business@2x.webp" },
     size: { w: 210, h: 360, d: 44 },
-    idle: { x: 220, z: -40, ry: 8 },
+    idle: { x: 206, z: -40, ry: 8 },
     view: -37,
     title: "Enterprise, aligned with the family.",
     text: "Operating companies and shareholdings, considered alongside succession, value extraction and the wider balance sheet.",
@@ -218,7 +230,7 @@ export function mount(root) {
   function scaleFor(compact) {
     const width = stage.clientWidth;
     if (compact) {
-      const row = ASSETS.reduce((s, a) => s + a.size.w, 0) + 16 * (ASSETS.length - 1);
+      const row = ASSETS.reduce((s, a) => s + a.size.w, 0) + 16 * 3;
       return Math.min(0.62, (width - 36) / row);
     }
     // Side-by-side desktop gets the larger model; full-width tablet a gentler one

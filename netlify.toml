@@ -4,13 +4,6 @@
 [context.production]
   environment = { NODE_VERSION = "18" }
 
-# The enquiry form is registered from __forms/hidden-form.html.
-# Do not publish that address as a page people should open.
-[[redirects]]
-  from = "/__forms/*"
-  to = "/404.html"
-  status = 404
-
 [[headers]]
   for = "/*"
   [headers.values]
