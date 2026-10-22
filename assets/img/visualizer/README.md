@@ -20,7 +20,6 @@ moves, recedes, casts its contact shadow and assembles exactly as the approved i
 | --- | --- | --- | --- | --- |
 | Property | `property.webp`, `property@2x.webp` | 316 × 500 | 633 × 1000 | 253 × 400 |
 | Art & Collectibles | `art.webp`, `art@2x.webp` | 188 × 412 | 376 × 825 | 150 × 330 |
-| Equities & Investments | `equities.webp`, `equities@2x.webp` | 233 × 588 | 466 × 1175 | 186 × 470 |
 | Business Interests | `business.webp`, `business@2x.webp` | 262 × 450 | 524 × 900 | 210 × 360 |
 
 The files are WebP with alpha: about 160 KB for the 1x set and 490 KB for the 2x set, down from 7.8 MB of source PNGs.

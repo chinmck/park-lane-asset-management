@@ -15,6 +15,14 @@
 .section--ivory .lead { color: rgba(11, 13, 12, 0.7); }
 .section--ivory .eyebrow { color: var(--c-bronze); }
 
+.page-missing {
+  display: flex;
+  align-items: center;
+  min-height: 100vh;
+  min-height: 100svh;
+  padding-top: var(--header-h);
+}
+
 .section-head {
   display: grid;
   gap: var(--s-5);
