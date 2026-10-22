@@ -1,0 +1,139 @@
+/* ==========================================================================
+   Parklane — Privacy, terms and legal information
+   Site colours, type and spacing. The words themselves are not set here.
+   ========================================================================== */
+
+.legal-page {
+  padding-top: calc(var(--header-h) + var(--s-8));
+  padding-bottom: var(--section-y);
+}
+
+.legal-doc {
+  max-width: 46rem;
+  color: var(--c-ivory-muted);
+  overflow-wrap: anywhere;
+}
+
+.legal-doc h1,
+.legal-doc h2,
+.legal-doc strong {
+  color: var(--c-ivory);
+}
+
+.legal-doc h1,
+.legal-doc h2 {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  letter-spacing: var(--tracking-heading);
+  line-height: var(--lh-heading);
+  text-wrap: balance;
+}
+
+.legal-doc h1 {
+  font-size: var(--fs-h2);
+}
+
+.legal-doc h2 {
+  margin-top: var(--s-8);
+  font-size: var(--fs-h3);
+}
+
+.legal-doc > * + * {
+  margin-top: var(--s-4);
+}
+
+.legal-doc h1 + * {
+  margin-top: var(--s-5);
+}
+
+.legal-doc em {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+}
+
+.legal-doc strong {
+  font-weight: 500;
+}
+
+.legal-doc a {
+  color: var(--c-ivory);
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+  text-decoration-color: var(--c-brass-line);
+}
+
+.legal-doc a:hover,
+.legal-doc a:focus-visible {
+  color: var(--c-brass);
+}
+
+.legal-doc ul {
+  list-style: disc;
+  padding-left: 1.15rem;
+}
+
+.legal-doc li + li {
+  margin-top: var(--s-2);
+}
+
+.legal-doc li::marker {
+  color: var(--c-brass);
+}
+
+.legal-doc table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.legal-doc thead:not(:has(th:not(:empty))) {
+  display: none;
+}
+
+.legal-doc th,
+.legal-doc td {
+  border: 1px solid rgba(242, 239, 229, 0.22);
+  padding: 0.7rem 0.85rem;
+  vertical-align: top;
+  text-align: left;
+  overflow-wrap: anywhere;
+}
+
+.legal-doc th:first-child,
+.legal-doc td:first-child {
+  width: 42%;
+}
+
+.legal-doc th {
+  font-weight: 500;
+  color: var(--c-ivory);
+}
+
+@media (max-width: 640px) {
+  .legal-doc table,
+  .legal-doc thead,
+  .legal-doc tbody,
+  .legal-doc tr,
+  .legal-doc th,
+  .legal-doc td {
+    display: block;
+    width: auto;
+  }
+
+  .legal-doc tr {
+    border-top: 1px solid rgba(242, 239, 229, 0.22);
+  }
+
+  .legal-doc th,
+  .legal-doc td {
+    border: 0;
+    border-bottom: 1px solid rgba(242, 239, 229, 0.22);
+    padding: 0.75rem 0;
+  }
+
+  .legal-doc thead th {
+    color: var(--c-brass);
+    font-size: var(--fs-small);
+  }
+}

@@ -438,3 +438,12 @@ button.access__link {
 .site-footer__intro:focus-visible .btn__arrow {
   transform: translateX(4px);
 }
+
+.intro__privacy {
+  margin-top: var(--s-5);
+}
+
+.intro__privacy a {
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
