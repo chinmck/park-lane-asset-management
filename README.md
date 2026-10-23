@@ -1,6 +1,6 @@
 # Parklane Asset Management — Homepage
 
-Static homepage shell. No build step; Netlify publishes the repo root.
+Static homepage shell. No build step; the host publishes the repo root.
 
 ## Structure
 
