@@ -4,8 +4,8 @@
  * (focus trap, Escape to close and background inertness come from showModal).
  * Focus returns to the opener on close.
  *
- * Submissions are posted to Netlify Forms (form name "introduction"). The
- * destination address lives only in the Netlify dashboard, never in this code.
+ * Submissions are posted for the form named "introduction". The
+ * destination address lives only in the hosting dashboard, never in this code.
  */
 
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
